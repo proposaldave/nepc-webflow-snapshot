@@ -55,13 +55,39 @@ function retitleCoach(html, coachName, newTitle) {
 function patchCoachingNav(html) {
   html = html.replace(
     '<a href="/calendar/" class="navbar14_link w-nav-link">CALENDAR</a><a href="/coaching/" aria-current="page" class="navbar14_link w-nav-link w--current">COACHING</a>',
-    '<a href="/calendar/" class="navbar14_link w-nav-link">CALENDAR</a><a href="/leagues/" class="navbar14_link w-nav-link">LEAGUES</a><a href="/private-events/" class="navbar14_link w-nav-link">EVENTS</a><a href="/coaching/" aria-current="page" class="navbar14_link w-nav-link w--current">COACHING</a>',
+    '<a href="/calendar/" class="navbar14_link w-nav-link">CALENDAR</a><a href="/leagues/" class="navbar14_link w-nav-link">LEAGUES</a><a href="/coaching/" aria-current="page" class="navbar14_link w-nav-link w--current">COACHING</a>',
   );
   html = html.replace(
     '<a href="/calendar/" class="footer4_link">CALENDAR</a><a href="/coaching/" aria-current="page" class="footer4_link w--current">COACHING</a>',
-    '<a href="/calendar/" class="footer4_link">CALENDAR</a><a href="/leagues/" class="footer4_link">LEAGUES</a><a href="/private-events/" class="footer4_link">EVENTS</a><a href="/coaching/" aria-current="page" class="footer4_link w--current">COACHING</a>',
+    '<a href="/calendar/" class="footer4_link">CALENDAR</a><a href="/leagues/" class="footer4_link">LEAGUES</a><a href="/coaching/" aria-current="page" class="footer4_link w--current">COACHING</a>',
   );
-  return html;
+  return moveEventsBeforeContact(html);
+}
+
+function moveEventsBeforeContact(html) {
+  const navOrder = ["CLUBS", "CALENDAR", "LEAGUES", "COACHING", "MEMBERSHIP", "EVENTS", "CONTACT", "GIFT CARDS"];
+  const footerOrder = ["CLUBS", "CALENDAR", "LEAGUES", "COACHING", "MEMBERSHIP", "EVENTS", "CONTACT"];
+  return html
+    .replace(/<div class="navbar14_menu-links">([\s\S]*?)<\/div><div id="w-node/, (_match, links) => {
+      const ordered = orderLinks(links, navOrder);
+      return `<div class="navbar14_menu-links">${ordered}</div><div id="w-node`;
+    })
+    .replace(/<div class="w-layout-grid footer4_link-list">([\s\S]*?)<\/div>/g, (_match, links) => {
+      const ordered = orderLinks(links, footerOrder);
+      return `<div class="w-layout-grid footer4_link-list">${ordered}</div>`;
+    });
+}
+
+function orderLinks(links, order) {
+  const byText = new Map();
+  for (const match of links.matchAll(/<a\b[^>]*>(CLUBS|CALENDAR|LEAGUES|EVENTS|COACHING|MEMBERSHIP|CONTACT|GIFT CARDS)<\/a>/g)) {
+    const anchor = match[0];
+    const text = match[1];
+    if (!byText.has(text) || anchor.includes("w--current")) {
+      byText.set(text, anchor);
+    }
+  }
+  return order.map((text) => byText.get(text)).filter(Boolean).join("");
 }
 
 let html = readFileSync(coachingPath, "utf8");
