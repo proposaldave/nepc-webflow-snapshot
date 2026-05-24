@@ -1,0 +1,50 @@
+{
+  "pages_to_create": [
+    {
+      "slug": "leagues",
+      "source": "Existing New NEPC Partner Leagues article plus permanent page intro"
+    },
+    {
+      "slug": "private-events",
+      "source": "New page copy in page-copy.md"
+    },
+    {
+      "slug": "corporate-events",
+      "source": "Alias page for corporate-event search intent"
+    },
+    {
+      "slug": "glow-in-the-dark",
+      "source": "New page copy in page-copy.md"
+    }
+  ],
+  "links_to_update": [
+    {
+      "location": "Homepage service card",
+      "label": "Join a competitive league",
+      "from": "/calendar/",
+      "to": "/leagues/"
+    },
+    {
+      "location": "Main navigation",
+      "action": "Add LEAGUES between CALENDAR and COACHING",
+      "href": "/leagues/"
+    },
+    {
+      "location": "Footer navigation",
+      "action": "Add LEAGUES between CALENDAR and COACHING",
+      "href": "/leagues/"
+    },
+    {
+      "location": "Clubs FAQ",
+      "action": "Point corporate/private events answer to /private-events/ plus brochure PDF"
+    }
+  ],
+  "blocked_for_direct_api_publish": {
+    "reason": "No WEBFLOW_TOKEN found in local environment.",
+    "needed": [
+      "WEBFLOW_TOKEN",
+      "Webflow site ID",
+      "Webflow page IDs or permission to create pages"
+    ]
+  }
+}
