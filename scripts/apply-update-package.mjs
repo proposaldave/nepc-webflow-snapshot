@@ -6,6 +6,15 @@ const root = dirname(dirname(fileURLToPath(import.meta.url)));
 const dist = join(root, "dist");
 const pdfPath =
   "/assets/cdn.prod.website-files.com/67d7a7154f2e71cc1081b1bf/68e3fe82db64a2ba70c5b246_NEPC Corporate Events & Private Parties.pdf";
+const img = {
+  leagues: "/assets/cdn.prod.website-files.com/67d8ef9f47150547ee5f7682/69e7fd670276d194c03b043a_New_England_Pickleball_Club-partner-league-TV.jpg",
+  leagueCard: "/assets/cdn.prod.website-files.com/67d7a7154f2e71cc1081b1bf/6818c7d8b7e634aa6f4919f4_Join in a competitive league.webp",
+  privateCourt: "/assets/cdn.prod.website-files.com/67d7a7154f2e71cc1081b1bf/6818c8a81376935f7beb1264_Book a private court.webp",
+  social: "/assets/cdn.prod.website-files.com/67d7a7154f2e71cc1081b1bf/6818c7bfeff9dcdb05525cef_Sign up for a social play.webp",
+  cta: "/assets/cdn.prod.website-files.com/67d7a7154f2e71cc1081b1bf/67d7e8b027ec9b12a6fc9b65_NEPC_Home CTA BG 1.webp",
+  rye: "/assets/cdn.prod.website-files.com/67d8ef9f47150547ee5f7682/6818aa32bef417e3e7601fed_NEPC RYE INTERIOR&EXTERIOR 1.webp",
+  middleton: "/assets/cdn.prod.website-files.com/67d8ef9f47150547ee5f7682/6818aa4a402149c27255e411_NEPC MIDDLETON INTERIOR&EXTERIOR 1.webp",
+};
 
 function read(rel) {
   return readFileSync(join(root, rel), "utf8");
@@ -36,8 +45,20 @@ function patchAllPages() {
       '<a href="/calendar/" class="navbar14_link w-nav-link">CALENDAR</a><a href="/leagues/" class="navbar14_link w-nav-link">LEAGUES</a><a href="/coaching/" class="navbar14_link w-nav-link">COACHING</a>',
     );
     html = html.replace(
+      '<a href="/leagues/" class="navbar14_link w-nav-link">LEAGUES</a><a href="/coaching/" class="navbar14_link w-nav-link">COACHING</a>',
+      '<a href="/leagues/" class="navbar14_link w-nav-link">LEAGUES</a><a href="/private-events/" class="navbar14_link w-nav-link">EVENTS</a><a href="/coaching/" class="navbar14_link w-nav-link">COACHING</a>',
+    );
+    html = html.replace(
       '<a href="/calendar/" class="footer4_link">CALENDAR</a><a href="/coaching/" class="footer4_link">COACHING</a>',
       '<a href="/calendar/" class="footer4_link">CALENDAR</a><a href="/leagues/" class="footer4_link">LEAGUES</a><a href="/coaching/" class="footer4_link">COACHING</a>',
+    );
+    html = html.replace(
+      '<a href="/leagues/" class="footer4_link">LEAGUES</a><a href="/coaching/" class="footer4_link">COACHING</a>',
+      '<a href="/leagues/" class="footer4_link">LEAGUES</a><a href="/private-events/" class="footer4_link">EVENTS</a><a href="/coaching/" class="footer4_link">COACHING</a>',
+    );
+    html = html.replace(
+      '<a href="/leagues/" class="footer4_link">CALENDAR</a>',
+      '<a href="/calendar/" class="footer4_link">CALENDAR</a>',
     );
     writeFileSync(file, html);
   }
@@ -73,43 +94,74 @@ function shellFrom(templateRel, title, description) {
   return { head, footer };
 }
 
-function page(title, description, eyebrow, lead, bodyHtml, ctaHtml = "") {
+function codexCss() {
+  return `<style>
+.codex-page{background:#f7fbff}
+.codex-hero{position:relative;min-height:620px;display:flex;align-items:flex-end;overflow:hidden;background:#0d5497;color:white}
+.codex-hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.codex-hero:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(5,36,70,.88),rgba(5,36,70,.52) 48%,rgba(5,36,70,.18))}
+.codex-hero-inner{position:relative;z-index:1;width:100%;padding:8rem 5vw 5rem}
+.codex-hero-copy{max-width:760px}
+.codex-eyebrow{margin-bottom:.75rem;color:#9ed8ff;font-weight:700;text-transform:uppercase;letter-spacing:.08em}
+.codex-hero h1{margin:0 0 1rem;font-size:clamp(3rem,7vw,6.5rem);line-height:.95;color:white}
+.codex-hero p{max-width:680px;font-size:1.25rem;line-height:1.5;color:rgba(255,255,255,.9)}
+.codex-actions{display:flex;gap:1rem;flex-wrap:wrap;margin-top:2rem}
+.codex-button{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:.9rem 1.25rem;border-radius:999px;background:#4bb8ff;color:#061f38;text-decoration:none;font-weight:800}
+.codex-button.secondary{background:white;color:#0d5497}
+.codex-section{padding:5rem 5vw}
+.codex-container{max-width:1180px;margin:0 auto}
+.codex-kicker{color:#0d5497;font-weight:800;text-transform:uppercase;letter-spacing:.08em;margin-bottom:.5rem}
+.codex-section h2{font-size:clamp(2rem,4vw,3.5rem);line-height:1.05;margin:0 0 1rem;color:#071b2d}
+.codex-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.25rem}
+.codex-grid.two{grid-template-columns:repeat(2,minmax(0,1fr))}
+.codex-card{background:white;border:1px solid rgba(13,84,151,.14);border-radius:16px;overflow:hidden;box-shadow:0 14px 40px rgba(13,84,151,.08)}
+.codex-card img{width:100%;height:220px;object-fit:cover;display:block}
+.codex-card-body{padding:1.4rem}
+.codex-card h3{font-size:1.45rem;line-height:1.1;margin:0 0 .5rem;color:#071b2d}
+.codex-card p,.codex-card li{color:#425466;line-height:1.5}
+.codex-card ul{padding-left:1.1rem;margin:.75rem 0 0}
+.codex-panel{display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:center;background:white;border-radius:20px;padding:1.5rem;box-shadow:0 18px 48px rgba(13,84,151,.08)}
+.codex-panel img{width:100%;height:420px;object-fit:cover;border-radius:14px}
+.codex-rich{font-size:1.05rem;line-height:1.65;color:#24364a}
+.codex-rich h2,.codex-rich h3,.codex-rich h4{color:#071b2d}
+.codex-link-card{display:flex;flex-direction:column;justify-content:flex-end;min-height:300px;padding:1.25rem;border-radius:16px;overflow:hidden;position:relative;color:white;text-decoration:none;background:#0d5497}
+.codex-link-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.codex-link-card:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(3,22,40,.05),rgba(3,22,40,.78))}
+.codex-link-card div{position:relative;z-index:1}
+.codex-link-card h3{color:white;margin:0 0 .35rem;font-size:1.6rem}
+.codex-link-card p{margin:0;color:rgba(255,255,255,.88)}
+.codex-dark{background:#061f38;color:white}
+.codex-dark h2,.codex-dark h3{color:white}
+.codex-dark p{color:rgba(255,255,255,.86)}
+@media(max-width:900px){.codex-hero{min-height:560px}.codex-grid,.codex-grid.two,.codex-panel{grid-template-columns:1fr}.codex-panel img{height:280px}.codex-section{padding:3.25rem 1.25rem}.codex-hero-inner{padding:7rem 1.25rem 3.5rem}}
+</style>`;
+}
+
+function page(title, description, eyebrow, lead, heroImage, bodyHtml, ctaHtml = "") {
   const { head, footer } = shellFrom("dist/clubs/index.html", title, description);
-  const content = `<main class="main-wrapper max-width-full">
-<section class="section_contact29">
-  <div class="padding-global">
-    <div class="padding-section-large is-extra-top">
-      <div class="container-large">
-        <div class="contact29_component">
-          <div class="margin-bottom margin-xxlarge">
-            <div class="max-width-large">
-              <div class="margin-bottom margin-small">
-                <div class="text-size-medium text-weight-semibold text-color-blue">${eyebrow}</div>
-                <h1 class="heading-style-h2"><span>${title}</span></h1>
-              </div>
-              <p class="text-size-xlarge text-color-tertiary">${lead}</p>
-            </div>
-          </div>
-          <div class="max-width-large">
-            <div class="texts-rich-text w-richtext">
-              ${bodyHtml}
-            </div>
-            ${ctaHtml}
-          </div>
-        </div>
-      </div>
+  const content = `<main class="main-wrapper max-width-full codex-page">
+${codexCss()}
+<section class="codex-hero">
+  <img src="${heroImage}" alt=""/>
+  <div class="codex-hero-inner">
+    <div class="codex-hero-copy">
+      <div class="codex-eyebrow">${eyebrow}</div>
+      <h1>${title}</h1>
+      <p>${lead}</p>
+      ${ctaHtml}
     </div>
   </div>
 </section>
+${bodyHtml}
 </main>`;
   return `${head}${content}${footer}`;
 }
 
 function cta(primaryHref, primaryLabel, secondaryHref = "/contact/", secondaryLabel = "Contact us") {
-  return `<div class="margin-top margin-large"><div class="button-group">
-<a href="${primaryHref}" class="button w-button">${primaryLabel}</a>
-<a href="${secondaryHref}" class="button is-secondary w-button">${secondaryLabel}</a>
-</div></div>`;
+  return `<div class="codex-actions">
+<a href="${primaryHref}" class="codex-button">${primaryLabel}</a>
+<a href="${secondaryHref}" class="codex-button secondary">${secondaryLabel}</a>
+</div>`;
 }
 
 function extractLeagueBody() {
@@ -132,12 +184,15 @@ function extractLeagueBody() {
 function patchHomeLeagueCard() {
   const file = join(dist, "index.html");
   let html = readFileSync(file, "utf8");
-  const marker = '<h3 class="heading-style-h5">Join a competitive league</h3>';
-  const markerIndex = html.indexOf(marker);
-  if (markerIndex < 0) throw new Error("Could not find homepage league card");
-  const before = html.slice(0, markerIndex);
-  const after = html.slice(markerIndex).replace('href="/calendar/"', 'href="/leagues/"');
-  writeFileSync(file, before + after);
+  html = html.replace(
+    /(<h3 class="heading-style-h5">Join a competitive league<\/h3>[\s\S]*?<div class="button-group"><a href=")\/calendar\/(")/,
+    "$1/leagues/$2",
+  );
+  html = html.replace(
+    /(<h3 class="heading-style-h5">Take a class or lesson<\/h3>[\s\S]*?<div class="button-group"><a href=")\/leagues\/(")/,
+    "$1/coaching/$2",
+  );
+  writeFileSync(file, html);
 }
 
 function patchClubsFaq() {
@@ -161,6 +216,40 @@ function patchCalendarCopy() {
 }
 
 function buildPages() {
+  const eventLinks = `<section class="codex-section">
+  <div class="codex-container">
+    <div class="codex-kicker">Plan something different</div>
+    <h2>Events that are easy to find</h2>
+    <div class="codex-grid">
+      <a class="codex-link-card" href="/private-events/"><img src="${img.privateCourt}" alt=""/><div><h3>Private Events</h3><p>Parties, celebrations, and custom group play.</p></div></a>
+      <a class="codex-link-card" href="/corporate-events/"><img src="${img.cta}" alt=""/><div><h3>Corporate Events</h3><p>Team outings with a structured pickleball format.</p></div></a>
+      <a class="codex-link-card" href="/glow-in-the-dark/"><img src="${img.social}" alt=""/><div><h3>Glow in the Dark</h3><p>A lights-down social event format.</p></div></a>
+    </div>
+  </div>
+</section>`;
+
+  const leagueBody = `<section class="codex-section">
+  <div class="codex-container">
+    <div class="codex-panel">
+      <img src="${img.leagueCard}" alt=""/>
+      <div>
+        <div class="codex-kicker">Dedicated League Page</div>
+        <h2>Seasonal league information now lives here.</h2>
+        <p class="codex-rich">This page can be updated each season while keeping one consistent destination for players looking for competitive play.</p>
+        <div class="codex-actions"><a class="codex-button" href="mailto:ryann@nepclub.com">Email Ryann</a><a class="codex-button secondary" href="/calendar/">View Calendar</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="codex-section" style="padding-top:0">
+  <div class="codex-container">
+    <div class="codex-rich">
+      ${extractLeagueBody()}
+    </div>
+  </div>
+</section>
+${eventLinks}`;
+
   write(
     "dist/leagues/index.html",
     page(
@@ -168,48 +257,91 @@ function buildPages() {
       "Find current New England Pickleball Club league information for Rye and Middleton.",
       "Competitive Play",
       "Weekly partner leagues and competitive formats for players who want organized match play at Rye and Middleton.",
-      extractLeagueBody(),
+      img.leagues,
+      leagueBody,
       cta("/calendar/", "View the club calendar", "mailto:ryann@nepclub.com", "Email Ryann"),
     ),
   );
 
-  const privateEventsBody = `
-<h2>Private parties, team outings, and corporate events</h2>
-<p>NEPC hosts structured pickleball events for companies, teams, families, and private groups at both club locations. We can help with court time, event flow, beginner-friendly instruction, round robin play, and a format that keeps everyone moving.</p>
-<h3>Good fits</h3>
-<ul role="list">
-  <li>Corporate outings and team-building events</li>
-  <li>Birthday parties, family events, and private celebrations</li>
-  <li>Beginner-friendly pickleball introductions</li>
-  <li>Competitive group play for experienced players</li>
-</ul>
-<h3>Locations</h3>
-<p>Private events are available at NEPC Middleton and NEPC Rye, subject to court availability and staffing.</p>
-<h3>How to start</h3>
-<p>Use the brochure for package details, then contact the club with your preferred location, date range, group size, and whether the group is beginner, mixed-level, or competitive.</p>`;
+  const privateEventsBody = `<section class="codex-section">
+  <div class="codex-container">
+    <div class="codex-kicker">Choose the event format</div>
+    <h2>Private events should feel organized, social, and easy.</h2>
+    <div class="codex-grid">
+      <div class="codex-card"><img src="${img.privateCourt}" alt=""/><div class="codex-card-body"><h3>Private parties</h3><p>Birthday parties, family events, and celebrations with court time and a clear play format.</p></div></div>
+      <div class="codex-card"><img src="${img.cta}" alt=""/><div class="codex-card-body"><h3>Corporate outings</h3><p>Beginner-friendly team building, mixed-level round robins, and structured play for coworkers.</p></div></div>
+      <div class="codex-card"><img src="${img.social}" alt=""/><div class="codex-card-body"><h3>Social play</h3><p>Events that keep people rotating, meeting each other, and playing without awkward downtime.</p></div></div>
+    </div>
+  </div>
+</section>
+<section class="codex-section codex-dark">
+  <div class="codex-container">
+    <div class="codex-grid two">
+      <div><h2>What NEPC can help with</h2><p>Court time, event flow, beginner-friendly instruction, round robin play, and a format that keeps everyone moving.</p></div>
+      <div class="codex-card"><div class="codex-card-body"><h3>Start with four details</h3><ul role="list"><li>Preferred club: Middleton or Rye</li><li>Date range and group size</li><li>Beginner, mixed-level, or competitive</li><li>Private party, corporate outing, or glow event</li></ul></div></div>
+    </div>
+  </div>
+</section>
+${eventLinks}`;
 
   const privateEventsPage = page(
     "Private Events & Corporate Outings",
     "Host a private party, team outing, or corporate pickleball event at New England Pickleball Club.",
     "Groups & Events",
     "Bring your group to NEPC for a fun, structured pickleball event that works for beginners, mixed-level groups, and experienced players.",
+    img.privateCourt,
     privateEventsBody,
     cta(pdfPath, "View the brochure", "/contact/", "Contact a club"),
   );
   write("dist/private-events/index.html", privateEventsPage);
-  write("dist/corporate-events/index.html", privateEventsPage.replaceAll("Private Events & Corporate Outings", "Corporate Events at NEPC"));
+  write(
+    "dist/corporate-events/index.html",
+    page(
+      "Corporate Events at NEPC",
+      "Host a corporate outing or team-building pickleball event at New England Pickleball Club.",
+      "Team Outings",
+      "A lively team-building format that gets everyone on court, rotating, laughing, and playing together.",
+      img.cta,
+      `<section class="codex-section">
+  <div class="codex-container">
+    <div class="codex-panel">
+      <img src="${img.middleton}" alt=""/>
+      <div>
+        <div class="codex-kicker">Team Building</div>
+        <h2>More active than dinner. Easier than planning a tournament.</h2>
+        <p class="codex-rich">NEPC can turn a group outing into a structured pickleball experience with court time, beginner-friendly play, rotations, and a format that works for mixed levels.</p>
+        <div class="codex-actions"><a class="codex-button" href="${pdfPath}">View Brochure</a><a class="codex-button secondary" href="/contact/">Contact a Club</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+${eventLinks}`,
+      cta(pdfPath, "View the brochure", "/private-events/", "See all event options"),
+    ),
+  );
 
-  const glowBody = `
-<h2>Glow in the Dark Pickleball</h2>
-<p>Glow in the Dark Pickleball is a high-energy event format for parties, social nights, and group outings. The format is designed to feel different from a normal court reservation: music, glow gear, lights-down play, and a social event flow.</p>
-<h3>Best for</h3>
-<ul role="list">
-  <li>Corporate groups looking for a memorable team event</li>
-  <li>Private parties and celebrations</li>
-  <li>Social nights where the experience matters as much as the score</li>
-</ul>
-<h3>Booking note</h3>
-<p>Availability depends on location, date, staffing, and event setup time. Contact the club with group size and preferred dates so the team can confirm the right format.</p>`;
+  const glowBody = `<section class="codex-section codex-dark">
+  <div class="codex-container">
+    <div class="codex-panel" style="background:#0a2e52">
+      <img src="${img.social}" alt=""/>
+      <div>
+        <div class="codex-kicker">Lights down. Energy up.</div>
+        <h2>A social night that feels different from normal court time.</h2>
+        <p>Music, glow gear, lights-down play, and a social flow built for parties, corporate groups, and member events.</p>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="codex-section">
+  <div class="codex-container">
+    <div class="codex-grid">
+      <div class="codex-card"><div class="codex-card-body"><h3>Corporate groups</h3><p>A memorable team event that gets everyone moving.</p></div></div>
+      <div class="codex-card"><div class="codex-card-body"><h3>Private parties</h3><p>Birthdays, celebrations, and social nights with a built-in activity.</p></div></div>
+      <div class="codex-card"><div class="codex-card-body"><h3>Club events</h3><p>A special format when the experience matters as much as the score.</p></div></div>
+    </div>
+  </div>
+</section>
+${eventLinks}`;
 
   write(
     "dist/glow-in-the-dark/index.html",
@@ -218,6 +350,7 @@ function buildPages() {
       "Plan a glow in the dark pickleball event at New England Pickleball Club.",
       "Special Events",
       "A lights-down, high-energy pickleball format for private parties, social nights, and corporate outings.",
+      img.social,
       glowBody,
       cta("/private-events/", "Plan a group event", "/contact/", "Contact a club"),
     ),
