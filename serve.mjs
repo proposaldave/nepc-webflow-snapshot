@@ -1,9 +1,10 @@
 import http from "node:http";
 import fs from "node:fs/promises";
 import path from "node:path";
+import { fileURLToPath } from "node:url";
 
 const PORT = Number(process.env.PORT || 4177);
-const ROOT = path.resolve("sites/nepc_static_clone/dist");
+const ROOT = path.join(path.dirname(fileURLToPath(import.meta.url)), "dist");
 
 const types = {
   ".html": "text/html; charset=utf-8",

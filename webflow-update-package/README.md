@@ -28,4 +28,4 @@ This package converts the Krista/Ryann requests into Webflow-ready changes witho
 
 ## API note
 
-Direct Webflow publish from Codex requires a Webflow API token and site/page IDs. No token is present locally, so this repo provides the exact content and change map instead of touching production.
+Direct Webflow publish requires a Webflow API credential and site/page IDs. No credential is present locally, so this repo provides the exact content and change map instead of touching production.

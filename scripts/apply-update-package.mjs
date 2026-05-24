@@ -390,7 +390,7 @@ This package converts the Krista/Ryann requests into Webflow-ready changes witho
 
 ## API note
 
-Direct Webflow publish from Codex requires a Webflow API token and site/page IDs. No token is present locally, so this repo provides the exact content and change map instead of touching production.
+Direct Webflow publish requires a Webflow API credential and site/page IDs. No credential is present locally, so this repo provides the exact content and change map instead of touching production.
 `,
   );
 
@@ -505,8 +505,8 @@ Answer: We do! Visit our Private Events & Corporate Outings page or view our bro
           { location: "Clubs FAQ", action: "Point corporate/private events answer to /private-events/ plus brochure PDF" },
         ],
         blocked_for_direct_api_publish: {
-          reason: "No WEBFLOW_TOKEN found in local environment.",
-          needed: ["WEBFLOW_TOKEN", "Webflow site ID", "Webflow page IDs or permission to create pages"],
+          reason: "No Webflow API credential found in local environment.",
+          needed: ["Webflow API credential", "Webflow site ID", "Webflow page IDs or permission to create pages"],
         },
       },
       null,

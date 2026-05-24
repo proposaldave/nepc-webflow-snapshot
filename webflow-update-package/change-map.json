@@ -40,9 +40,9 @@
     }
   ],
   "blocked_for_direct_api_publish": {
-    "reason": "No WEBFLOW_TOKEN found in local environment.",
+    "reason": "No Webflow API credential found in local environment.",
     "needed": [
-      "WEBFLOW_TOKEN",
+      "Webflow API credential",
       "Webflow site ID",
       "Webflow page IDs or permission to create pages"
     ]
