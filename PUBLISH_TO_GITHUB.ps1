@@ -24,9 +24,14 @@ if ($LASTEXITCODE -ne 0) {
 }
 
 $visibility = if ($Public) { "--public" } else { "--private" }
-$existingRemote = git remote get-url origin 2>$null
+$existingRemote = ""
+cmd /c "git remote get-url origin > .publish-origin.tmp 2>NUL"
+if ($LASTEXITCODE -eq 0) {
+  $existingRemote = (Get-Content -Raw -Path ".publish-origin.tmp").Trim()
+}
+Remove-Item -Force -ErrorAction SilentlyContinue ".publish-origin.tmp"
 
-if ($LASTEXITCODE -eq 0 -and $existingRemote) {
+if ($existingRemote) {
   git push -u origin main
   exit $LASTEXITCODE
 }
