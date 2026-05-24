@@ -30,6 +30,42 @@ function removeCoachCard(html, coachName) {
   return html.slice(0, start) + html.slice(end);
 }
 
+function coachCardBounds(html, coachName) {
+  const cardStart = '<div style="background-color:#f9f9f9" role="listitem" class="team2_item w-dyn-item">';
+  const nameIndex = html.indexOf(coachName);
+  if (nameIndex < 0) throw new Error(`Could not find ${coachName}`);
+  const start = html.lastIndexOf(cardStart, nameIndex);
+  if (start < 0) throw new Error(`Could not find card start for ${coachName}`);
+  const end = findClosingDivEnd(html, start);
+  return { start, end, card: html.slice(start, end) };
+}
+
+function findClosingDivEnd(html, start) {
+  const tagPattern = /<\/?div\b[^>]*>/g;
+  tagPattern.lastIndex = start;
+  let depth = 0;
+  let match;
+  while ((match = tagPattern.exec(html))) {
+    if (match[0].startsWith("</")) {
+      depth -= 1;
+      if (depth === 0) return tagPattern.lastIndex;
+    } else {
+      depth += 1;
+    }
+  }
+  throw new Error("Could not find closing div for coach card");
+}
+
+function reorderCoachCards(html, coachNames) {
+  const cards = coachNames.map((name) => ({ name, ...coachCardBounds(html, name) }));
+  const insertAt = Math.min(...cards.map((card) => card.start));
+  for (const card of [...cards].sort((a, b) => b.start - a.start)) {
+    html = html.slice(0, card.start) + html.slice(card.end);
+  }
+  const orderedCards = coachNames.map((name) => cards.find((card) => card.name === name).card).join("");
+  return html.slice(0, insertAt) + orderedCards + html.slice(insertAt);
+}
+
 function removeTipCardsForCoach(html, coachName) {
   const itemStart = '<div role="listitem" class="event-header5_item w-dyn-item">';
   let next = html.indexOf(coachName);
@@ -99,6 +135,7 @@ html = removeTipCardsForCoach(html, "Cobi Moore");
 html = retitleCoach(html, "Tina Lech", "Teaching Pro / Drilling Pro");
 html = retitleCoach(html, "Ben Herrick", "Teaching Pro / Drilling Pro");
 html = retitleCoach(html, "Jared Wright", "Teaching Pro / Drilling Pro");
+html = reorderCoachCards(html, ["Ben Herrick", "Jared Wright", "Tina Lech"]);
 html = patchCoachingNav(html);
 
 writeFileSync(coachingPath, html);
