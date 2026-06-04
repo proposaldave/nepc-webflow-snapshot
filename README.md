@@ -22,6 +22,42 @@ Open `http://localhost:4177`.
 
 This is not the final site architecture. It proves the public Webflow site can be captured and hosted outside Webflow, and gives Dave a close side-by-side reference against the 10x Codex site.
 
+## Codex Continuation Workflow
+
+Use this repo for current website edits. Do not start a new project for normal copy, nav, page, image, or layout changes.
+
+The edit path is:
+
+```powershell
+git status --short --branch
+node .\serve.mjs
+```
+
+Make changes in `dist/`, then rebuild and check the public preview files:
+
+```powershell
+node .\scripts\build-github-pages-preview.mjs
+node .\scripts\scan-public-preview.mjs
+git diff --check
+git status --short
+```
+
+Commit and push after each completed edit batch:
+
+```powershell
+git add dist docs README.md AGENTS.md
+git commit -m "Describe NEPC website edit"
+git push origin main
+```
+
+GitHub Pages serves the rebuilt `docs/` folder at:
+
+```text
+https://proposaldave.github.io/nepc-webflow-snapshot/
+```
+
+Keep Webflow as the production site until the static replacement has verified forms, booking links, embeds, analytics, redirects, and DNS cutover.
+
 Final migration should convert the mirror into a maintainable codebase with:
 - Reusable page components
 - Editable content files
