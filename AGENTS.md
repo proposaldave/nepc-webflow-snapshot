@@ -2,6 +2,13 @@
 
 This repo is the active continuation path for the NEPC Webflow replacement preview.
 
+## Project boundary
+
+- Treat this folder as the only source for the public NEPC website preview.
+- Do not copy source files from the parent workspace into this repo.
+- Do not use parent-workspace search results as website content unless the exact source is already public-facing and approved for the site.
+- If a file would be inappropriate on the public website, it does not belong anywhere in this repo.
+
 ## Source of truth
 
 - Edit `dist/` first. It is the editable static site snapshot.
@@ -21,7 +28,7 @@ This repo is the active continuation path for the NEPC Webflow replacement previ
 ## Safety
 
 - This repo is public. Commit only public NEPC website content and public-facing assets.
-- Do not use member data, CourtReserve exports, Slack/email text, Give n Receive strategy, investor material, private notes, credentials, or local machine paths.
+- Do not use member data, exports from operating systems, private chat/email text, company strategy, investor material, private notes, credentials, or local machine paths.
 - Use public NEPC website copy, approved public-facing copy, and explicitly approved public social/media assets only.
 
 ## Migration stance

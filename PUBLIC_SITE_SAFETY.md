@@ -2,6 +2,10 @@
 
 This repo is public. Treat every committed file as publishable.
 
+## Project boundary
+
+This is a public website repo, not a workspace dump. Keep the project self-contained: site HTML, public assets, public copy, build scripts, and public handoff files only.
+
 ## Allowed sources
 
 - Current Webflow export in `dist/`.
@@ -11,7 +15,7 @@ This repo is public. Treat every committed file as publishable.
 
 ## Blocked sources
 
-- Local Give n Take / GnT strategy, operations, investor, canon, or product files.
+- Private company strategy, operations, investor, canon, or product files.
 - CourtReserve exports, member data, rosters, internal schedules, private Slack/email text, and local memory files.
 - API tokens, credentials, local paths, or machine-specific instructions.
 
@@ -23,7 +27,7 @@ Run:
 node .\scripts\scan-public-preview.mjs
 ```
 
-The scanner checks the public preview and handoff files for local paths, private company terms, token markers, and known internal-file names.
+The scanner checks the whole repo for local paths, private company terms, token markers, and known internal-file names.
 
 ## Photo handling
 
@@ -31,5 +35,5 @@ The GitHub preview uses copied assets under `docs/assets/`, so reviewers see the
 
 ## Blocked image references
 
-- Do not use `68306d72872ce01f396771ad_New to pickleball_ We got you` in website HTML. The public scanner blocks this filename so it cannot be reintroduced in `dist/` or `docs/`.
-- Do not use `Julio Lupo` or `Julio_Lupo` in website HTML or assets. The public scanner blocks those names so the former staff profile cannot be reintroduced in `dist/` or `docs/`.
+- The public scanner blocks a previously rejected "New to pickleball" asset filename so it cannot be reintroduced in `dist/` or `docs/`.
+- The public scanner blocks former staff-profile references identified in prior QA so they cannot be reintroduced in `dist/` or `docs/`.

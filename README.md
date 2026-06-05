@@ -4,6 +4,10 @@ This folder is the exact-current-site track for moving `newenglandpickleball.com
 
 It snapshots public Webflow pages into static HTML and mirrors public CDN assets into `dist/assets`. Treat this as the visual/content reference, not the maintainable long-term site.
 
+## Project Boundary
+
+This is the public-only NEPC website project. Keep it self-contained and do not pull unpublished club operations, member data, investor material, private notes, local memory, or parent-workspace files into this repo.
+
 ## Run
 
 ```powershell
