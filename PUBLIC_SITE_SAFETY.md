@@ -28,3 +28,7 @@ The scanner checks the public preview and handoff files for local paths, private
 ## Photo handling
 
 The GitHub preview uses copied assets under `docs/assets/`, so reviewers see the same images without depending on Webflow. For Webflow publish, each approved image should be uploaded to Webflow Assets, then the Webflow page should point to that asset. The `docs/assets/` paths preserve the source filenames so the handoff can identify the exact image used.
+
+## Blocked image references
+
+- Do not use `68306d72872ce01f396771ad_New to pickleball_ We got you` in website HTML. The public scanner blocks this filename so it cannot be reintroduced in `dist/` or `docs/`.

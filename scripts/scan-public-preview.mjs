@@ -3,7 +3,7 @@ import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const root = dirname(dirname(fileURLToPath(import.meta.url)));
-const scanRoots = ["docs", "webflow-update-package", "README.md", "scripts"];
+const scanRoots = ["dist", "docs", "webflow-update-package", "README.md", "scripts"];
 const blockedPatterns = [
   /C:\\Users\\/i,
   /CLAUDE COWORK/i,
@@ -17,6 +17,7 @@ const blockedPatterns = [
   /secret\s*[:=]/i,
   /Give n Take|Give 'n Take|GnT\b|v2\.gnt\.ai/i,
   /CourtSheet_Data|full_canon_context|GOD_PROMPT|TASKS\.md/i,
+  /68306d72872ce01f396771ad_New to pickleball_ We got you/i,
 ];
 const allowedBinary = /\.(png|jpe?g|webp|gif|svg|pdf|ico|woff2?)$/i;
 const allowedText = /\.(html|css|js|mjs|json|md|txt|xml|svg)$/i;
@@ -36,7 +37,7 @@ const findings = [];
 for (const file of files) {
   if (file.includes(`${join(root, ".git")}`) || file.includes(`${join(root, "release")}`)) continue;
   if (file.endsWith(`${join("scripts", "scan-public-preview.mjs")}`)) continue;
-  if (file.includes(`${join("docs", "assets")}`) && /\.(js|css)$/i.test(file)) continue;
+  if (file.includes(`${join("assets")}`) && /\.(js|css)$/i.test(file)) continue;
   if (allowedBinary.test(file) && !allowedText.test(file)) continue;
   const text = readFileSync(file, "utf8");
   for (const pattern of blockedPatterns) {
