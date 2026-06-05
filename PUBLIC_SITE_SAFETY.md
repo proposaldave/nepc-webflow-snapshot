@@ -32,3 +32,4 @@ The GitHub preview uses copied assets under `docs/assets/`, so reviewers see the
 ## Blocked image references
 
 - Do not use `68306d72872ce01f396771ad_New to pickleball_ We got you` in website HTML. The public scanner blocks this filename so it cannot be reintroduced in `dist/` or `docs/`.
+- Do not use `Julio Lupo` or `Julio_Lupo` in website HTML or assets. The public scanner blocks those names so the former staff profile cannot be reintroduced in `dist/` or `docs/`.
