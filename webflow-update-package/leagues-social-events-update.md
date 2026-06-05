@@ -22,9 +22,9 @@ Current Leagues:
 - Thursday Night Men's League
 
 Upcoming Team Tournaments at NEPC:
-- 3.0-3.5 MLP Team Event at Middleton, Saturday July 18 target, registration opens June 25.
-- 2.5-3.0 MLP Team Event at Middleton, Saturday July 25 target, registration opens July 2.
-- 3.5-4.0 MLP Team Event at Rye, Sunday August 2 target, registration opens July 9.
+- 3.0-3.5 MLP Team Event at Middleton, Saturday July 18th target, registration opens June 25th.
+- 2.5-3.0 MLP Team Event at Middleton, Saturday July 25th target, registration opens July 2nd.
+- 3.5-4.0 MLP Team Event at Rye, Sunday August 2nd target, registration opens July 9th.
 
 ## Social Events Page
 

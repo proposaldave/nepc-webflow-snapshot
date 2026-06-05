@@ -109,6 +109,11 @@ function codexCss() {
 .codex-grid.two{grid-template-columns:repeat(2,minmax(0,1fr))}
 .codex-card{background:white;border:1px solid rgba(13,84,151,.14);border-radius:16px;overflow:hidden;box-shadow:0 14px 40px rgba(13,84,151,.08)}
 .codex-card img{width:100%;height:225px;object-fit:cover;display:block}
+.codex-card a:not(.codex-button){color:inherit;text-decoration:none}
+.codex-image-link{display:block;overflow:hidden}
+.codex-image-link img{transition:transform .2s ease}
+.codex-image-link:hover img{transform:scale(1.025)}
+.codex-title-link:hover{text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:4px}
 .codex-card-body{padding:1.35rem}
 .codex-card h3{font-size:1.45rem;line-height:1.12;margin:0 0 .55rem;color:#071b2d}
 .codex-meta{display:flex;gap:.5rem;flex-wrap:wrap;margin:.75rem 0 0}
@@ -166,10 +171,16 @@ function card(item) {
   const meta = item.meta?.length
     ? `<div class="codex-meta">${item.meta.map((m) => `<span class="codex-pill ${m.kind || ""}">${m.text}</span>`).join("")}</div>`
     : "";
+  const image = item.cardHref
+    ? `<a class="codex-image-link" href="${item.cardHref}"><img src="${item.image}" alt=""/></a>`
+    : `<img src="${item.image}" alt=""/>`;
+  const title = item.cardHref
+    ? `<a class="codex-title-link" href="${item.cardHref}">${item.title}</a>`
+    : item.title;
   return `<article class="codex-card">
-  <img src="${item.image}" alt=""/>
+  ${image}
   <div class="codex-card-body">
-    <h3>${item.title}</h3>
+    <h3>${title}</h3>
     <p>${item.description}</p>
     ${meta}
     ${actions(item.actions)}
@@ -182,6 +193,7 @@ function buildLeaguesPage() {
     {
       title: "Men's & Women's Doubles Summer Flex League",
       image: img.league,
+      cardHref: organizerHref,
       description:
         "Partner flex league for men's and women's doubles teams. Teams coordinate weekly matches inside the league window, report results, and compete toward final standings.",
       meta: [{ text: "Summer flex" }, { text: "Registration link pending", kind: "muted" }],
@@ -193,6 +205,7 @@ function buildLeaguesPage() {
     {
       title: "Co-Ed Doubles Summer Drop-In League",
       image: img.social,
+      cardHref: calendarHref,
       description:
         "Weekly co-ed doubles play for players who want organized competitive reps without committing to a full flex-league schedule.",
       meta: [{ text: "Weekly sign-ups" }, { text: "Co-ed doubles" }],
@@ -204,9 +217,10 @@ function buildLeaguesPage() {
     {
       title: "Monday Night Ladies League",
       image: img.cta,
+      cardHref: organizerHref,
       description:
         "Ladies night league with proposed 2.5-3.0 and 3.0-3.5 sessions so players get level-appropriate matches in one consistent evening block.",
-      meta: [{ text: "Currently Full", kind: "muted" }, { text: "Next session target: July 8", kind: "gold" }],
+      meta: [{ text: "Currently Full", kind: "muted" }, { text: "Next session target: July 8th", kind: "gold" }],
       actions: [
         { label: "Currently Full", disabled: true },
         { label: "Email League Organizer", href: organizerHref, secondary: true },
@@ -215,9 +229,10 @@ function buildLeaguesPage() {
     {
       title: "Thursday Night Men's League",
       image: img.hero,
+      cardHref: organizerHref,
       description:
         "Men's evening league with proposed 2.5-3.0 and 3.0-3.5 sessions for players who want structured weekly match play.",
-      meta: [{ text: "Currently Full", kind: "muted" }, { text: "Next session target: July 11", kind: "gold" }],
+      meta: [{ text: "Currently Full", kind: "muted" }, { text: "Next session target: July 11th", kind: "gold" }],
       actions: [
         { label: "Currently Full", disabled: true },
         { label: "Email League Organizer", href: organizerHref, secondary: true },
@@ -230,25 +245,25 @@ function buildLeaguesPage() {
       title: "3.0-3.5 MLP Team Event",
       image: img.team,
       description:
-        "Middleton team-format event for 3.0-3.5 players. The date is targeted for Saturday July 18, pending the Thursday men's league schedule.",
-      meta: [{ text: "Middleton" }, { text: "Saturday July 18 target", kind: "gold" }],
-      actions: [{ label: "Registration opens June 25", disabled: true }],
+        "Middleton team-format event for 3.0-3.5 players. The date is targeted for Saturday July 18th, pending the Thursday men's league schedule.",
+      meta: [{ text: "Middleton" }, { text: "Saturday July 18th target", kind: "gold" }],
+      actions: [{ label: "Registration opens June 25th", disabled: true }],
     },
     {
       title: "2.5-3.0 MLP Team Event",
       image: img.teamAlt,
       description:
-        "Middleton team-format event for 2.5-3.0 players. The date is targeted for Saturday July 25, pending final calendar confirmation.",
-      meta: [{ text: "Middleton" }, { text: "Saturday July 25 target", kind: "gold" }],
-      actions: [{ label: "Registration opens July 2", disabled: true }],
+        "Middleton team-format event for 2.5-3.0 players. The date is targeted for Saturday July 25th, pending final calendar confirmation.",
+      meta: [{ text: "Middleton" }, { text: "Saturday July 25th target", kind: "gold" }],
+      actions: [{ label: "Registration opens July 2nd", disabled: true }],
     },
     {
       title: "3.5-4.0 MLP Team Event",
       image: img.league,
       description:
-        "Rye team-format event for 3.5-4.0 players. The date is targeted for Sunday August 2, pending final calendar confirmation.",
-      meta: [{ text: "Rye" }, { text: "Sunday August 2 target", kind: "gold" }],
-      actions: [{ label: "Registration opens July 9", disabled: true }],
+        "Rye team-format event for 3.5-4.0 players. The date is targeted for Sunday August 2nd, pending final calendar confirmation.",
+      meta: [{ text: "Rye" }, { text: "Sunday August 2nd target", kind: "gold" }],
+      actions: [{ label: "Registration opens July 9th", disabled: true }],
     },
   ];
 
@@ -313,9 +328,9 @@ function eventCard(item, index) {
   const href = item.href || calendarHref;
   const label = item.href ? "Register on CourtReserve" : "View Calendar";
   return `<article class="codex-card">
-  <img src="${image}" alt=""/>
+  <a class="codex-image-link" href="${href}"><img src="${image}" alt=""/></a>
   <div class="codex-card-body">
-    <h3>${item.title}</h3>
+    <h3><a class="codex-title-link" href="${href}">${item.title}</a></h3>
     <p>${item.description}</p>
     <div class="codex-meta"><span class="codex-pill">${item.location}</span><span class="codex-pill muted">Calendar registration</span></div>
     ${actions([{ label, href }])}
@@ -534,9 +549,9 @@ Current Leagues:
 - Thursday Night Men's League
 
 Upcoming Team Tournaments at NEPC:
-- 3.0-3.5 MLP Team Event at Middleton, Saturday July 18 target, registration opens June 25.
-- 2.5-3.0 MLP Team Event at Middleton, Saturday July 25 target, registration opens July 2.
-- 3.5-4.0 MLP Team Event at Rye, Sunday August 2 target, registration opens July 9.
+- 3.0-3.5 MLP Team Event at Middleton, Saturday July 18th target, registration opens June 25th.
+- 2.5-3.0 MLP Team Event at Middleton, Saturday July 25th target, registration opens July 2nd.
+- 3.5-4.0 MLP Team Event at Rye, Sunday August 2nd target, registration opens July 9th.
 
 ## Social Events Page
 
