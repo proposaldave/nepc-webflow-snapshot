@@ -454,29 +454,6 @@ margin: 0rem !important;
   });
 </script>
 
-<!-- Script: Hero Section Image Reload -->
-
-
-<script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const heroSection = document.getElementById("hero-section");
-
-    const heroImages = [
-      "https://cdn.prod.website-files.com/67d7a7154f2e71cc1081b1bf/68372bd59a4a63297268e428_Hero_image_1.webp",
-      "https://cdn.prod.website-files.com/67d7a7154f2e71cc1081b1bf/68372bd5ba56f17b92bda07b_Hero_image_2.webp",
-      "https://cdn.prod.website-files.com/67d7a7154f2e71cc1081b1bf/68372bd5d3d187eca618abc2_Hero_image_3.webp",
-      "https://cdn.prod.website-files.com/67d7a7154f2e71cc1081b1bf/68372bd5607aea7b92d2f084_Hero_image_5.webp"
-    ];
-
-    const randomIndex = Math.floor(Math.random() * heroImages.length);
-    const selectedImage = heroImages[randomIndex];
-
-    heroSection.style.backgroundImage = `url('${selectedImage}')`;
-    heroSection.style.backgroundSize = "cover";
-    heroSection.style.backgroundPosition = "center";
-    heroSection.style.backgroundRepeat = "no-repeat";
-  });
-</script>
 <script>
 document.addEventListener("DOMContentLoaded", function () {
   // Reload iframes when switching tabs (Webflow bug workaround)

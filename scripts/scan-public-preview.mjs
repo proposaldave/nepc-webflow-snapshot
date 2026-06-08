@@ -20,6 +20,7 @@ const blockedPatterns = [
   /68306d72872ce01f396771ad_New to pickleball_ We got you/i,
   /Julio Lupo|Julio_Lupo/i,
   /6818aa4a402149c27255e411/i,
+  /Hero_image_[0-9]\.webp/i,
 ];
 const allowedBinary = /\.(png|jpe?g|webp|gif|svg|pdf|ico|woff2?|zip|bundle)$/i;
 const allowedText = /\.(html|css|js|mjs|json|md|txt|xml|svg)$/i;
