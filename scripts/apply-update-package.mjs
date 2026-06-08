@@ -13,7 +13,7 @@ const img = {
   social: "/assets/cdn.prod.website-files.com/67d7a7154f2e71cc1081b1bf/6818c7bfeff9dcdb05525cef_Sign up for a social play.webp",
   cta: "/assets/cdn.prod.website-files.com/67d7a7154f2e71cc1081b1bf/67d7e8b027ec9b12a6fc9b65_NEPC_Home CTA BG 1.webp",
   rye: "/assets/cdn.prod.website-files.com/67d8ef9f47150547ee5f7682/6818aa32bef417e3e7601fed_NEPC RYE INTERIOR&EXTERIOR 1.webp",
-  middleton: "/assets/cdn.prod.website-files.com/67d8ef9f47150547ee5f7682/6818aa4b6c49a7e1cbe37e20_NEPC MIDDLETON INTERIOR&EXTERIOR 2.webp",
+  middleton: "/assets/cdn.prod.website-files.com/67d8ef9f47150547ee5f7682/6818aa4b5145fe56ed6f9dc5_NEPC MIDDLETON INTERIOR&EXTERIOR 3.webp",
 };
 
 function read(rel) {
