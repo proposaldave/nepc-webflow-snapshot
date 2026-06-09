@@ -378,12 +378,15 @@ margin: 0rem !important;
     const heroSection = document.getElementById("hero-section");
     if (!heroSection) return;
 
+    const assetBase = window.location.pathname.startsWith("/nepc-webflow-snapshot/")
+      ? "/nepc-webflow-snapshot"
+      : "";
     const homepageHeroImages = [
       "/assets/cdn.prod.website-files.com/67d8ef9f47150547ee5f7682/6818aa4b5145fe56ed6f9dc5_NEPC MIDDLETON INTERIOR&EXTERIOR 3.webp",
       "/assets/cdn.prod.website-files.com/67d8ef9f47150547ee5f7682/6818aa3285adbf0b1c253dd3_NEPC RYE INTERIOR&EXTERIOR 2.webp",
       "/assets/cdn.prod.website-files.com/67d8ef9f47150547ee5f7682/6818aa4aada7eee611e0f86b_NEPC MIDDLETON INTERIOR&EXTERIOR 4.webp",
       "/assets/cdn.prod.website-files.com/67d8ef9f47150547ee5f7682/6818aa4a16613074238ac5ca_NEPC MIDDLETON INTERIOR&EXTERIOR 5.webp"
-    ];
+    ].map(path => `${assetBase}${path}`);
 
     const requestedHero = new URLSearchParams(window.location.search).get("hero");
     const requestedIndex = Number.parseInt(requestedHero || "", 10);
