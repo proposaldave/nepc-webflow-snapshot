@@ -215,11 +215,8 @@ function buildLeaguesPage() {
       cardHref: organizerHref,
       description:
         "Ladies night league with proposed 2.5-3.0 and 3.0-3.5 sessions so players get level-appropriate matches in one consistent evening block.",
-      meta: [{ text: "Currently Full", kind: "muted" }, { text: "Next session target: July 8th", kind: "gold" }],
-      actions: [
-        { label: "Currently Full", disabled: true },
-        { label: "Email League Organizer", href: organizerHref, secondary: true },
-      ],
+      meta: [{ text: "Next session target: July 8th", kind: "gold" }],
+      actions: [{ label: "Email League Organizer", href: organizerHref, secondary: true }],
     },
     {
       title: "Thursday Night Men's League",
@@ -227,11 +224,8 @@ function buildLeaguesPage() {
       cardHref: organizerHref,
       description:
         "Men's evening league with proposed 2.5-3.0 and 3.0-3.5 sessions for players who want structured weekly match play.",
-      meta: [{ text: "Currently Full", kind: "muted" }, { text: "Next session target: July 11th", kind: "gold" }],
-      actions: [
-        { label: "Currently Full", disabled: true },
-        { label: "Email League Organizer", href: organizerHref, secondary: true },
-      ],
+      meta: [{ text: "Next session target: July 11th", kind: "gold" }],
+      actions: [{ label: "Email League Organizer", href: organizerHref, secondary: true }],
     },
   ];
 
