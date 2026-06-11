@@ -27,6 +27,8 @@ const calendarHref = "/calendar/";
 const middletonEventsHref = "https://app.courtreserve.com/Online/Events/List/13164";
 const ryeEventsHref = "https://app.courtreserve.com/Online/Events/List/7432";
 const organizerHref = "mailto:ryann@nepclub.com";
+const summerFlexMiddletonHref = "https://form.typeform.com/to/FaBROOxu";
+const summerFlexRyeHref = "https://form.typeform.com/to/lDSLhbf8";
 
 function read(rel) {
   return readFileSync(join(root, rel), "utf8");
@@ -188,12 +190,13 @@ function buildLeaguesPage() {
     {
       title: "Men's & Women's Doubles Summer Flex League",
       image: img.league,
-      cardHref: organizerHref,
+      cardHref: summerFlexMiddletonHref,
       description:
         "Partner flex league for men's and women's doubles teams. Teams coordinate weekly matches inside the league window, report results, and compete toward final standings.",
-      meta: [{ text: "Summer flex" }, { text: "Registration link pending", kind: "muted" }],
+      meta: [{ text: "Summer flex" }, { text: "Middleton + Rye registration" }],
       actions: [
-        { label: "Registration link pending", disabled: true },
+        { label: "Middleton Registration", href: summerFlexMiddletonHref },
+        { label: "Rye Registration", href: summerFlexRyeHref },
         { label: "Email League Organizer", href: organizerHref, secondary: true },
       ],
     },
@@ -326,7 +329,6 @@ function buildWebflowCopy() {
 Current Leagues:
 - Men's & Women's Doubles Summer Flex League
 - Co-Ed Doubles Summer Drop-In League
-
 `,
   );
 }
