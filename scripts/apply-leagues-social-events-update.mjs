@@ -287,111 +287,6 @@ function eventCard(item, index) {
 </article>`;
 }
 
-function buildSocialEventsPage() {
-  const events = [
-    {
-      title: "World Cup Party",
-      location: "Rye",
-      href: ryeEventsHref,
-      description: "A watch-party social at Rye with pickleball, food-and-drink energy, and a reason for members to gather off the normal play schedule.",
-    },
-    {
-      title: "Father's Day",
-      location: "Both clubs",
-      description: "A family-friendly club social built around Father's Day play, rotating games, and a relaxed community feel.",
-    },
-    {
-      title: "World Cup Party",
-      location: "Middleton",
-      href: middletonEventsHref,
-      description: "The Middleton version of the World Cup social, giving members another location-specific party night tied to the same event theme.",
-    },
-    {
-      title: "4th of July Socials",
-      location: "Both clubs",
-      description: "Holiday-themed social play for members and guests who want structured games around the July 4th week.",
-    },
-    {
-      title: "Member Appreciation Day",
-      location: "Rye",
-      href: ryeEventsHref,
-      description: "A Rye community day that celebrates members, gives newer players a reason to come in, and keeps the club feeling active.",
-    },
-    {
-      title: "Member Appreciation Day",
-      location: "Middleton",
-      href: middletonEventsHref,
-      description: "A Middleton community day focused on member connection, social play, and a stronger club rhythm outside normal reservations.",
-    },
-    {
-      title: "80s Night",
-      location: "Middleton",
-      href: middletonEventsHref,
-      description: "A themed social night at Middleton with music, rotating play, and a different feel from a standard open-play block.",
-    },
-    {
-      title: "80s Night",
-      location: "Rye",
-      href: ryeEventsHref,
-      description: "Rye's version of the 80s Night social, keeping the theme visible for members who missed the Middleton date.",
-    },
-    {
-      title: "Glow in the Dark Pickleball",
-      location: "Monthly",
-      description: "A monthly lights-down pickleball event with glow gear, music, rotating play, and a special-event feel.",
-    },
-    {
-      title: "Latin Night",
-      location: "Middleton",
-      href: middletonEventsHref,
-      description: "A music-forward Middleton social night with pickleball, community energy, and a clear reason to invite friends.",
-    },
-    {
-      title: "Latin Night",
-      location: "Rye",
-      href: ryeEventsHref,
-      description: "Rye's Latin Night social, built to make the club calendar feel active, varied, and community-led.",
-    },
-  ];
-
-  const body = `<section class="codex-section">
-  <div class="codex-container">
-    <div class="codex-section-head">
-      <div>
-        <div class="codex-kicker">Upcoming Social Events</div>
-        <h2>Club events worth planning around</h2>
-      </div>
-      <a class="codex-button secondary" href="${calendarHref}">View Calendar</a>
-    </div>
-    <div class="codex-grid">${events.map(eventCard).join("")}</div>
-  </div>
-</section>
-<section class="codex-section">
-  <div class="codex-container">
-    <div class="codex-card"><div class="codex-card-body">
-      <h3>Past events stay visible after they happen.</h3>
-      <p>Completed events should move into a muted state instead of disappearing, so new members can see what the NEPC community calendar feels like across the year.</p>
-    </div></div>
-  </div>
-</section>`;
-
-  write(
-    "dist/social-events/index.html",
-    page(
-      "Social Events at NEPC",
-      "Find upcoming social events at New England Pickleball Club.",
-      "Social Events",
-      "A single place for NEPC parties, socials, theme nights, member appreciation days, and monthly glow in the dark pickleball.",
-      img.social,
-      body,
-      actions([
-        { label: "View Calendar", href: calendarHref },
-        { label: "Glow in the Dark", href: "/glow-in-the-dark/", secondary: true },
-      ]),
-    ),
-  );
-}
-
 function updateHomePage() {
   const file = join(dist, "index.html");
   let html = readFileSync(file, "utf8");
@@ -403,8 +298,8 @@ function updateHomePage() {
       "Theme nights, member socials, glow pickleball, and club events live in one easy place.",
     )
     .replace(
-      /(<h3 class="heading-style-h5">Social events<\/h3>[\s\S]*?<div class="button-group"><a href=")\/calendar\/(")/,
-      "$1/social-events/$2",
+      /(<h3 class="heading-style-h5">Social events<\/h3>[\s\S]*?<div class="button-group"><a href=")\/social-events\/(")/,
+      "$1calendar/$2",
     )
     .replace(/(<h3 class="heading-style-h5">Social events<\/h3>[\s\S]*?<div>)(Sign Up)(<\/div><\/a>)/, "$1Events$3")
     .replace(`Join a competitive league or team ${"tournament"}</h3>`, "Join a competitive league</h3>")
@@ -420,7 +315,9 @@ function updateHomePage() {
 function routeEventsNav() {
   for (const file of htmlFiles()) {
     let html = readFileSync(file, "utf8");
-    html = html.replace(/href="\/private-events\/"([^>]*>EVENTS<\/a>)/g, 'href="/social-events/"$1');
+    html = html
+      .replace(/<a\b[^>]*href="\/(?:social-events|private-events)\/"[^>]*>EVENTS<\/a>/g, "")
+      .replace(/href="\/social-events\/"/g, 'href="/calendar/"');
     writeFileSync(file, html);
   }
 }
@@ -433,14 +330,13 @@ function buildWebflowCopy() {
 ## Pages
 
 - /leagues/ becomes "Join a Competitive League".
-- /social-events/ is the public social-events index.
 - /glow-in-the-dark/ remains the detailed glow-event page.
 - /private-events/ and /corporate-events/ remain the party and corporate event category pages.
 
 ## Homepage
 
 - Keep the card title "Join a competitive league".
-- Change the social play card to "Social events" and link it to /social-events/.
+- Keep the social play card linked to /calendar/.
 
 ## Leagues Page
 
@@ -450,28 +346,11 @@ Current Leagues:
 - Monday Night Ladies League
 - Thursday Night Men's League
 
-## Social Events Page
-
-List these events with calendar registration buttons:
-- World Cup Party, Rye
-- Father's Day
-- World Cup Party, Middleton
-- 4th of July Socials
-- Member Appreciation Day, Rye
-- Member Appreciation Day, Middleton
-- 80s Night, Middleton
-- 80s Night, Rye
-- Glow in the Dark Pickleball
-- Latin Night, Middleton
-- Latin Night, Rye
-
-Completed events should stay visible in a muted state instead of being removed.
 `,
   );
 }
 
 buildLeaguesPage();
-buildSocialEventsPage();
 updateHomePage();
 routeEventsNav();
 buildWebflowCopy();

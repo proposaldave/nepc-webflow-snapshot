@@ -38,8 +38,8 @@ function htmlFiles() {
 }
 
 function moveEventsBeforeContact(html) {
-  const navOrder = ["CLUBS", "CALENDAR", "LEAGUES", "COACHING", "MEMBERSHIP", "EVENTS", "CONTACT", "GIFT CARDS"];
-  const footerOrder = ["CLUBS", "CALENDAR", "LEAGUES", "COACHING", "MEMBERSHIP", "EVENTS", "CONTACT"];
+  const navOrder = ["CLUBS", "CALENDAR", "LEAGUES", "COACHING", "MEMBERSHIP", "CONTACT", "GIFT CARDS"];
+  const footerOrder = ["CLUBS", "CALENDAR", "LEAGUES", "COACHING", "MEMBERSHIP", "CONTACT"];
   return html
     .replace(/<div class="navbar14_menu-links">([\s\S]*?)<\/div><div id="w-node/, (_match, links) => {
       const ordered = orderLinks(links, navOrder);
@@ -53,7 +53,7 @@ function moveEventsBeforeContact(html) {
 
 function orderLinks(links, order) {
   const byText = new Map();
-  for (const match of links.matchAll(/<a\b[^>]*>(CLUBS|CALENDAR|LEAGUES|EVENTS|COACHING|MEMBERSHIP|CONTACT|GIFT CARDS)<\/a>/g)) {
+  for (const match of links.matchAll(/<a\b[^>]*>(CLUBS|CALENDAR|LEAGUES|COACHING|MEMBERSHIP|CONTACT|GIFT CARDS)<\/a>/g)) {
     const anchor = match[0];
     const text = match[1];
     if (!byText.has(text) || anchor.includes("w--current")) {
@@ -72,7 +72,7 @@ function patchAllPages() {
     );
     html = html.replace(
       '<a href="/leagues/" class="navbar14_link w-nav-link">LEAGUES</a><a href="/coaching/" class="navbar14_link w-nav-link">COACHING</a>',
-      '<a href="/leagues/" class="navbar14_link w-nav-link">LEAGUES</a><a href="/private-events/" class="navbar14_link w-nav-link">EVENTS</a><a href="/coaching/" class="navbar14_link w-nav-link">COACHING</a>',
+      '<a href="/leagues/" class="navbar14_link w-nav-link">LEAGUES</a><a href="/coaching/" class="navbar14_link w-nav-link">COACHING</a>',
     );
     html = html.replace(
       '<a href="/calendar/" class="footer4_link">CALENDAR</a><a href="/coaching/" class="footer4_link">COACHING</a>',
@@ -80,7 +80,7 @@ function patchAllPages() {
     );
     html = html.replace(
       '<a href="/leagues/" class="footer4_link">LEAGUES</a><a href="/coaching/" class="footer4_link">COACHING</a>',
-      '<a href="/leagues/" class="footer4_link">LEAGUES</a><a href="/private-events/" class="footer4_link">EVENTS</a><a href="/coaching/" class="footer4_link">COACHING</a>',
+      '<a href="/leagues/" class="footer4_link">LEAGUES</a><a href="/coaching/" class="footer4_link">COACHING</a>',
     );
     html = html.replace(
       '<a href="/leagues/" class="footer4_link">CALENDAR</a>',
