@@ -1,6 +1,7 @@
 import { copyFileSync, existsSync, mkdirSync, readdirSync, rmSync, statSync, readFileSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
+import { normalizeNavigationInTree } from "./normalize-navigation.mjs";
 
 const root = dirname(dirname(fileURLToPath(import.meta.url)));
 const source = join(root, "dist");
@@ -48,6 +49,7 @@ copyDir(source, target);
 for (const file of walk(target).filter((path) => path.endsWith(".html"))) {
   rewriteHtml(file);
 }
+normalizeNavigationInTree(target);
 writeFileSync(join(target, ".nojekyll"), "");
 
 console.log(`GitHub Pages preview built in ${target}`);
