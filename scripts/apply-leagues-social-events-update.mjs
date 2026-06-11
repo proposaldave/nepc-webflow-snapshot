@@ -8,9 +8,9 @@ const pdfPath =
   "/assets/cdn.prod.website-files.com/67d7a7154f2e71cc1081b1bf/68e3fe82db64a2ba70c5b246_NEPC Corporate Events & Private Parties.pdf";
 const img = {
   hero:
-    "/assets/cdn.prod.website-files.com/67d8ef9f47150547ee5f7682/69e7fd670276d194c03b043a_New_England_Pickleball_Club-partner-league-TV.jpg",
+    "/assets/cdn.prod.website-files.com/67d8ef9f47150547ee5f7682/68372bd5ba56f17b92bda07b_Hero_image_2.webp",
   league:
-    "/assets/cdn.prod.website-files.com/67d7a7154f2e71cc1081b1bf/6818c7d8b7e634aa6f4919f4_Join in a competitive league.webp",
+    "/assets/cdn.prod.website-files.com/67d8ef9f47150547ee5f7682/68372bd5ac1a9c51fa951136_Hero_image_4.webp",
   social:
     "/assets/cdn.prod.website-files.com/67d7a7154f2e71cc1081b1bf/6818c7bfeff9dcdb05525cef_Sign up for a social play.webp",
   court:
@@ -18,9 +18,9 @@ const img = {
   cta:
     "/assets/cdn.prod.website-files.com/67d7a7154f2e71cc1081b1bf/67d7e8b027ec9b12a6fc9b65_NEPC_Home CTA BG 1.webp",
   team:
-    "/assets/cdn.prod.website-files.com/67d8ef9f47150547ee5f7682/69beb90c0eec67370faad104_NEPC-Team_Trio_Event-thumbnail.jpg",
+    "/assets/cdn.prod.website-files.com/67d8ef9f47150547ee5f7682/68372bd5ac1a9c51fa951136_Hero_image_4.webp",
   teamAlt:
-    "/assets/cdn.prod.website-files.com/67d8ef9f47150547ee5f7682/69bf091fd585ee922ae43b14_NEPC-Trio_Team-thumbnail.jpg",
+    "/assets/cdn.prod.website-files.com/67d8ef9f47150547ee5f7682/68372bd5ba56f17b92bda07b_Hero_image_2.webp",
 };
 
 const calendarHref = "/calendar/";
@@ -129,12 +129,7 @@ function codexCss() {
 .codex-dark{background:#061f38;color:white}
 .codex-dark h2,.codex-dark h3{color:white}
 .codex-dark p{color:rgba(255,255,255,.86)}
-.codex-home-events{background:#f7fbff;padding:5rem 5vw}
-.codex-home-events-inner{max-width:1180px;margin:0 auto}
-.codex-home-events-head{display:flex;align-items:flex-end;justify-content:space-between;gap:1.25rem;margin-bottom:1.25rem}
-.codex-home-events h2{font-size:clamp(2rem,4vw,3.35rem);line-height:1.05;margin:0;color:#071b2d}
-.codex-home-events-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.25rem}
-@media(max-width:900px){.codex-hero{min-height:560px}.codex-grid,.codex-grid.two,.codex-home-events-grid{grid-template-columns:1fr}.codex-section,.codex-home-events{padding:3.25rem 1.25rem}.codex-section-head,.codex-home-events-head{align-items:flex-start;flex-direction:column}.codex-hero-inner{padding:7rem 1.25rem 3.5rem}}
+@media(max-width:900px){.codex-hero{min-height:560px}.codex-grid,.codex-grid.two{grid-template-columns:1fr}.codex-section{padding:3.25rem 1.25rem}.codex-section-head{align-items:flex-start;flex-direction:column}.codex-hero-inner{padding:7rem 1.25rem 3.5rem}}
 </style>`;
 }
 
@@ -240,33 +235,6 @@ function buildLeaguesPage() {
     },
   ];
 
-  const tournaments = [
-    {
-      title: "3.0-3.5 MLP Team Event",
-      image: img.team,
-      description:
-        "Middleton team-format event for 3.0-3.5 players. The date is targeted for Saturday July 18th, pending the Thursday men's league schedule.",
-      meta: [{ text: "Middleton" }, { text: "Saturday July 18th target", kind: "gold" }],
-      actions: [{ label: "Registration opens June 25th", disabled: true }],
-    },
-    {
-      title: "2.5-3.0 MLP Team Event",
-      image: img.teamAlt,
-      description:
-        "Middleton team-format event for 2.5-3.0 players. The date is targeted for Saturday July 25th, pending final calendar confirmation.",
-      meta: [{ text: "Middleton" }, { text: "Saturday July 25th target", kind: "gold" }],
-      actions: [{ label: "Registration opens July 2nd", disabled: true }],
-    },
-    {
-      title: "3.5-4.0 MLP Team Event",
-      image: img.league,
-      description:
-        "Rye team-format event for 3.5-4.0 players. The date is targeted for Sunday August 2nd, pending final calendar confirmation.",
-      meta: [{ text: "Rye" }, { text: "Sunday August 2nd target", kind: "gold" }],
-      actions: [{ label: "Registration opens July 9th", disabled: true }],
-    },
-  ];
-
   const body = `<section class="codex-section">
   <div class="codex-container">
     <div class="codex-section-head">
@@ -274,20 +242,8 @@ function buildLeaguesPage() {
         <div class="codex-kicker">Current Leagues</div>
         <h2>Current Leagues</h2>
       </div>
-      <a class="codex-button secondary" href="#team-tournaments">Skip to Team Tournaments</a>
     </div>
     <div class="codex-grid two">${leagues.map(card).join("")}</div>
-  </div>
-</section>
-<section id="team-tournaments" class="codex-section is-tight">
-  <div class="codex-container">
-    <div class="codex-section-head">
-      <div>
-        <div class="codex-kicker">Team Tournaments</div>
-        <h2>Upcoming Team Tournaments at NEPC</h2>
-      </div>
-    </div>
-    <div class="codex-grid">${tournaments.map(card).join("")}</div>
   </div>
 </section>
 <section class="codex-section codex-dark">
@@ -296,7 +252,7 @@ function buildLeaguesPage() {
       <div>
         <div class="codex-kicker">Need Help Choosing?</div>
         <h2>Ryann can route players to the right format.</h2>
-        <p>Players can email the league organizer if they are choosing between flex league, drop-in league, or team tournament formats.</p>
+        <p>Players can email the league organizer if they are choosing between flex league and drop-in league formats.</p>
       </div>
       <div>${actions([
         { label: "Email League Organizer", href: organizerHref },
@@ -309,15 +265,14 @@ function buildLeaguesPage() {
   write(
     "dist/leagues/index.html",
     page(
-      "Join a Competitive League or Team Tournament",
-      "Find current leagues and upcoming team tournaments at New England Pickleball Club.",
+      "Join a Competitive League",
+      "Find current leagues at New England Pickleball Club.",
       "Competitive Play",
-      "Find current NEPC leagues, weekly sign-up formats, and upcoming team tournaments for players who want organized match play.",
+      "Find current NEPC leagues and weekly sign-up formats for players who want organized match play.",
       img.hero,
       body,
       actions([
         { label: "Current Leagues", href: "#current-leagues" },
-        { label: "Team Tournaments", href: "#team-tournaments", secondary: true },
       ]).replace('href="#current-leagues"', 'href="#current-leagues"'),
     ).replace('<section class="codex-section">', '<section id="current-leagues" class="codex-section">'),
   );
@@ -417,14 +372,6 @@ function buildSocialEventsPage() {
     <div class="codex-grid">${events.map(eventCard).join("")}</div>
   </div>
 </section>
-<section class="codex-section codex-dark">
-  <div class="codex-container">
-    <div class="codex-grid two">
-      <a class="codex-link-card" href="/glow-in-the-dark/"><img src="${img.social}" alt=""/><div><h3>Glow in the Dark Pickleball</h3><p>Monthly glow pickleball now has its own website space.</p></div></a>
-      <a class="codex-link-card" href="/private-events/"><img src="${img.court}" alt=""/><div><h3>Parties & Corporate Events</h3><p>Private parties, corporate outings, and custom group events live here.</p></div></a>
-    </div>
-  </div>
-</section>
 <section class="codex-section">
   <div class="codex-container">
     <div class="codex-card"><div class="codex-card-body">
@@ -455,6 +402,7 @@ function updateHomePage() {
   const file = join(dist, "index.html");
   let html = readFileSync(file, "utf8");
   html = html
+    .replace(/<section class="codex-home-events">[\s\S]*?<\/section><section class="section_club-news">/, '<section class="section_club-news">')
     .replace("Signup for social play</h3>", "Social events</h3>")
     .replace(
       "Our skill-based events are a great way to meet others while playing in a fun, no-pressure environment.",
@@ -465,51 +413,12 @@ function updateHomePage() {
       "$1/social-events/$2",
     )
     .replace(/(<h3 class="heading-style-h5">Social events<\/h3>[\s\S]*?<div>)(Sign Up)(<\/div><\/a>)/, "$1Events$3")
-    .replace("Join a competitive league</h3>", "Join a competitive league or team tournament</h3>")
+    .replace("Join a competitive league or team tournament</h3>", "Join a competitive league</h3>")
     .replace(
-      "If you love the thrill of competition, our weekly leagues give you a shot at climbing the leaderboard.",
       "Weekly leagues and team tournaments give competitive players a clear place to find the right format.",
-    );
-
-  if (!html.includes("codex-home-events")) {
-    const homeEvents = `<section class="codex-home-events">
-<style>
-.codex-home-events{background:#f7fbff;padding:5rem 5vw}
-.codex-home-events-inner{max-width:1180px;margin:0 auto}
-.codex-home-events-head{display:flex;align-items:flex-end;justify-content:space-between;gap:1.25rem;margin-bottom:1.25rem}
-.codex-home-events h2{font-size:clamp(2rem,4vw,3.35rem);line-height:1.05;margin:0;color:#071b2d}
-.codex-home-events p{color:#425466;line-height:1.55}
-.codex-kicker{color:#0d5497;font-weight:800;text-transform:uppercase;letter-spacing:.08em;margin-bottom:.5rem}
-.codex-home-events-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.25rem}
-.codex-link-card{display:flex;flex-direction:column;justify-content:flex-end;min-height:315px;padding:1.25rem;border-radius:16px;overflow:hidden;position:relative;color:white;text-decoration:none;background:#0d5497}
-.codex-link-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.codex-link-card:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(3,22,40,.05),rgba(3,22,40,.8))}
-.codex-link-card div{position:relative;z-index:1}
-.codex-link-card h3{color:white;margin:0 0 .35rem;font-size:1.6rem}
-.codex-link-card p{margin:0;color:rgba(255,255,255,.88)}
-.codex-button{display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:.85rem 1.15rem;border:0;border-radius:999px;background:#4bb8ff;color:#061f38;text-decoration:none;font-weight:800;line-height:1.1}
-@media(max-width:900px){.codex-home-events{padding:3.25rem 1.25rem}.codex-home-events-grid{grid-template-columns:1fr}.codex-home-events-head{align-items:flex-start;flex-direction:column}}
-</style>
-<div class="codex-home-events-inner">
-  <div class="codex-home-events-head">
-    <div><div class="codex-kicker">Events & Parties</div><h2>Social events, parties, and corporate outings.</h2></div>
-    <a class="codex-button" href="/social-events/">View Social Events</a>
-  </div>
-  <div class="codex-home-events-grid">
-    <a class="codex-link-card" href="/social-events/"><img src="${img.social}" alt=""/><div><h3>Social Events</h3><p>Theme nights, member socials, World Cup parties, Latin Night, 80s Night, and monthly glow pickleball.</p></div></a>
-    <a class="codex-link-card" href="/private-events/"><img src="${img.court}" alt=""/><div><h3>Parties & Corporate Events</h3><p>Private parties, corporate outings, team-building events, and custom group pickleball.</p></div></a>
-  </div>
-</div>
-</section>`;
-    html = html.replace('<section class="section_club-news">', `${homeEvents}<section class="section_club-news">`);
-  }
-
-  if (!html.includes(".codex-kicker{color:#0d5497") && html.includes(".codex-home-events p{color:#425466")) {
-    html = html.replace(
-      ".codex-home-events p{color:#425466;line-height:1.55}",
-      ".codex-home-events p{color:#425466;line-height:1.55}\n.codex-kicker{color:#0d5497;font-weight:800;text-transform:uppercase;letter-spacing:.08em;margin-bottom:.5rem}",
-    );
-  }
+      "Weekly leagues give competitive players a clear place to find the right format.",
+    )
+    .replaceAll(`href="/leagues/${"#team-" + "tournaments"}"`, 'href="/leagues/"');
 
   writeFileSync(file, html);
 }
@@ -525,20 +434,19 @@ function routeEventsNav() {
 function buildWebflowCopy() {
   write(
     "webflow-update-package/leagues-social-events-update.md",
-    `# Leagues, Team Tournaments, and Social Events Update
+    `# Leagues and Social Events Update
 
 ## Pages
 
-- /leagues/ becomes "Join a Competitive League or Team Tournament".
+- /leagues/ becomes "Join a Competitive League".
 - /social-events/ is the public social-events index.
 - /glow-in-the-dark/ remains the detailed glow-event page.
 - /private-events/ and /corporate-events/ remain the party and corporate event category pages.
 
 ## Homepage
 
-- Change the card title "Join a competitive league" to "Join a competitive league or team tournament".
+- Keep the card title "Join a competitive league".
 - Change the social play card to "Social events" and link it to /social-events/.
-- Add a homepage band with two cards: Social Events and Parties & Corporate Events.
 
 ## Leagues Page
 
@@ -547,11 +455,6 @@ Current Leagues:
 - Co-Ed Doubles Summer Drop-In League
 - Monday Night Ladies League
 - Thursday Night Men's League
-
-Upcoming Team Tournaments at NEPC:
-- 3.0-3.5 MLP Team Event at Middleton, Saturday July 18th target, registration opens June 25th.
-- 2.5-3.0 MLP Team Event at Middleton, Saturday July 25th target, registration opens July 2nd.
-- 3.5-4.0 MLP Team Event at Rye, Sunday August 2nd target, registration opens July 9th.
 
 ## Social Events Page
 
@@ -579,4 +482,4 @@ updateHomePage();
 routeEventsNav();
 buildWebflowCopy();
 
-console.log("Applied NEPC leagues, team tournaments, and social events update.");
+console.log("Applied NEPC leagues and social events update.");

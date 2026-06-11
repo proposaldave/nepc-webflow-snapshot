@@ -1,17 +1,16 @@
-# Leagues, Team Tournaments, and Social Events Update
+# Leagues and Social Events Update
 
 ## Pages
 
-- /leagues/ becomes "Join a Competitive League or Team Tournament".
+- /leagues/ becomes "Join a Competitive League".
 - /social-events/ is the public social-events index.
 - /glow-in-the-dark/ remains the detailed glow-event page.
 - /private-events/ and /corporate-events/ remain the party and corporate event category pages.
 
 ## Homepage
 
-- Change the card title "Join a competitive league" to "Join a competitive league or team tournament".
+- Keep the card title "Join a competitive league".
 - Change the social play card to "Social events" and link it to /social-events/.
-- Add a homepage band with two cards: Social Events and Parties & Corporate Events.
 
 ## Leagues Page
 
@@ -20,11 +19,6 @@ Current Leagues:
 - Co-Ed Doubles Summer Drop-In League
 - Monday Night Ladies League
 - Thursday Night Men's League
-
-Upcoming Team Tournaments at NEPC:
-- 3.0-3.5 MLP Team Event at Middleton, Saturday July 18th target, registration opens June 25th.
-- 2.5-3.0 MLP Team Event at Middleton, Saturday July 25th target, registration opens July 2nd.
-- 3.5-4.0 MLP Team Event at Rye, Sunday August 2nd target, registration opens July 9th.
 
 ## Social Events Page
 
