@@ -199,7 +199,7 @@ function buildLeaguesPage() {
     },
     {
       title: "Co-Ed Doubles Summer Drop-In League",
-      image: img.social,
+      image: img.team,
       cardHref: calendarHref,
       description:
         "Weekly co-ed doubles play for players who want organized competitive reps without committing to a full flex-league schedule.",
