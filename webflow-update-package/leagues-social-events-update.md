@@ -16,5 +16,3 @@
 Current Leagues:
 - Men's & Women's Doubles Summer Flex League
 - Co-Ed Doubles Summer Drop-In League
-- Monday Night Ladies League
-- Thursday Night Men's League
