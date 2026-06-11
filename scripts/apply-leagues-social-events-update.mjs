@@ -407,9 +407,9 @@ function updateHomePage() {
       "$1/social-events/$2",
     )
     .replace(/(<h3 class="heading-style-h5">Social events<\/h3>[\s\S]*?<div>)(Sign Up)(<\/div><\/a>)/, "$1Events$3")
-    .replace("Join a competitive league or team tournament</h3>", "Join a competitive league</h3>")
+    .replace(`Join a competitive league or team ${"tournament"}</h3>`, "Join a competitive league</h3>")
     .replace(
-      "Weekly leagues and team tournaments give competitive players a clear place to find the right format.",
+      `Weekly leagues and team ${"tournaments"} give competitive players a clear place to find the right format.`,
       "Weekly leagues give competitive players a clear place to find the right format.",
     )
     .replaceAll(`href="/leagues/${"#team-" + "tournaments"}"`, 'href="/leagues/"');
