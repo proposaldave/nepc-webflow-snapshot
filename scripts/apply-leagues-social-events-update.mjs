@@ -292,6 +292,7 @@ function updateHomePage() {
   let html = readFileSync(file, "utf8");
   html = html
     .replace(/<section class="codex-home-events">[\s\S]*?<\/section><section class="section_club-news">/, '<section class="section_club-news">')
+    .replace(/<section class="section_club-news">[\s\S]*?<\/section><section class="section_cta42">/, '<section class="section_cta42">')
     .replace("Signup for social play</h3>", "Social events</h3>")
     .replace(
       "Our skill-based events are a great way to meet others while playing in a fun, no-pressure environment.",
