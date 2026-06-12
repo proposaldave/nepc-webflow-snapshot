@@ -230,7 +230,7 @@ function buildLeaguesPage() {
     <div class="codex-grid two">
       <div>
         <div class="codex-kicker">Need help choosing?</div>
-        <h2>Contact our league organizer at nepcleague@gmail.com for assistance!</h2>
+        <h2>Contact our league organizer for assistance!</h2>
       </div>
       <div>${actions([
         { label: "Email League Organizer", href: organizerHref },
