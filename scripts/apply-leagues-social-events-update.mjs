@@ -205,7 +205,7 @@ function buildLeaguesPage() {
       image: img.team,
       cardHref: calendarHref,
       description:
-        "Weekly co-ed doubles play for players who want organized competitive reps without committing to a full flex-league schedule.",
+        "No commitment, weekly co-ed doubles play for players who want organized competitive matches with a partner of their choice, without the long-term commitment. You may sign up for multiple weeks or just one week at a time and may change partners week to week if you'd like. Visit our calendar to register for your desired league based on the following days and times:<br/><br/>Wednesdays: 3.5-4.0: 10:00am-12:00pm<br/>Wednesdays: 2.5-3.0: 12:00pm-2:00pm<br/>Thursdays: 3.0-3.5: 12:00pm-2:00pm",
       meta: [{ text: "Weekly sign-ups" }, { text: "Co-ed doubles" }],
       actions: [
         { label: "Weekly Sign-Ups", href: calendarHref },
