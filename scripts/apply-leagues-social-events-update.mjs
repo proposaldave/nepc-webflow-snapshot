@@ -26,7 +26,7 @@ const img = {
 const calendarHref = "/calendar/";
 const middletonEventsHref = "https://app.courtreserve.com/Online/Events/List/13164";
 const ryeEventsHref = "https://app.courtreserve.com/Online/Events/List/7432";
-const organizerHref = "mailto:ryann@nepclub.com";
+const organizerHref = "mailto:nepcleague@gmail.com";
 const summerFlexMiddletonHref = "https://form.typeform.com/to/FaBROOxu";
 const summerFlexRyeHref = "https://form.typeform.com/to/lDSLhbf8";
 
@@ -229,9 +229,8 @@ function buildLeaguesPage() {
   <div class="codex-container">
     <div class="codex-grid two">
       <div>
-        <div class="codex-kicker">Need Help Choosing?</div>
-        <h2>Ryann can route players to the right format.</h2>
-        <p>Players can email the league organizer if they are choosing between flex league and drop-in league formats.</p>
+        <div class="codex-kicker">Need help choosing?</div>
+        <h2>Contact our league organizer at nepcleague@gmail.com for assistance!</h2>
       </div>
       <div>${actions([
         { label: "Email League Organizer", href: organizerHref },
