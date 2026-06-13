@@ -27,8 +27,8 @@ const calendarHref = "/calendar/";
 const middletonEventsHref = "https://app.courtreserve.com/Online/Events/List/13164";
 const ryeEventsHref = "https://app.courtreserve.com/Online/Events/List/7432";
 const organizerHref = "mailto:nepcleague@gmail.com";
-const summerFlexMiddletonHref = "https://form.typeform.com/to/FaBROOxu";
-const summerFlexRyeHref = "https://form.typeform.com/to/lDSLhbf8";
+const summerFlexMiddletonHref = "https://form.typeform.com/to/lDSLhbf8";
+const summerFlexRyeHref = "https://form.typeform.com/to/FaBROOxu";
 
 function read(rel) {
   return readFileSync(join(root, rel), "utf8");
@@ -271,12 +271,40 @@ function eventCard(item, index) {
 </article>`;
 }
 
+function clubNewsSection() {
+  const posts = [
+    {
+      title: "Junior Summer Camp",
+      description:
+        "Six-week Junior Academy summer programming with clinics, open play, and a season-ending pizza party.",
+      href: "/club-news/junior-academy-summer-camp/",
+      image:
+        "/assets/cdn.prod.website-files.com/67d8ef9f47150547ee5f7682/69da5435d37be340625d3e76_New_England_Pickleball_Club-Junior_Academy-Summer_Camp.jpg",
+    },
+    {
+      title: "New NEPC Partner Leagues",
+      description:
+        "Partner league information for Middleton and Rye divisions, including schedules, registration, and contact details.",
+      href: "/club-news/new-nepc-partner-leagues/",
+      image:
+        "/assets/cdn.prod.website-files.com/67d8ef9f47150547ee5f7682/69e7fd670276d194c03b043a_New_England_Pickleball_Club-partner-league-TV.jpg",
+    },
+  ];
+
+  return `<section class="section_club-news"><div class="padding-global"><div class="container-large"><div class="padding-section-large"><div class="blog36_component"><div class="margin-bottom margin-xxlarge"><div class="text-align-center"><div class="max-width-large align-center"><div class="margin-bottom margin-small"><h2 class="heading-style-h3">Club News <span class="text-color-grey">&amp; Updates</span></h2></div></div></div></div><div class="blog36_list-wrapper"><div class="w-dyn-list"><div role="list" class="club-news_list w-dyn-items">${posts
+    .map(
+      (post) =>
+        `<div role="listitem" class="w-dyn-item"><div class="club-news_item"><a href="${post.href}" class="blog36_item-link w-inline-block"><div class="blog36_image-wrapper"><img loading="lazy" src="${post.image}" alt="" class="blog36_image"/></div><div class="blog36_item-content"><div class="blog36_item-content-top"><div class="margin-bottom margin-xxsmall"><h3 class="heading-style-h6">${post.title}</h3></div><div class="text-size-regular text-color-secondary">${post.description}</div></div><div class="margin-top margin-small"><div class="button-group"><div class="button is-link is-icon is-alternate is-left"><div>Read more</div><div class="icon-embed-xxsmall w-embed"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6 3L11 8L6 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div></div></div></div></a></div></div>`,
+    )
+    .join("")}</div><div class="w-dyn-hide w-dyn-empty"><div>No items found.</div></div></div></div></div></div></div></div></section>`;
+}
+
 function updateHomePage() {
   const file = join(dist, "index.html");
   let html = readFileSync(file, "utf8");
   html = html
     .replace(/<section class="codex-home-events">[\s\S]*?<\/section><section class="section_club-news">/, '<section class="section_club-news">')
-    .replace(/<section class="section_club-news">[\s\S]*?<\/section><section class="section_cta42">/, '<section class="section_cta42">')
+    .replace(/<section class="section_club-news">[\s\S]*?<\/section><section class="section_cta42">/, `${clubNewsSection()}<section class="section_cta42">`)
     .replace("Signup for social play</h3>", "Social events</h3>")
     .replace(
       "Our skill-based events are a great way to meet others while playing in a fun, no-pressure environment.",
@@ -293,6 +321,10 @@ function updateHomePage() {
       "Weekly leagues give competitive players a clear place to find the right format.",
     )
     .replaceAll(`href="/leagues/${"#team-" + "tournaments"}"`, 'href="/leagues/"');
+
+  if (!html.includes('class="section_club-news"')) {
+    html = html.replace('<section class="section_cta42">', `${clubNewsSection()}<section class="section_cta42">`);
+  }
 
   writeFileSync(file, html);
 }
