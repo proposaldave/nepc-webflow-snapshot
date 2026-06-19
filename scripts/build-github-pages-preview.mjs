@@ -32,12 +32,12 @@ function walk(dir) {
 function rewriteHtml(path) {
   let html = readFileSync(path, "utf8");
   html = html
-    .replaceAll('href="/', `href="${basePath}/`)
-    .replaceAll('src="/', `src="${basePath}/`)
-    .replaceAll('srcset="/', `srcset="${basePath}/`)
-    .replaceAll(", /", `, ${basePath}/`)
-    .replaceAll("url('/", `url('${basePath}/`)
-    .replaceAll('url("/', `url("${basePath}/`);
+    .replaceAll(/href="\/(?!\/)/g, `href="${basePath}/`)
+    .replaceAll(/src="\/(?!\/)/g, `src="${basePath}/`)
+    .replaceAll(/srcset="\/(?!\/)/g, `srcset="${basePath}/`)
+    .replaceAll(/, \/(?!\/)/g, `, ${basePath}/`)
+    .replaceAll(/url\('\/(?!\/)/g, `url('${basePath}/`)
+    .replaceAll(/url\("\/(?!\/)/g, `url("${basePath}/`);
   writeFileSync(path, html);
 }
 
