@@ -18,7 +18,6 @@ const blockedPatterns = [
   /Give n Take|Give 'n Take|GnT\b|v2\.gnt\.ai/i,
   /CourtSheet_Data|full_canon_context|GOD_PROMPT|TASKS\.md/i,
   /68306d72872ce01f396771ad_New to pickleball_ We got you/i,
-  /Julio Lupo|Julio_Lupo/i,
   /6818aa4a402149c27255e411/i,
   /68372bd59a4a63297268e428/i,
 ];
