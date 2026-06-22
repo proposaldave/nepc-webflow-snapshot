@@ -93,6 +93,6 @@ Then investigate before trying again.
 
 ## Pre-Launch Safety Rule
 
-Only deploy from `C:\Users\dave\NEPC_WEBSITE_PUBLIC`.
+Only deploy from this standalone public website repository.
 
-Do not deploy anything from `C:\Users\dave\CLAUDE COWORK`, Downloads, Desktop, Slack screenshots, or private working folders.
+Do not deploy anything from broader workspaces, Downloads, Desktop, Slack screenshots, or private working folders.

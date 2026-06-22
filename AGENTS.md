@@ -5,6 +5,8 @@ This repo is the active continuation path for the NEPC Webflow replacement previ
 ## Project boundary
 
 - Treat this folder as the only source for the public NEPC website preview.
+- Start NEPC website Codex sessions from this repository folder, not from a broader personal or company workspace.
+- If the current working directory is not this repository folder, stop and switch to this folder before reading, editing, building, or publishing site files.
 - Do not copy source files from the parent workspace into this repo.
 - Do not use parent-workspace search results as website content unless the exact source is already public-facing and approved for the site.
 - If a file would be inappropriate on the public website, it does not belong anywhere in this repo.
@@ -30,6 +32,8 @@ This repo is the active continuation path for the NEPC Webflow replacement previ
 - This repo is public. Commit only public NEPC website content and public-facing assets.
 - Do not use member data, exports from operating systems, private chat/email text, company strategy, investor material, private notes, credentials, or local machine paths.
 - Use public NEPC website copy, approved public-facing copy, and explicitly approved public social/media assets only.
+- Never search the user's Desktop, Downloads, Documents, broader workspaces, Slack exports, Drive sync folders, or memory folders for website content.
+- If Dave attaches an image or file, use only that explicit attachment for the requested public-site change and do not browse nearby folders.
 
 ## Migration stance
 
