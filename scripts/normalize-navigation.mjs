@@ -10,7 +10,7 @@ const topNav = [
   ["LEAGUES", "leagues"],
   ["COACHING", "coaching"],
   ["MEMBERSHIP", "membership"],
-  ["COMMUNITY EVENTS", "social-events"],
+  ["COMMUNITY EVENTS", "community-events"],
   ["CONTACT", "contact"],
   ["GIFT CARDS", "https://shop.newenglandpickleball.com/products/nepc-gift-card?utm_source=copyToPasteBoard&amp;utm_medium=product-links&amp;utm_content=web"],
 ];
@@ -21,7 +21,7 @@ const footerNav = [
   ["LEAGUES", "leagues"],
   ["COACHING", "coaching"],
   ["MEMBERSHIP", "membership"],
-  ["COMMUNITY EVENTS", "social-events"],
+  ["COMMUNITY EVENTS", "community-events"],
   ["CONTACT", "contact"],
 ];
 

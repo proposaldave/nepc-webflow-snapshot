@@ -311,8 +311,8 @@ function updateHomePage() {
       "Theme nights, member socials, glow pickleball, and club events live in one easy place.",
     )
     .replace(
-      /(<h3 class="heading-style-h5">Social events<\/h3>[\s\S]*?<div class="button-group"><a href=")\/social-events\/(")/,
-      "$1calendar/$2",
+      /(<h3 class="heading-style-h5">Social events<\/h3>[\s\S]*?<div class="button-group"><a href=")\/(?:social-events|community-events)\/(")/,
+      "$1/community-events/$2",
     )
     .replace(/(<h3 class="heading-style-h5">Social events<\/h3>[\s\S]*?<div>)(Sign Up)(<\/div><\/a>)/, "$1Events$3")
     .replace(`Join a competitive league or team ${"tournament"}</h3>`, "Join a competitive league</h3>")
@@ -334,7 +334,7 @@ function routeEventsNav() {
     let html = readFileSync(file, "utf8");
     html = html
       .replace(/<a\b[^>]*href="\/(?:social-events|private-events)\/"[^>]*>EVENTS<\/a>/g, "")
-      .replace(/href="\/social-events\/"/g, 'href="/calendar/"');
+      .replace(/href="\/social-events\/"/g, 'href="/community-events/"');
     writeFileSync(file, html);
   }
 }
