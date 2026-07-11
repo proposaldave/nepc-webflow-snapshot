@@ -4,7 +4,7 @@
 
 Use Cloudflare Pages for the production `newenglandpickleball.com` site.
 
-Keep GitHub as the source of truth and keep GitHub Pages as the staging/review URL:
+Keep GitHub as the source of truth. Use Cloudflare branch deployments for current review links, with GitHub Pages as a fallback snapshot:
 `https://proposaldave.github.io/nepc-webflow-snapshot/`
 
 Do not use Ploy for production right now.

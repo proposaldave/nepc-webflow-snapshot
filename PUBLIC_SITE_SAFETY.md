@@ -29,6 +29,15 @@ node .\scripts\scan-public-preview.mjs
 
 The scanner checks the whole repo for local paths, private company terms, token markers, and known internal-file names.
 
+Normal pushes must target a review branch. A push or merge to `main` publishes the production website and requires Dave's explicit approval.
+
+## Enforced project isolation
+
+- `.codex/config.toml` denies local command access outside the active NEPC project, except for the minimum runtime files required by development tools.
+- It denies common credential-file formats inside the project.
+- It disables connected apps by default and enables only GitHub for normal repository work.
+- Start a fresh task after changing project permissions so the new sandbox boundary is active.
+
 ## Photo handling
 
 The GitHub preview uses copied assets under `docs/assets/`, so reviewers see the same images without depending on Webflow. For Webflow publish, each approved image should be uploaded to Webflow Assets, then the Webflow page should point to that asset. The `docs/assets/` paths preserve the source filenames so the handoff can identify the exact image used.

@@ -8,6 +8,8 @@ Open Codex with the standalone `NEPC_WEBSITE_PUBLIC` repository folder as the wo
 
 Do not start NEPC website work from a broader personal workspace, Downloads, Desktop, or Documents.
 
+Use the project's workspace-only permission profile. Do not select Full access.
+
 ## Why
 
 This repository is public. Anything committed here can end up on the live New England Pickleball Club website.
@@ -32,24 +34,34 @@ Keeping Codex scoped to this folder prevents accidental use of private files, me
 
 ## Normal Edit Loop
 
-1. Edit `dist/`.
-2. Rebuild GitHub preview:
+1. Create or continue a review branch.
+2. Edit `dist/`.
+3. Normalize shared navigation:
+
+```powershell
+node .\scripts\normalize-navigation.mjs dist
+```
+
+4. Rebuild GitHub preview:
 
 ```powershell
 node .\scripts\build-github-pages-preview.mjs
 ```
 
-3. Run the public safety scan:
+5. Run the public safety scan:
 
 ```powershell
 node .\scripts\scan-public-preview.mjs
 ```
 
-4. Check the diff.
-5. Commit and push.
+6. Check the diff and affected pages locally.
+7. Commit and push the review branch.
+8. Share the Cloudflare branch preview for approval.
+9. Merge to `main` only after Dave explicitly says `publish live`.
 
 ## Production Hosting
 
 - GitHub repo remains the source of truth.
-- GitHub Pages remains staging/review.
+- Cloudflare branch deployments are the primary review links.
+- GitHub Pages remains a fallback snapshot.
 - Production should deploy from `dist/` to Cloudflare Pages.

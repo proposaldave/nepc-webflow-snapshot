@@ -21,11 +21,15 @@ This repo is the active continuation path for the NEPC Webflow replacement previ
 ## Edit loop
 
 1. Check `git status --short --branch`.
-2. Make the smallest change that satisfies the request.
-3. Run `node .\scripts\build-github-pages-preview.mjs`.
-4. Run `node .\scripts\scan-public-preview.mjs`.
-5. Verify the affected page locally with `node .\serve.mjs` and `http://localhost:4177/`.
-6. Commit and push to `origin main`.
+2. Create or continue a review branch. Never make normal edit batches directly on `main`.
+3. Make the smallest change that satisfies the request.
+4. Run `node .\scripts\normalize-navigation.mjs dist`.
+5. Run `node .\scripts\build-github-pages-preview.mjs`.
+6. Run `node .\scripts\scan-public-preview.mjs`.
+7. Verify the affected page locally with `node .\serve.mjs` and `http://localhost:4177/`.
+8. Commit and push the review branch.
+9. Use the Cloudflare branch preview for staff review.
+10. Merge to `main` only after Dave explicitly says `publish live`.
 
 ## Safety
 
@@ -34,6 +38,16 @@ This repo is the active continuation path for the NEPC Webflow replacement previ
 - Use public NEPC website copy, approved public-facing copy, and explicitly approved public social/media assets only.
 - Never search the user's Desktop, Downloads, Documents, broader workspaces, Slack exports, Drive sync folders, or memory folders for website content.
 - If Dave attaches an image or file, use only that explicit attachment for the requested public-site change and do not browse nearby folders.
+- Treat Slack, Gmail, Google Drive, Chrome, Computer Use, and other connected sources as out of scope unless Dave explicitly authorizes one exact source for one public-site request.
+- Keep the GitHub connector as the only normally enabled app for this project.
+- Never switch this project to Full access. Use the committed workspace-only permission profile.
+
+## Publishing boundary
+
+- A review-branch push is for preview only and must not change the production domain.
+- A push to `main` is a production publish because Cloudflare Pages deploys `main` automatically.
+- Do not merge or push to `main` without Dave's explicit `publish live` approval in the current task.
+- After production deployment, verify the affected route and the main navigation on the public domain before reporting completion.
 
 ## Migration stance
 

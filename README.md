@@ -46,13 +46,16 @@ git diff --check
 git status --short
 ```
 
-Commit and push after each completed edit batch:
+Create a review branch before each edit batch:
 
 ```powershell
-git add dist docs README.md AGENTS.md
+git switch -c review/describe-the-change
+git add dist docs scripts .github .codex README.md AGENTS.md PUBLIC_SITE_SAFETY.md START_HERE_FOR_CODEX.md
 git commit -m "Describe NEPC website edit"
-git push origin main
+git push -u origin HEAD
 ```
+
+Use the Cloudflare branch deployment as the review link. Do not merge the branch to `main` until Dave explicitly says `publish live`. Cloudflare deploys `main` to `newenglandpickleball.com`, so merging to `main` is the production publishing action.
 
 GitHub Pages serves the rebuilt `docs/` folder at:
 
@@ -90,8 +93,10 @@ Generated release artifacts are ignored in git and live in `release/`:
 
 This folder is a standalone git repo.
 
-After `gh auth login`, publish with:
+After `gh auth login`, push the current review branch with:
 
 ```powershell
 .\PUBLISH_TO_GITHUB.ps1
 ```
+
+The helper refuses to push from `main`.

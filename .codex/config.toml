@@ -1,0 +1,49 @@
+default_permissions = "nepc-public-site"
+approval_policy = "on-request"
+
+[windows]
+sandbox = "elevated"
+
+[permissions.nepc-public-site]
+description = "NEPC public website only. Deny reads outside the active project."
+extends = ":workspace"
+
+[permissions.nepc-public-site.filesystem]
+":root" = "deny"
+":minimal" = "read"
+":tmpdir" = "deny"
+":slash_tmp" = "deny"
+glob_scan_max_depth = 5
+
+[permissions.nepc-public-site.filesystem.":workspace_roots"]
+"**/*.env" = "deny"
+"**/*.pem" = "deny"
+"**/*.key" = "deny"
+"**/*.pfx" = "deny"
+"**/*.p12" = "deny"
+
+[permissions.nepc-public-site.network]
+enabled = true
+
+[permissions.nepc-public-site.network.domains]
+"github.com" = "allow"
+"api.github.com" = "allow"
+"*.githubusercontent.com" = "allow"
+"www.newenglandpickleball.com" = "allow"
+"newenglandpickleball.com" = "allow"
+"*.pages.dev" = "allow"
+"proposaldave.github.io" = "allow"
+"localhost" = "allow"
+"127.0.0.1" = "allow"
+
+[apps._default]
+enabled = false
+
+[apps.github]
+enabled = true
+default_tools_approval_mode = "writes"
+destructive_enabled = false
+open_world_enabled = false
+
+[features]
+memories = false

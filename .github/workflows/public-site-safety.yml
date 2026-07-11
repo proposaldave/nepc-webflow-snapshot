@@ -1,0 +1,36 @@
+name: Public site safety
+
+on:
+  pull_request:
+    branches:
+      - main
+  push:
+    branches-ignore:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  verify-public-site:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out review branch
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Normalize shared navigation
+        run: node ./scripts/normalize-navigation.mjs dist
+
+      - name: Rebuild the GitHub Pages mirror
+        run: node ./scripts/build-github-pages-preview.mjs
+
+      - name: Scan for private or unsafe public content
+        run: node ./scripts/scan-public-preview.mjs
+
+      - name: Confirm generated files are committed
+        run: git diff --exit-code -- dist docs

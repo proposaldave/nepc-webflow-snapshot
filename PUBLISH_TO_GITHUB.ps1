@@ -1,8 +1,3 @@
-param(
-  [string]$Repo = "proposaldave/nepc-webflow-snapshot",
-  [switch]$Public
-)
-
 $ErrorActionPreference = "Stop"
 
 function Fail($Message) {
@@ -11,37 +6,42 @@ function Fail($Message) {
 }
 
 if (-not (Test-Path -LiteralPath ".git")) {
-  Fail "Run this from the nepc_static_clone repo root."
+  Fail "Run this from the NEPC_WEBSITE_PUBLIC repo root."
 }
 
-if (-not (Get-Command gh -ErrorAction SilentlyContinue)) {
-  Fail "GitHub CLI is not installed or not on PATH."
+$branch = (git branch --show-current).Trim()
+if (-not $branch) {
+  Fail "No current Git branch was found."
 }
 
-cmd /c "gh auth status >NUL 2>NUL"
+if ($branch -eq "main") {
+  Fail "Direct pushes from main are disabled. Create a review branch first."
+}
+
+node .\scripts\normalize-navigation.mjs dist
 if ($LASTEXITCODE -ne 0) {
-  Fail "GitHub CLI is not authenticated. Run: gh auth login"
+  Fail "Navigation normalization failed."
 }
 
-$visibility = if ($Public) { "--public" } else { "--private" }
-$existingRemote = ""
-cmd /c "git remote get-url origin > .publish-origin.tmp 2>NUL"
-if ($LASTEXITCODE -eq 0) {
-  $existingRemote = (Get-Content -Raw -Path ".publish-origin.tmp").Trim()
-}
-Remove-Item -Force -ErrorAction SilentlyContinue ".publish-origin.tmp"
-
-if ($existingRemote) {
-  git push -u origin main
-  exit $LASTEXITCODE
+node .\scripts\build-github-pages-preview.mjs
+if ($LASTEXITCODE -ne 0) {
+  Fail "Preview build failed."
 }
 
-cmd /c "gh repo view $Repo >NUL 2>NUL"
-if ($LASTEXITCODE -eq 0) {
-  git remote add origin "git@github.com:$Repo.git"
-  git push -u origin main
-  exit $LASTEXITCODE
+node .\scripts\scan-public-preview.mjs
+if ($LASTEXITCODE -ne 0) {
+  Fail "Public-site safety scan failed."
 }
 
-gh repo create $Repo $visibility --source . --remote origin --push
-exit $LASTEXITCODE
+git diff --check
+if ($LASTEXITCODE -ne 0) {
+  Fail "Git diff validation failed."
+}
+
+git push -u origin $branch
+if ($LASTEXITCODE -ne 0) {
+  Fail "Review-branch push failed."
+}
+
+Write-Host "Review branch pushed: $branch" -ForegroundColor Green
+Write-Host "Use the Cloudflare preview for review. Do not merge to main without explicit publish-live approval."

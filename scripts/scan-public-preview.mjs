@@ -5,7 +5,8 @@ import { fileURLToPath } from "node:url";
 const root = dirname(dirname(fileURLToPath(import.meta.url)));
 const skippedDirectories = new Set([".git", "release", "node_modules"]);
 const blockedPatterns = [
-  /C:\\Users\\/i,
+  /C:[\\/]Users[\\/]/i,
+  /file:\/\/\//i,
   /CLAUDE COWORK/i,
   /[\\/]\\.codex[\\/]/i,
   /OPENAI_API_KEY/i,
@@ -20,6 +21,12 @@ const blockedPatterns = [
   /68306d72872ce01f396771ad_New to pickleball_ We got you/i,
   /6818aa4a402149c27255e411/i,
   /68372bd59a4a63297268e428/i,
+];
+const blockedFileNames = [
+  /(^|[\\/])\.env($|\.)/i,
+  /\.(csv|tsv|xlsx?|docx|sqlite|db|sql|bak)$/i,
+  /\.(pem|key|pfx|p12)$/i,
+  /(^|[\\/])[^\\/]*(credential|private[-_ ]?data|member[-_ ]?export)[^\\/]*$/i,
 ];
 const allowedBinary = /\.(png|jpe?g|webp|gif|svg|pdf|ico|woff2?|zip|bundle)$/i;
 const allowedText = /\.(html|css|js|mjs|json|md|txt|xml|svg)$/i;
@@ -40,6 +47,9 @@ const findings = [];
 for (const file of files) {
   const rel = relative(root, file);
   if (rel === join("scripts", "scan-public-preview.mjs")) continue;
+  for (const pattern of blockedFileNames) {
+    if (pattern.test(rel)) findings.push(`${rel}: blocked filename ${pattern}`);
+  }
   if (file.includes(`${join("assets")}`) && /\.(js|css)$/i.test(file)) continue;
   if (allowedBinary.test(file) && !allowedText.test(file)) continue;
   const text = readFileSync(file, "utf8");
