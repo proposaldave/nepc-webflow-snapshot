@@ -46,7 +46,7 @@ git diff --check
 git status --short
 ```
 
-Create a review branch before each edit batch:
+Create a review branch before each edit batch. Keep development local unless Dave explicitly requests a remotely accessible review artifact:
 
 ```powershell
 git switch -c review/describe-the-change
@@ -55,7 +55,7 @@ git commit -m "Describe NEPC website edit"
 git push -u origin HEAD
 ```
 
-Use the Cloudflare branch deployment as the review link. Do not merge the branch to `main` until Dave explicitly says `publish live`. Cloudflare deploys `main` to `newenglandpickleball.com`, so merging to `main` is the production publishing action.
+Cloudflare branch deployments are public to anyone with the URL unless Cloudflare Access protects them. GitHub Pages and branches in this public repository are also public. Use local previews and screenshots for ordinary internal review. Use an access-protected Cloudflare preview only when an interactive internal link is required. Do not merge the branch to `main` until Dave explicitly says `publish live`. Cloudflare deploys `main` to `newenglandpickleball.com`, so merging to `main` is the production publishing action.
 
 GitHub Pages serves the rebuilt `docs/` folder at:
 

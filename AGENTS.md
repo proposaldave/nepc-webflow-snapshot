@@ -27,9 +27,10 @@ This repo is the active continuation path for the NEPC Webflow replacement previ
 5. Run `node .\scripts\build-github-pages-preview.mjs`.
 6. Run `node .\scripts\scan-public-preview.mjs`.
 7. Verify the affected page locally with `node .\serve.mjs` and `http://localhost:4177/`.
-8. Commit and push the review branch.
-9. Use the Cloudflare branch preview for staff review.
-10. Merge to `main` only after Dave explicitly says `publish live`.
+8. Keep ordinary development and test pages local. Do not push a branch merely to create a test URL.
+9. Commit and push a review branch only when Dave explicitly requests a remotely accessible review artifact.
+10. For internal-only interactive review, use an access-protected preview. If protection is not configured, use locally rendered screenshots or another explicitly approved private sharing method instead of an unprotected website.
+11. Merge to `main` only after Dave explicitly says `publish live`.
 
 ## Safety
 
@@ -44,7 +45,9 @@ This repo is the active continuation path for the NEPC Webflow replacement previ
 
 ## Publishing boundary
 
-- A review-branch push is for preview only and must not change the production domain.
+- This repository and its GitHub Pages site are public. GitHub is not an internal-only preview channel.
+- Cloudflare branch previews are public to anyone with the URL unless a Cloudflare Access policy protects them. The default `noindex` header reduces search indexing but is not access control.
+- A review-branch push is for preview only and must not change the production domain, but do not push internal-only drafts unless the resulting preview is access-protected.
 - A push to `main` is a production publish because Cloudflare Pages deploys `main` automatically.
 - Do not merge or push to `main` without Dave's explicit `publish live` approval in the current task.
 - After production deployment, verify the affected route and the main navigation on the public domain before reporting completion.
