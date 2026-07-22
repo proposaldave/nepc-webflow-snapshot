@@ -3,3 +3,4 @@ release/
 Thumbs.db
 desktop.ini
 *.log
+.tmp/

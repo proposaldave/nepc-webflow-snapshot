@@ -3,7 +3,7 @@ import { dirname, join, relative } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const root = dirname(dirname(fileURLToPath(import.meta.url)));
-const skippedDirectories = new Set([".git", "release", "node_modules"]);
+const skippedDirectories = new Set([".git", ".tmp", "release", "node_modules"]);
 const blockedPatterns = [
   /C:\\Users\\/i,
   /CLAUDE COWORK/i,
