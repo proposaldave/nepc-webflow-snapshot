@@ -18,78 +18,221 @@
 }
 
 
-/* Updated NEPC membership comparison. */
+/* NEPC membership comparison aligned with the live page. */
+.section_layout396 {
+  background: #f7f8fa;
+  overflow: hidden;
+}
+.section_layout396 .top-section-background-gradient.no-gradient {
+  height: 25rem;
+  background-color: #15558c;
+  background-image: none;
+}
+.section_layout396 .padding-section-large.less-bottom {
+  padding-top: 3.25rem;
+  padding-bottom: 4.25rem;
+}
+.layout396_component > .margin-bottom.margin-xxlarge {
+  margin-bottom: 1.75rem;
+}
 .nepc-shared-benefits {
-  max-width: 64rem;
-  margin: 0 auto 2rem;
-  padding: 1.5rem;
-  border: 2px solid rgba(255, 255, 255, 0.3);
+  position: relative;
+  max-width: 68rem;
+  margin: 0 auto 1rem;
+  padding: 1rem 1.25rem 1.15rem;
+  border: 1px solid #d8e1e9;
   border-radius: 0.75rem;
-  background: rgba(255, 255, 255, 0.08);
-  color: #fff;
+  background: #fff;
+  box-shadow: 0 0.45rem 1rem rgba(13, 55, 94, 0.08);
+  color: #0d375e;
   text-align: center;
 }
 .nepc-shared-benefits h3 {
-  margin: 0 0 1rem;
-  color: #fff;
+  margin: 0 0 0.7rem;
+  color: #0d375e;
+  font-size: 1.15rem;
+  letter-spacing: 0.035em;
+  line-height: 1.2;
   text-transform: uppercase;
-  letter-spacing: 0.04em;
 }
 .nepc-shared-benefits-list {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 0.75rem 1.25rem;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 0.55rem 0.85rem;
   margin: 0;
   padding: 0;
   list-style: none;
   text-align: left;
 }
+.nepc-shared-benefits-list li {
+  display: flex;
+  gap: 0.4rem;
+  align-items: flex-start;
+  color: #3f5263;
+  font-size: 0.86rem;
+  font-weight: 600;
+  line-height: 1.3;
+}
 .nepc-shared-benefits-list li::before,
 .nepc-tier-benefits li::before {
-  content: "✓";
-  margin-right: 0.5rem;
-  font-weight: 700;
+  content: "\2713";
+  flex: 0 0 auto;
+  color: #1567a6;
+  font-weight: 800;
 }
 .layout396_grid-list {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 1.5rem;
+  gap: 1rem;
+  width: 100%;
+  max-width: 68rem;
+  margin: 0 auto;
+  align-items: stretch;
 }
 .layout396_row {
   display: contents;
 }
 .nepc-tier-card {
   height: 100%;
-  border: 2px solid rgba(255, 255, 255, 0.25);
+  border: 1px solid #73b5eb;
   border-radius: 0.75rem;
+  background: #eef6fd;
+  box-shadow: 0 0.45rem 1rem rgba(13, 55, 94, 0.08);
   overflow: hidden;
 }
+.layout396_row > .nepc-tier-card:nth-child(2) {
+  border-color: #aebbc6;
+  background: #f3f5f7;
+}
+.layout396_row > .nepc-tier-card:nth-child(3) {
+  border-color: #d77b89;
+  background: #fff0f1;
+}
 .nepc-tier-card .layout396_card-content {
+  display: flex;
+  flex-direction: column;
   height: 100%;
+  padding: 1.5rem 1.35rem 1.35rem;
+  text-align: center;
 }
 .nepc-tier-card h3 {
-  font-size: 2rem;
+  margin-bottom: 0.25rem;
+  color: #111;
+  font-size: 1.65rem;
+  font-weight: 500;
+  line-height: 1.15;
 }
 .nepc-tier-price {
   margin: 0 0 1rem;
-  font-size: 1.1rem;
-  line-height: 1.55;
+  color: #435365;
+  font-size: 0.94rem;
+  line-height: 1.4;
+  text-align: center;
+}
+.nepc-tier-price strong:first-child {
+  font-size: 1rem;
+  font-weight: 700;
+}
+.nepc-tier-price strong:last-child {
+  font-weight: 650;
 }
 .nepc-tier-benefits {
+  display: grid;
+  gap: 0.6rem;
   margin: 0;
   padding: 0;
   list-style: none;
+  text-align: left;
 }
 .nepc-tier-benefits li {
-  margin-bottom: 0.7rem;
+  display: flex;
+  gap: 0.4rem;
+  align-items: flex-start;
+  color: #44576a;
+  font-size: 0.9rem;
+  line-height: 1.35;
 }
-@media screen and (max-width: 991px) {
-  .layout396_grid-list,
+.nepc-tier-card .membership_wrapper {
+  margin-top: auto;
+  padding-top: 1.25rem;
+}
+.nepc-tier-card .membership_wrapper .margin-bottom {
+  display: grid;
+  gap: 0.45rem;
+  margin-bottom: 0.55rem;
+}
+.nepc-tier-card .membership_wrapper .button {
+  width: 100%;
+  min-height: 2.5rem;
+  border-radius: 999px;
+  white-space: normal;
+}
+.nepc-tier-card .membership_wrapper .margin-bottom .button {
+  border-color: #8fc4ef;
+  background: #fff;
+  color: #1264a3;
+}
+.layout396_row > .nepc-tier-card:nth-child(2) .membership_wrapper .margin-bottom .button {
+  border-color: #aebbc6;
+  color: #435365;
+}
+.layout396_row > .nepc-tier-card:nth-child(3) .membership_wrapper .margin-bottom .button {
+  border-color: #dc98a3;
+  color: #8a1830;
+}
+.nepc-tier-card .membership_wrapper > .button.is-navy {
+  border-color: #1376bb;
+  background: #1376bb;
+  color: #fff;
+}
+.layout396_row > .nepc-tier-card:nth-child(2) .membership_wrapper > .button.is-navy {
+  border-color: #5e6d79;
+  background: #5e6d79;
+}
+.layout396_row > .nepc-tier-card:nth-child(3) .membership_wrapper > .button.is-navy {
+  border-color: #8a1830;
+  background: #8a1830;
+}
+@media screen and (max-width: 1199px) {
   .nepc-shared-benefits-list {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
-</style></head><body><div class="page-wrapper navbar-on-page"><div class="global-styles"><div class="style-overrides w-embed"><style>
+@media screen and (max-width: 991px) {
+  .layout396_grid-list {
+    grid-template-columns: 1fr;
+    max-width: 34rem;
+  }
+  .nepc-shared-benefits-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media screen and (max-width: 767px) {
+  .section_layout396 {
+    padding-top: 0;
+  }
+  .section_layout396 .top-section-background-gradient.no-gradient {
+    height: 30rem;
+  }
+  .section_layout396 .padding-section-large.less-bottom {
+    padding-top: 2.5rem;
+    padding-bottom: 3.25rem;
+  }
+  .layout396_component > .margin-bottom.margin-xxlarge {
+    margin-bottom: 1.5rem;
+  }
+  .nepc-shared-benefits {
+    margin-bottom: 0.85rem;
+    padding: 1rem;
+  }
+  .nepc-shared-benefits-list {
+    grid-template-columns: 1fr;
+    gap: 0.45rem;
+  }
+  .nepc-tier-card .layout396_card-content {
+    padding: 1.35rem 1.15rem 1.15rem;
+  }
+}</style></head><body><div class="page-wrapper navbar-on-page"><div class="global-styles"><div class="style-overrides w-embed"><style>
 
 /* Ensure all elements inherit the color from its parent */
 a,
