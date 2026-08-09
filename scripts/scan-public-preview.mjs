@@ -5,6 +5,9 @@ import { fileURLToPath } from "node:url";
 const root = dirname(dirname(fileURLToPath(import.meta.url)));
 const skippedDirectories = new Set([".git", "release", "node_modules"]);
 const blockedPatterns = [
+  /\uFFFD/,
+  /\d\?AM|\d\?PM/,
+  /<p>\?<\/p>/,
   /C:\\Users\\/i,
   /CLAUDE COWORK/i,
   /[\\/]\\.codex[\\/]/i,
