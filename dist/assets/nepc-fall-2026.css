@@ -20,4 +20,3 @@
 
 /* Visiting pro announcement: preserve the complete graphic and reviewer copy below it. */
 .review-guest-pro{margin-top:1.5rem;padding:2rem;border:1px solid #cfe2f3;border-top:5px solid #082f5c;border-radius:16px;background:#f4f9fd;scroll-margin-top:8rem}.review-guest-pro h3{font-size:clamp(1.5rem,3vw,2.1rem);line-height:1.25;margin:0 auto 1.5rem;max-width:65rem;color:#071b2d}.review-guest-pro-art{display:block;max-width:720px;margin:0 auto 1.75rem}.review-guest-pro-art img{display:block;width:100%;height:auto;border-radius:10px}.review-guest-pro-description{max-width:65rem;margin:auto}.review-guest-pro p{font-size:1rem;line-height:1.7;color:#425466;margin:0 0 1.25rem}.review-guest-pro p a{color:#0d5497;text-decoration:underline;font-weight:700}.review-guest-pro a:focus-visible{outline:3px solid #0d5497;outline-offset:4px}@media(max-width:600px){.review-guest-pro{padding:1.25rem}.review-guest-pro-art{margin-bottom:1.25rem}}
-
