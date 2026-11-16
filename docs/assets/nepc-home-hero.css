@@ -9,3 +9,23 @@
 @media(max-width:600px){.founder-home-hero{display:block;padding:120px 24px 32px;min-height:0}.founder-home-hero h1{font-size:62px;line-height:1.02;margin-bottom:22px}.founder-home-pill{margin-bottom:22px;font-size:10px}.founder-home-location{font-size:10px;line-height:1.6}.founder-home-description{font-size:16px;margin-bottom:22px}.founder-home-actions{gap:10px}.founder-home-actions a{padding:14px 16px;font-size:13px;gap:8px}.founder-home-photo{height:270px;margin-top:30px;border-radius:65px 20px 20px 20px}.founder-home-caption{font-size:23px;left:24px;bottom:24px}}
 
 @media(max-width:991px){body[data-nepc-home] .navbar14_menu.nepc-home-open{display:block!important;position:absolute;top:100%;left:0;right:0;background:#164c7a;border-radius:24px;padding:22px;max-height:75vh;overflow:auto;transform:none!important}body[data-nepc-home] .nepc-home-open .navbar14_menu-link-wrapper,body[data-nepc-home] .nepc-home-open .navbar14_menu-links{display:flex;flex-direction:column;align-items:stretch}body[data-nepc-home] .nepc-home-open .navbar14_button-wrapper{display:flex;flex-wrap:wrap;gap:12px;margin-top:16px}}
+
+body[data-nepc-home]{background:#fafbfc}
+.founder-home-hero{min-height:740px;padding:160px 6% 70px;gap:7%;grid-template-columns:1fr 1fr;background:#153f66}
+.founder-home-hero h1{font-size:clamp(52px,5.4vw,76px);line-height:1.08;letter-spacing:-.045em;margin-bottom:24px}.founder-home-hero h1 em{color:#fff}
+.founder-home-location{font-size:11px;letter-spacing:1.2px;color:#bbd3e5;line-height:1.7;margin:0 0 24px;max-width:380px}
+.founder-home-description{font-size:19px;line-height:1.6;max-width:370px;margin-bottom:30px;color:#e1edf5}
+.founder-home-photo{height:485px;border-radius:24px}.founder-home-photo:after{display:none}
+.founder-home-actions{align-items:center;gap:24px}.founder-home-actions a{font-size:14px;box-shadow:none}.founder-home-actions a:first-child{background:white;border-color:white;color:#153f66;padding:16px 23px}.founder-home-actions a:last-child{background:none;border:0;border-radius:0;padding:8px 0;color:white;font-weight:500;text-underline-offset:6px}.founder-home-actions a:last-child:hover{text-decoration:underline}
+body[data-nepc-home] main h2{font-family:Raleway,sans-serif;font-weight:700;letter-spacing:-.035em;font-size:clamp(32px,3.4vw,46px);line-height:1.15}
+body[data-nepc-home] main h3{font-family:Raleway,sans-serif;font-weight:700;letter-spacing:-.025em;line-height:1.2}
+body[data-nepc-home] .services_card-small,body[data-nepc-home] article{border-radius:20px;overflow:hidden}
+body[data-nepc-home] .section_layout301 .padding-section-large{padding-top:75px;padding-bottom:75px}
+body[data-nepc-home] .section_layout301 .margin-bottom.margin-xxlarge{margin-bottom:36px}
+body[data-nepc-home] .navbar14_link{font-size:12px;letter-spacing:.025em}
+body[data-nepc-home] .navbar14_component{box-shadow:none}
+@media(max-width:991px){.founder-home-hero{padding-top:135px;gap:32px}.founder-home-hero h1{font-size:54px}.founder-home-photo{height:440px}}
+@media(max-width:600px){.founder-home-hero{padding:125px 24px 36px;min-height:0}.founder-home-hero h1{font-size:53px;max-width:340px;margin-bottom:20px}.founder-home-location{font-size:10px;letter-spacing:.8px;margin-bottom:20px}.founder-home-description{font-size:17px;max-width:310px;margin-bottom:24px}.founder-home-actions{gap:23px}.founder-home-actions a{font-size:13px}.founder-home-actions a:first-child{padding:14px 19px}.founder-home-photo{margin-top:36px;height:285px;border-radius:18px}body[data-nepc-home] .section_layout301 .padding-section-large{padding-top:48px;padding-bottom:48px}}
+
+@media(min-width:1200px){body[data-nepc-home] .navbar14_menu-links{display:flex;align-items:center;gap:18px;flex-wrap:nowrap}body[data-nepc-home] .navbar14_link{padding-left:0;padding-right:0;white-space:nowrap}body[data-nepc-home] .navbar14_menu-link-wrapper{gap:24px}}body[data-nepc-home] main h2,body[data-nepc-home] main h3{color:#153f66}body[data-nepc-home] .text-color-white h3,body[data-nepc-home] .section_cta h2{color:inherit}
+body[data-nepc-home] .cta42_card-content h2{color:white}
