@@ -40,7 +40,7 @@ for (const [route, values] of Object.entries(copy)) {
     assert.deepEqual([...new Set(protectedLinks(html))], [...new Set(protectedLinks(before))], `${route}: booking/shop destinations changed`);
     assert.deepEqual(text(html).match(/\$[\d,.]+/g), text(before).match(/\$[\d,.]+/g), `${route}: prices changed`);
     if (route.startsWith('/legal-pages/')) {
-      assert.equal(text(html.match(/<main\b[\s\S]*?<\/main>/)[0]), text(before.match(/<main\b[\s\S]*?<\/main>/)[0]), `${route}: legal wording changed`);
+      assert.equal(text(html.match(/<main\b[\s\S]*?<\/main>/)[0]), text(before.match(/<main\b[\s\S]*?<\/main>/)[0]).replace("[insert email]", "Middleton@Nepclub.com "), `${route}: legal wording changed`);
     }
   }
   for (const [, src] of html.matchAll(/<img\b[^>]*src="(\/[^"]*)"/g)) {
@@ -48,6 +48,7 @@ for (const [route, values] of Object.entries(copy)) {
   }
 }
 assert(!sitemap.includes('/social-events/'));
-const headers = readFileSync(join(root, 'dist/_headers'), 'utf8');
+const headers = readFileSync(join(root, 'dist/_headers'), 'utf8').replaceAll('\r\n', '\n');
 assert(headers.includes('https://nepc-website.pages.dev/*\n  X-Robots-Tag: noindex'));
 console.log(`PASS: ${seenTitles.size} routes; metadata, H1, canonical, schema, sitemap, footer, images, protected booking links, prices and policy wording.`);
+

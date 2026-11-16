@@ -17,3 +17,7 @@
 .nepc-footer-contacts a{text-decoration:underline;text-underline-offset:.2rem}
 @media(max-width:767px){.nepc-location-header{padding-top:5rem}.nepc-location-grid{grid-template-columns:1fr;gap:2rem}.nepc-people{grid-template-columns:repeat(2,minmax(0,1fr))}.nepc-home-heading{font-size:2rem}.nepc-map{height:300px}}
 @media(max-width:380px){.nepc-people{grid-template-columns:1fr}}
+
+.codex-dark .codex-kicker{color:#9ed8ff}
+.nepc-event-status{padding:1rem;border-left:4px solid #1677b8;background:#edf6ff;color:#123c60;margin:1rem 0}
+.nepc-event-status a{text-decoration:underline}
