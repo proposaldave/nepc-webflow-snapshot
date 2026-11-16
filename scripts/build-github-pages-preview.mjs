@@ -2,6 +2,7 @@ import { copyFileSync, existsSync, mkdirSync, readdirSync, rmSync, statSync, rea
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { normalizeNavigationInTree } from "./normalize-navigation.mjs";
+import "./build-seo.mjs";
 
 const root = dirname(dirname(fileURLToPath(import.meta.url)));
 const source = join(root, "dist");

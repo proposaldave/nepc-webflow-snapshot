@@ -1,0 +1,102 @@
+{
+  "/book-a-court/": {
+    "title": "Book Indoor Pickleball Courts in MA & NH | NEPC",
+    "description": "Book a private indoor pickleball court in Middleton, MA or Rye, NH. Members and non-members can book through CourtReserve."
+  },
+  "/calendar/": {
+    "title": "Pickleball Calendar: Middleton & Rye | NEPC",
+    "description": "Explore the NEPC calendar for pickleball events in Middleton, MA and Rye, NH. Find a session and register through CourtReserve."
+  },
+  "/choose-club/": {
+    "title": "Choose Your Pickleball Club | NEPC",
+    "description": "Choose Middleton, MA or Rye, NH to create your NEPC non-member account and access court bookings and events."
+  },
+  "/club-news/2026-fall-flex-league/": {
+    "title": "2026 Fall Flex League in Middleton & Rye | NEPC",
+    "description": "Read about the NEPC 2026 Fall Flex League, with co-ed pickleball at our Middleton, MA and Rye, NH clubs."
+  },
+  "/club-news/2026-summer-flex-league-recap/": {
+    "title": "2026 Summer Flex League Results | NEPC",
+    "description": "See the NEPC 2026 Summer Flex League recap and results from Middleton, MA and Rye, NH."
+  },
+  "/club-news/junior-academy-summer-camp/": {
+    "title": "Junior Summer Camp | NEPC",
+    "description": "Read the NEPC Junior Summer Camp information, including the program details published on this page."
+  },
+  "/club-news/nepc-team-trio-event/": {
+    "title": "Trio Team Pickleball Events | NEPC",
+    "description": "Explore NEPC Trio Team pickleball events and the format described on this page."
+  },
+  "/club-news/new-nepc-partner-leagues/": {
+    "title": "Summer Partner Pickleball Leagues | NEPC",
+    "description": "Read about NEPC Summer Partner Leagues and the published league details."
+  },
+  "/clubs/": {
+    "title": "Indoor Pickleball Clubs in Middleton & Rye | NEPC",
+    "description": "Visit NEPC in Middleton, MA and Rye, NH. Find club addresses, phone numbers, opening hours and directions."
+  },
+  "/coaching/": {
+    "title": "Pickleball Lessons in Middleton & Rye | NEPC",
+    "description": "Explore private pickleball lessons and group clinics at NEPC in Middleton, MA and Rye, NH. Meet our teaching professionals."
+  },
+  "/community-events/": {
+    "title": "Pickleball Community Events in MA & NH | NEPC",
+    "description": "Explore community events and club gatherings at New England Pickleball Club in Middleton, MA and Rye, NH."
+  },
+  "/contact/": {
+    "title": "Contact Middleton & Rye Pickleball Clubs | NEPC",
+    "description": "Contact New England Pickleball Club in Middleton, MA or Rye, NH. Find the right club for your questions."
+  },
+  "/corporate-events/": {
+    "title": "Corporate Pickleball Events in MA & NH | NEPC",
+    "description": "Explore corporate pickleball events at NEPC in Middleton, MA and Rye, NH. Contact the club to discuss your group."
+  },
+  "/glow-in-the-dark/": {
+    "title": "Glow in the Dark Pickleball | NEPC",
+    "description": "Read about Glow in the Dark Pickleball at New England Pickleball Club."
+  },
+  "/": {
+    "title": "Indoor Pickleball in Middleton, MA & Rye, NH | NEPC",
+    "description": "Play indoor pickleball in Middleton, MA and Rye, NH. Explore court bookings, lessons, leagues and membership at NEPC. Open up together."
+  },
+  "/leagues/": {
+    "title": "Competitive Pickleball Leagues in MA & NH | NEPC",
+    "description": "Explore competitive pickleball leagues at NEPC in Middleton, MA and Rye, NH. Find league information and registration links."
+  },
+  "/legal-pages/cookies-policy/": {
+    "title": "Cookies Policy | New England Pickleball Club",
+    "description": "Read the New England Pickleball Club cookies policy."
+  },
+  "/legal-pages/privacy-policy/": {
+    "title": "Privacy Policy | New England Pickleball Club",
+    "description": "Read the New England Pickleball Club privacy policy."
+  },
+  "/membership/": {
+    "title": "Pickleball Memberships in Middleton & Rye | NEPC",
+    "description": "Explore Blue, Silver and Burgundy pickleball memberships at NEPC in Middleton, MA and Rye, NH. View current benefits and pricing."
+  },
+  "/new-to-pickle-ball/": {
+    "title": "Beginner Pickleball Classes in MA & NH | NEPC",
+    "description": "Learn doubles pickleball with NEPC Quick Start classes in Middleton, MA and Rye, NH. Explore the beginner program."
+  },
+  "/private-events/": {
+    "title": "Private Pickleball Events in MA & NH | NEPC",
+    "description": "Plan a private pickleball event or corporate outing at NEPC in Middleton, MA or Rye, NH. Contact us about your group."
+  },
+  "/quickstart-classes/middleton/": {
+    "title": "Quick Start Pickleball in Middleton, MA | NEPC",
+    "description": "Find Quick Start pickleball classes at NEPC Middleton, MA and begin learning the doubles game."
+  },
+  "/quickstart-classes/rye/": {
+    "title": "Quick Start Pickleball in Rye, NH | NEPC",
+    "description": "Find Quick Start pickleball classes at NEPC Rye, NH and begin learning the doubles game."
+  },
+  "/middleton/": {
+    "title": "Indoor Pickleball in Middleton, MA | NEPC",
+    "description": "Visit NEPC Middleton at 329 N Main St. Find indoor courts, opening hours, directions, lessons and booking links."
+  },
+  "/rye/": {
+    "title": "Indoor Pickleball in Rye, NH | NEPC",
+    "description": "Visit NEPC Rye at 6 Airfield Drive. Find indoor courts, opening hours, directions, lessons and booking links."
+  }
+}

@@ -1,0 +1,19 @@
+.nepc-home-heading{font-size:clamp(2rem,3.1vw,3.35rem);line-height:1.12;margin:0 0 1.5rem;max-width:22ch}
+.nepc-tagline{font-size:1.25rem;font-weight:600;margin:0 0 1rem}
+.nepc-location-header{padding-top:6rem}
+.nepc-location-grid .location-detail-wrapper{padding:2rem;background:#104d85;color:white;border-radius:1rem}
+.nepc-location-grid .location-detail-wrapper h2{color:white}
+.nepc-club-links,.nepc-service-links{display:flex;flex-wrap:wrap;gap:1rem;margin:1.5rem 0}
+.nepc-club-links a{font-weight:600;text-decoration:underline;text-underline-offset:.25rem}
+.nepc-location-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:2.5rem;margin-top:2rem;align-items:start}
+.nepc-club-photo,.nepc-club-card img{width:100%;height:auto;aspect-ratio:16/10;object-fit:cover;border-radius:1rem}
+.nepc-club-card h3{margin:1.25rem 0}
+.nepc-map{width:100%;height:350px;border:0;border-radius:1rem;margin-top:1.5rem}
+.nepc-people{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1.5rem;margin:2rem 0}
+.nepc-person img{width:100%;height:auto;aspect-ratio:1;object-fit:cover;border-radius:.75rem;margin-bottom:1rem}
+.nepc-person h3{margin-bottom:.5rem}
+.nepc-footer-contacts{display:flex;flex-wrap:wrap;gap:2rem 5rem;padding:2rem 0}
+.nepc-footer-contacts address{font-style:normal;line-height:1.7}
+.nepc-footer-contacts a{text-decoration:underline;text-underline-offset:.2rem}
+@media(max-width:767px){.nepc-location-header{padding-top:5rem}.nepc-location-grid{grid-template-columns:1fr;gap:2rem}.nepc-people{grid-template-columns:repeat(2,minmax(0,1fr))}.nepc-home-heading{font-size:2rem}.nepc-map{height:300px}}
+@media(max-width:380px){.nepc-people{grid-template-columns:1fr}}
