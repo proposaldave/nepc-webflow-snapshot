@@ -29,3 +29,4 @@ body[data-nepc-home] .navbar14_component{box-shadow:none}
 
 body[data-nepc-home] main h2,body[data-nepc-home] main h3{color:#153f66}body[data-nepc-home] .text-color-white h3,body[data-nepc-home] .section_cta h2{color:inherit}
 body[data-nepc-home] .cta42_card-content h2{color:white}
+.founder-home-actions a:last-child{border:1px solid rgba(255,255,255,.6);border-radius:99px;padding:16px 23px;background:rgba(255,255,255,.06);font-weight:600}.founder-home-actions a:last-child:hover{background:rgba(255,255,255,.14);text-decoration:none}.founder-home-actions a:focus-visible{outline:3px solid #ddf247;outline-offset:4px}@media(max-width:600px){.founder-home-actions{gap:12px}.founder-home-actions a:last-child{padding:14px 19px}}
