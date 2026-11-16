@@ -10,7 +10,7 @@ const topNav = [
   ["LEAGUES", "leagues"],
   ["COACHING", "coaching"],
   ["MEMBERSHIP", "membership"],
-  ["COMMUNITY EVENTS", "community-events"],
+  ["CLUB EVENTS", "community-events"],
   ["CONTACT", "contact"],
   ["GIFT CARDS", "https://shop.newenglandpickleball.com/products/nepc-gift-card?utm_source=copyToPasteBoard&amp;utm_medium=product-links&amp;utm_content=web"],
 ];
@@ -21,8 +21,9 @@ const footerNav = [
   ["LEAGUES", "leagues"],
   ["COACHING", "coaching"],
   ["MEMBERSHIP", "membership"],
-  ["COMMUNITY EVENTS", "community-events"],
+  ["CLUB EVENTS", "community-events"],
   ["CONTACT", "contact"],
+  ["Our Story", "our-story"],
 ];
 
 function walk(dir) {
@@ -42,7 +43,7 @@ function hrefFor(slugOrUrl, basePath) {
 }
 
 function currentText(links) {
-  const current = links.match(/<a\b[^>]*(?:aria-current="page"|w--current)[^>]*>(CLUBS|CALENDAR|LEAGUES|COACHING|MEMBERSHIP|COMMUNITY EVENTS|CONTACT|GIFT CARDS)<\/a>/);
+  const current = links.match(/<a\b[^>]*(?:aria-current="page"|w--current)[^>]*>(CLUBS|CALENDAR|LEAGUES|COACHING|MEMBERSHIP|CLUB EVENTS|CONTACT|GIFT CARDS)<\/a>/);
   return current?.[1] || "";
 }
 

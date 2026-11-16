@@ -24,7 +24,7 @@ const blockedPatterns = [
   /6818aa4a402149c27255e411/i,
   /68372bd59a4a63297268e428/i,
 ];
-const allowedBinary = /\.(png|jpe?g|webp|gif|svg|pdf|ico|woff2?|zip|bundle)$/i;
+const allowedBinary = /\.(png|jpe?g|webp|gif|svg|pdf|ico|woff2?|ttf|otf|zip|bundle)$/i;
 const allowedText = /\.(html|css|js|mjs|json|md|txt|xml|svg)$/i;
 
 function walk(path = "") {

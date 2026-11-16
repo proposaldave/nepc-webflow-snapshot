@@ -35,7 +35,7 @@ for (const [route, values] of Object.entries(copy)) {
     assert(text(html).includes(q.name), `${route}: FAQ question not in page`);
     assert(text(html).includes(q.acceptedAnswer.text), `${route}: FAQ answer not in page`);
   }
-  if (!['/middleton/', '/rye/'].includes(route)) {
+  if (!['/middleton/', '/rye/', '/our-story/'].includes(route)) {
     const before = execFileSync('git', ['show', `4072e90:${relative}`], { cwd: root, encoding: 'utf8', maxBuffer: 5e6 });
     assert.deepEqual([...new Set(protectedLinks(html))], [...new Set(protectedLinks(before))], `${route}: booking/shop destinations changed`);
     assert.deepEqual(text(html).match(/\$[\d,.]+/g), text(before).match(/\$[\d,.]+/g), `${route}: prices changed`);
