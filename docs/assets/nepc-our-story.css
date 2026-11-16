@@ -230,3 +230,7 @@
 .nepc-founder .pull em i{font-style:italic}
 .nepc-founder .versus circle{transition:r .22s ease}
 .nepc-founder .versus circle.val{fill:var(--ball);stroke:var(--ink);stroke-width:1.5;transition:none}
+
+.nepc-founder .versus figure{padding:22px 20px 26px}
+.nepc-founder .versus figcaption{margin-top:16px}
+.nepc-founder .versus figcaption span{margin-top:8px;line-height:1.5}

@@ -250,7 +250,7 @@ main{margin-left:var(--rail)}
 .ways li.key{margin-top:.5em;padding:1em 1.2em 1em 2.6em;background:var(--navy);color:#fff;border-radius:1.2rem;border-bottom:0;font-size:1.12em;line-height:1.5}
 .ways li.key::before{left:1.1em;top:1.45em;width:.7em;height:.7em;box-shadow:none}
 .ways li.key strong{display:block;font-family:var(--display);font-weight:800;font-size:1.3em;line-height:1.15;letter-spacing:-.01em;color:var(--ball);margin-bottom:.25em}
-.moments li::before{background:var(--ball);border-color:#78851b}.pull em i{font-style:italic}.versus circle{transition:r .22s ease}.versus circle.val{fill:var(--ball);stroke:var(--ink);stroke-width:1.5;transition:none}</style>
+.moments li::before{background:var(--ball);border-color:#78851b}.pull em i{font-style:italic}.versus circle{transition:r .22s ease}.versus circle.val{fill:var(--ball);stroke:var(--ink);stroke-width:1.5;transition:none}.versus figure{padding:22px 20px 26px}.versus figcaption{margin-top:16px}.versus figcaption span{margin-top:8px;line-height:1.5}</style>
 </head>
 <body>
 
@@ -514,26 +514,38 @@ main{margin-left:var(--rail)}
     var C = [96,70], hb = ball(hub), hStart = null;
     var wb = [0,1,2,3].map(function(k){ return { el: ball(web), from: k, to: (k+3)%7, t0: null, dur: 900 + k*130 }; });
     function next(b){ b.from = b.to; do { b.to = Math.floor(Math.random()*7); } while (b.to === b.from); b.t0 = null; }
-    var on = false, lastPop = -1;
+    var on = false, lastPop = -1, elapsed = 0, previous = null, phaseBefore = -1;
     function frame(now){
       if (!on) return;
-      if (hStart === null) hStart = now;
-      var leg = 1100, k = Math.floor((now - hStart)/leg), t = ((now - hStart) % leg)/leg;
+      if (previous !== null) elapsed += now - previous;
+      previous = now;
+      var leg = 550, hospitalityDuration = leg * pts.length * 2;
+      var cycle = elapsed % (hospitalityDuration + 8000), phase = cycle < hospitalityDuration ? 0 : 1;
+      if (phase !== phaseBefore) {
+        hb.setAttribute('visibility', phase === 0 ? 'visible' : 'hidden');
+        wb.forEach(function(b){ b.el.setAttribute('visibility', phase === 1 ? 'visible' : 'hidden'); b.t0 = null; });
+        if (phase === 1) pop(hubNodes[pts.length], 9);
+        lastPop = -1; phaseBefore = phase;
+      }
+      var k = Math.floor(cycle / leg), t = (cycle % leg) / leg;
+      if (phase === 0) {
       var p = pts[Math.floor(k/2) % pts.length], out = k % 2 === 0, e = ease(t);
       var a = out ? C : p, z = out ? p : C;
       hb.setAttribute('cx', a[0] + (z[0]-a[0])*e); hb.setAttribute('cy', a[1] + (z[1]-a[1])*e);
       if (k !== lastPop){ if (lastPop >= 0){ if (k % 2 === 1) pop(hubNodes[Math.floor(k/2) % pts.length], 6); else pop(hubNodes[pts.length], 9); } lastPop = k; }
+      } else {
       wb.forEach(function(b){
         if (b.t0 === null) b.t0 = now;
         var u = Math.min(1, (now - b.t0)/b.dur), q = ease(u), f = all[b.from], g = all[b.to];
         b.el.setAttribute('cx', f[0] + (g[0]-f[0])*q); b.el.setAttribute('cy', f[1] + (g[1]-f[1])*q);
         if (u >= 1){ pop(webNodes[b.to], 6); next(b); }
       });
+      }
       requestAnimationFrame(frame);
     }
     new IntersectionObserver(function(en){
       var vis = en[0].isIntersecting;
-      if (vis && !on){ on = true; requestAnimationFrame(frame); } else if (!vis) on = false;
+      if (vis && !on){ on = true; previous = null; requestAnimationFrame(frame); } else if (!vis) { on = false; previous = null; }
     }, {threshold:.35}).observe(hub.closest('.versus'));
   })();
 
