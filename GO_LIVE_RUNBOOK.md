@@ -1,5 +1,7 @@
 # NEPC Website Go-Live Runbook
 
+> November 2026 SEO preview: the proposed canonical host is https://newenglandpickleball.com (apex). The seo-foundation branch is review-only. Domain redirects and production release require separate approval; older www-host guidance below is superseded for the planned migration.
+
 ## Decision
 
 Use Cloudflare Pages for the production `newenglandpickleball.com` site.

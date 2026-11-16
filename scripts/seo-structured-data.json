@@ -1,0 +1,354 @@
+{
+  "locations": {
+    "/middleton/": {
+      "@type": "SportsActivityLocation",
+      "@id": "https://newenglandpickleball.com/middleton/#location",
+      "name": "NEPC Middleton",
+      "telephone": "+19783073820",
+      "url": "https://newenglandpickleball.com/middleton/",
+      "image": "https://newenglandpickleball.com/assets/cdn.prod.website-files.com/67d8ef9f47150547ee5f7682/6818aa4a16613074238ac5ca_NEPC MIDDLETON INTERIOR&EXTERIOR 5.webp",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "329 N Main St",
+        "addressLocality": "Middleton",
+        "addressRegion": "MA",
+        "postalCode": "01949",
+        "addressCountry": "US"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 42.6216678,
+        "longitude": -71.0534523
+      },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday"
+          ],
+          "opens": "06:00",
+          "closes": "21:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "Saturday",
+            "Sunday"
+          ],
+          "opens": "08:00",
+          "closes": "20:00"
+        }
+      ],
+      "parentOrganization": {
+        "@id": "https://newenglandpickleball.com/#organization"
+      }
+    },
+    "/rye/": {
+      "@type": "SportsActivityLocation",
+      "@id": "https://newenglandpickleball.com/rye/#location",
+      "name": "NEPC Rye",
+      "telephone": "+16039451139",
+      "url": "https://newenglandpickleball.com/rye/",
+      "image": "https://newenglandpickleball.com/assets/cdn.prod.website-files.com/67d8ef9f47150547ee5f7682/684af7a1b49010084eac1ad2_Placeholder Image 1.webp",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "6 Airfield Drive",
+        "addressLocality": "Rye",
+        "addressRegion": "NH",
+        "postalCode": "03870",
+        "addressCountry": "US"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 43.0087782,
+        "longitude": -70.8016418
+      },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday"
+          ],
+          "opens": "07:00",
+          "closes": "21:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "Saturday",
+            "Sunday"
+          ],
+          "opens": "08:00",
+          "closes": "19:00"
+        }
+      ],
+      "parentOrganization": {
+        "@id": "https://newenglandpickleball.com/#organization"
+      }
+    }
+  },
+  "faq": {
+    "/book-a-court/": {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Can non-members book a private court?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Absolutely! Non-members can sign up 4 days in advance for private courts in Middleton and 3 days in advance in Rye for their desired play time."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Are there any court booking restrictions?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "With the goal of facilitating the fairest use of the courts across the membership, the following restrictions apply for all members up until 36 hours before the booking time (at which point all restrictions below will be automatically be lifted): ‍ All members can book 10 days in advance. ‍ Non-members can book: Rye courts: 3 days in advance Middleton courts: 4 days in advance Maximum 5 outstanding bookings per member (all foursomes that you are signed up for are counted, regardless of whether or not you were the initial member who booked the court). Max reservations per week: 4 Max reservations per day: 1 Max hours per day: 3 ‍ These restrictions only apply to private court bookings, not group plays, and are subject to change."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I select my court?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "You can but your court assignment is subject to change prior to check-in so that we can optimize for court utilization and staffing."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is your cancellation policy?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Canceling within 24 hours of your booking is subject to a fee of 50% of the total cost. No-shows or failing to cancel before your start time are subject to a fee of 100% of the total cost."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What shoes do I wear?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Please be sure to wear court shoes - not running shoes and no shoes with soles that could mark the courts. We ask that you change into your court shoes once you’re inside the club in order to keep the courts clean and protected from outdoor elements."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I book a court to teach a lesson at NEPC?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Only NEPC teaching pros are permitted to teach at our facility."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I bring my own ball machine?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No, however, we have a Titan ball machine that you can book as part of your court reservation. It can be operated directly from the machine or through the “Titan Drills Pro” app on your smartphone. Note: the ball machine can only be reserved within a 24-hour window."
+          }
+        }
+      ]
+    },
+    "/calendar/": {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How does NEPC determine skill ratings?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "NEPC reviews all available information to determine the most accurate skill rating for each player. This comprehensive approach includes evaluating performance in our competitive leagues, social play events, as well as any external tournaments. Our goal is to use a wide range of data to make the fairest skill rating decisions possible. ‍ If you’re interested in having your skill level assessed, please let any NEPC staff know. If you’re new to NEPC and unsure about your skill level, it’s better to self-rate conservatively (if you are between a 3.0 and 3.5, self-rate as a 3.0). All players new to the NEPC will have their self-rating reviewed and verified by staff during club play."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What if an event is full?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Always use the waitlist on CourtReserve if you can’t get into something. This is how we know to add more courts to the event. Please know that if you are on the waitlist you can be added to an event up to an hour prior, so if you are no longer available please remove yourself from the waitlist."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What if I have to cancel?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "We keep our events with no or minimal subs, so cancellations can leave us short players, which is no fun for anyone. Canceling within 24 hours of your booking is subject to a fee of 50% of the total cost. No-shows or failing to cancel before your start time are subject to a fee of 100% of the total cost. ‍ Guests added to private reservations will be billed to the reserving player unless adjustments are made at the front desk. Court shoes are required for all bookings, and court assignments may change prior to check-in to maximize utilization and staffing."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can non-members participate in events?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes! Non-members can sign up 4 days in advance for private courts in Middleton and 3 days in advance in Rye or for any group play or 30 days in advance for classes."
+          }
+        }
+      ]
+    },
+    "/clubs/": {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Do you offer corporate events or private parties?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "We do! Visit our Private Events & Corporate Outings page or view our brochure for more information. ‍"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can non-members use your facility?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Absolutely! See our membership page to learn more. ‍"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is alcohol allowed?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Alcohol is not permitted within our clubs."
+          }
+        }
+      ]
+    },
+    "/coaching/": {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How do I sign up for a class?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Check out our calendar and you’ll see classes displayed in purple."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "I’m not seeing a class that’s relevant to me on your calendar, what should I do?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No worries, we got you! Just contact our front-desk or fill out this form to request a private lesson for you and up to 3 of your friends or family members."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do you offer private lessons?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, we do! Contact our front desk or fill out this form to request a private lesson—whether it’s one-on-one, semi-private, or group private—and we’ll pair you with one of our teaching professionals."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do I need to be a member to take a class or private lesson?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Nope, you don’t. Members and non-members can register for classes within 30 days of the class date. Private lessons are also available to non-members."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What’s the difference between coaching and drilling?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Drilling focuses on high-repetition practice in a structured group setting with other players, helping you build consistency and refine your skills. Coaching, on the other hand, offers personalized improvement through tailored advice and custom sessions led by New England’s most experienced pros, designed to target exactly what your game needs to take it to the next level."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is there an age restriction for taking classes?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Kids between the ages 10 and 16 are more than welcome to take our Quick Start classes but must take the class with a parent or guardian."
+          }
+        }
+      ]
+    },
+    "/membership/": {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "I want to join NEPC! How do I become a member?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Individual memberships for Middleton and Rye can be purchased through your CourtReserve account using the buttons above."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can my membership be used at all NEPC locations?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes! All NEPC members are assigned a \"home\" club while also enjoying full member status at all of our club locations."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why do you limit the number of memberships?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "We cap our membership to ensure that our members have access to the times and programs that they want. We don’t want to oversell and have our members disappointed or frustrated that they can’t get in. This is why we welcome non-members to help fill in the gaps."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do you offer seasonal memberships?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, we offer summer memberships."
+          }
+        }
+      ]
+    },
+    "/new-to-pickle-ball/": {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "I’ve never played pickleball before but want to learn. What’s my first step?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Welcome to pickleball! Your first step is to sign up for one of our Quick Start classes. You can find them on our calendar . If there isn’t one that fits your schedule, you can request a private Quick Start class for you and up to 3 of your friends or family members."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do I need a paddle to take a class?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Nope! You can use one of our demo paddles at no additional charge."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What shoes do I wear?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "To help prevent injury, be sure to wear tennis sneakers or “pickleball shoes.” We ask that you change into your court shoes once you’re inside the club in order to keep the courts clean and protected from outdoor elements."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What happens after I take a Quick Start class?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Congrats! You’ve learned the game. Your next step is to sign up for a Coach & Play 101 . You’ll play doubles matches for 90 minutes while reinforcing the basics of the game under the guidance of one of our teaching pros."
+          }
+        }
+      ]
+    }
+  }
+}

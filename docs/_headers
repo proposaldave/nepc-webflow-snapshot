@@ -1,0 +1,3 @@
+# Keep the production Pages hostname out of search results without blocking the custom domain.
+https://nepc-website.pages.dev/*
+  X-Robots-Tag: noindex
