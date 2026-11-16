@@ -23,7 +23,7 @@ const footerNav = [
   ["MEMBERSHIP", "membership"],
   ["CLUB EVENTS", "community-events"],
   ["CONTACT", "contact"],
-  ["OUR STORY", "our-story"],
+  ["OUR STORY", "founder-story"],
 ];
 
 function walk(dir) {

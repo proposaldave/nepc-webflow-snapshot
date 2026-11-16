@@ -20,6 +20,7 @@ for (const file of pages) {
     writeFileSync(file, html);
     continue;
   }
+  if (route === '/our-story/') continue; // Legacy URL is a noindex redirect to /founder-story/.
   const url = origin + route;
   const copy = metadata[route];
   if (!copy) throw new Error(`Missing approved metadata for ${route}`);
