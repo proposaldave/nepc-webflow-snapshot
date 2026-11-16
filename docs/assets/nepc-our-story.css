@@ -53,7 +53,7 @@
 @media  (min-width:700px){.nepc-founder .hero h1 .l1{white-space:nowrap}}
 .nepc-founder .dot{display:inline-block;width:.24em;height:.24em;border-radius:50%;background:radial-gradient(circle at 50% 50%,var(--navy) 0 8%,transparent 9.5%),radial-gradient(circle at 80% 50%,var(--navy) 0 8%,transparent 9.5%),radial-gradient(circle at 65% 76%,var(--navy) 0 8%,transparent 9.5%),radial-gradient(circle at 35% 76%,var(--navy) 0 8%,transparent 9.5%),radial-gradient(circle at 20% 50%,var(--navy) 0 8%,transparent 9.5%),radial-gradient(circle at 35% 24%,var(--navy) 0 8%,transparent 9.5%),radial-gradient(circle at 65% 24%,var(--navy) 0 8%,transparent 9.5%),var(--ball);margin-left:.05em;
   animation:nepc-story-bounce 1.6s cubic-bezier(.3,0,.2,1) infinite}
-@keyframes  bounce{0%{transform:translateY(0) rotate(0)}45%{transform:translateY(-.55em) rotate(80deg)}100%{transform:translateY(0) rotate(160deg)}}
+@keyframes nepc-story-bounce{0%{transform:translateY(0) rotate(0)}45%{transform:translateY(-.55em) rotate(80deg)}100%{transform:translateY(0) rotate(160deg)}}
 .nepc-founder .hero .sub{display:flex;flex-wrap:wrap;gap:12px 40px;align-items:baseline;justify-content:space-between;
   margin-top:clamp(40px,6vw,84px);padding-top:22px;border-top:1px solid rgba(255,255,255,.25)}
 .nepc-founder .hero .sub p{font-size:clamp(22px,2.3vw,34px);font-style:italic;max-width:22em;line-height:1.3}
@@ -65,7 +65,7 @@
 .nepc-founder .cue svg{width:24px;height:24px;fill:none;stroke:var(--ball);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;animation:nepc-story-drop 1.8s cubic-bezier(.5,0,.2,1) infinite}
 .nepc-founder .cue:hover .ring{background:rgba(255,255,255,.12);border-color:var(--ball)}
 .nepc-founder .cue:focus-visible{outline:3px solid var(--ball);outline-offset:4px}
-@keyframes  drop{0%{transform:translateY(-30px);opacity:0}22%,80%{transform:translateY(0);opacity:1}100%{transform:translateY(30px);opacity:0}}
+@keyframes nepc-story-drop{0%{transform:translateY(-30px);opacity:0}22%,80%{transform:translateY(0);opacity:1}100%{transform:translateY(30px);opacity:0}}
 .nepc-founder .eyebrow{display:inline-flex;align-items:center;gap:10px;font-family:var(--ui);font-weight:600;font-size:14px;letter-spacing:.08em;text-transform:uppercase;
   background:var(--ball);color:var(--ink);padding:9px 16px;border-radius:160px;margin-top:clamp(8px,2vw,28px)}
 .nepc-founder .eyebrow i{width:8px;height:8px;border-radius:50%;background:var(--ink)}
@@ -208,13 +208,13 @@
 .nepc-founder .ways li.key::before{left:1.1em;top:1.45em;width:.7em;height:.7em;box-shadow:none}
 .nepc-founder .ways li.key strong{display:block;font-family:var(--display);font-weight:800;font-size:1.3em;line-height:1.15;letter-spacing:-.01em;color:var(--ball);margin-bottom:.25em}
 .nepc-founder .owners{display:flex;align-items:center;gap:20px;margin-left:auto}
-.nepc-founder .owners img{width:140px;height:140px;object-fit:cover;border-radius:1.4rem;border:2px solid var(--ball);box-shadow:0 0 22px #ddf24718}
+.nepc-founder .owners img{width:180px;height:180px;flex-shrink:0;object-fit:cover;border-radius:1.4rem;border:2px solid var(--ball);box-shadow:0 0 22px #ddf24718}
 .nepc-founder .owners small{opacity:1}
 .nepc-founder a:focus-visible{outline:3px solid var(--maroon);outline-offset:5px}
 .nepc-founder :is(.hero,.close) a:focus-visible{outline-color:var(--ball)}
 .nepc-founder #letter,.nepc-founder #skills{scroll-margin-top:150px}
 .nepc-founder .rail{z-index:9}
-@media(max-width:860px){.nepc-founder .owners{margin-left:0}.nepc-founder .owners img{width:96px;height:96px}.nepc-founder .owners small{font-size:11px}.nepc-founder .hero{padding-top:140px}}
+@media(max-width:860px){.nepc-founder .owners{margin-left:0}.nepc-founder .owners img{width:128px;height:128px}.nepc-founder .owners small{font-size:11px}.nepc-founder .hero{padding-top:140px}}
 
 .nepc-founder .rail .tag{background:transparent;color:inherit;padding:0;border-radius:0}
 .nepc-founder{font-weight:400}
@@ -225,3 +225,8 @@
 
 @media(max-width:991px){.nepc-founder-page .navbar14_menu.is-story-open{display:block;position:absolute;top:100%;left:0;width:100%;max-height:calc(100dvh - 150px);overflow:auto;background:#123d68;border-radius:24px;padding:24px}.nepc-founder-page .navbar14_menu.is-story-open .navbar14_menu-link-wrapper{display:flex;flex-direction:column;gap:20px}.nepc-founder-page .navbar14_menu.is-story-open .navbar14_menu-links{display:flex;flex-direction:column;align-items:flex-start}.nepc-founder-page .navbar14_menu.is-story-open .navbar14_button-wrapper{display:flex;flex-wrap:wrap;gap:12px}}
 .nepc-founder-page .navbar14_menu-button:focus-visible{outline:3px solid #DDF247;outline-offset:3px}
+
+.nepc-founder .moments li::before{background:var(--ball);border-color:#78851b}
+.nepc-founder .pull em i{font-style:italic}
+.nepc-founder .versus circle{transition:r .22s ease}
+.nepc-founder .versus circle.val{fill:var(--ball);stroke:var(--ink);stroke-width:1.5;transition:none}

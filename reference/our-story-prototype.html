@@ -250,7 +250,7 @@ main{margin-left:var(--rail)}
 .ways li.key{margin-top:.5em;padding:1em 1.2em 1em 2.6em;background:var(--navy);color:#fff;border-radius:1.2rem;border-bottom:0;font-size:1.12em;line-height:1.5}
 .ways li.key::before{left:1.1em;top:1.45em;width:.7em;height:.7em;box-shadow:none}
 .ways li.key strong{display:block;font-family:var(--display);font-weight:800;font-size:1.3em;line-height:1.15;letter-spacing:-.01em;color:var(--ball);margin-bottom:.25em}
-</style>
+.moments li::before{background:var(--ball);border-color:#78851b}.pull em i{font-style:italic}.versus circle{transition:r .22s ease}.versus circle.val{fill:var(--ball);stroke:var(--ink);stroke-width:1.5;transition:none}</style>
 </head>
 <body>
 
@@ -320,7 +320,7 @@ main{margin-left:var(--rail)}
       <p>My third-shot drive is by far my worst shot in pickleball. The pros I competed against grew up with a racquet in their hand, so I had to keep it simple and not miss. For me, surviving long rallies on the tour came down to two core skills: <span class="mark" data-p>the baby block and the boring drop.</span></p>
       <p>Ages ago, when the pro tour was a fraction of what it is now, I played against everyone, from Ben Johns to Tyson McGuffin to the number one racquetball player in the world. Those players brought a level of intensity and ball speed that my training in San Francisco didn't prepare me for. Like many of you, surviving the bangers was my biggest challenge. Eventually, my consistency is why players better than me chose me as their partner, and how I was able to "fake it" as a high-level tour player until I moved back to New England in 2020.</p>
       <p>One reason so many people get hooked on pickleball is that simple and short technique works great, which means anybody can do it. The bigger or complicated motions can hold you back, particularly if you don't have a high-level racquet background. Of everything I've done in this sport, teaching the two core long-point skills, the baby block and the boring drop, to players without that high-level racquet background is my number one area of expertise. I spent years building those skills myself to survive on tour, then years more working out the best way to teach them to beginner, intermediate, advanced and elite amateur players.</p>
-      <p class="pull">And when you really understand the game, you'll see you can get very good at pickleball with <em>just these two skills.</em></p>
+      <p class="pull">And when you really understand the game, you'll see you can get very good at pickleball with <em><i>just</i> these two skills.</em></p>
     </div>
   </div>
 </section>
@@ -385,6 +385,7 @@ main{margin-left:var(--rail)}
     <div class="prose rest">
       <p>Every member gets two printed charts, one for each skill, from the front desk. Each chart breaks the skill into its pieces, so you always know what you have and what to work on next. Then look for the ladders and social events Samara and I are playing in. We love playing with our members. When we're in the same event and there's time between games, I'll show any member who asks me where they are on each chart, so you know exactly what's missing. The work is up to you.</p>
       <p class="pull" style="margin-top:1.1em">It&rsquo;s more than two charts. You get to play with the owners. <em>And by sharing the court with you, I can tell you exactly where you are on both.</em></p>
+      <p>Samara and I spend a lot of time on court with our members. Playing together is how we help set the tone: welcoming people in, keeping it fun, and encouraging the kind of play that makes everyone want another game.</p>
       <p><a class="btn p inline" href="https://nepc.community/membership/">Become a member</a></p>
     </div>
   </div>
@@ -396,7 +397,7 @@ main{margin-left:var(--rail)}
     <ul>
       <li><b>Your two charts</b><span>One printed chart for each skill, the baby block and the boring drop, from the front desk.</span></li>
       <li><b>Play with Dave and Samara</b><span>Look for the ladders and social events we're playing in.</span></li>
-      <li><b>Longer points, together</b><span>A whole club building the same two skills, at Rye and Middleton.</span></li>
+      <li><b>Longer points, together</b><span>A whole club building longer shared experiences, at Rye and Middleton.</span></li>
     </ul>
   </div>
 </section>
@@ -414,7 +415,7 @@ main{margin-left:var(--rail)}
 
 <section class="chapter">
   <div class="wrap">
-    <header><h2>My boring friends.</h2></header>
+    <header><h2>To my boring friends.</h2></header>
     <div class="prose">
       <p class="lead">Thank you to every member who has already built a solid baby block and boring drop.</p>
       <p class="pull">The more of us with these two skills, the longer the points, the more fun the games, the better our shared experiences, <em>and the stronger our relationships.</em></p>
@@ -502,7 +503,38 @@ main{margin-left:var(--rail)}
     add(hub,'circle',{cx:96,cy:70,r:9,'class':'staff'});
     var all = pts.concat([[96,70]]);
     for (i=0;i<all.length;i++) for (j=i+1;j<all.length;j++) add(web,'line',{x1:all[i][0],y1:all[i][1],x2:all[j][0],y2:all[j][1],pathLength:1});
-    all.forEach(function(p){ add(web,'circle',{cx:p[0],cy:p[1],r:6}); });
+    var webNodes = all.map(function(p){ return add(web,'circle',{cx:p[0],cy:p[1],r:6}); });
+    var hubNodes = hub.querySelectorAll('circle');
+
+    /* value in motion: one exchange at a time in hospitality, many at once in community */
+    if (reduce || !('IntersectionObserver' in window)) return;
+    function ball(svg){ return add(svg,'circle',{r:4.5,'class':'val',cx:-20,cy:-20}); }
+    function pop(n, base){ n.setAttribute('r', base + 3.5); setTimeout(function(){ n.setAttribute('r', base); }, 220); }
+    function ease(t){ return t < .5 ? 2*t*t : 1 - Math.pow(-2*t + 2, 2)/2; }
+    var C = [96,70], hb = ball(hub), hStart = null;
+    var wb = [0,1,2,3].map(function(k){ return { el: ball(web), from: k, to: (k+3)%7, t0: null, dur: 900 + k*130 }; });
+    function next(b){ b.from = b.to; do { b.to = Math.floor(Math.random()*7); } while (b.to === b.from); b.t0 = null; }
+    var on = false, lastPop = -1;
+    function frame(now){
+      if (!on) return;
+      if (hStart === null) hStart = now;
+      var leg = 1100, k = Math.floor((now - hStart)/leg), t = ((now - hStart) % leg)/leg;
+      var p = pts[Math.floor(k/2) % pts.length], out = k % 2 === 0, e = ease(t);
+      var a = out ? C : p, z = out ? p : C;
+      hb.setAttribute('cx', a[0] + (z[0]-a[0])*e); hb.setAttribute('cy', a[1] + (z[1]-a[1])*e);
+      if (k !== lastPop){ if (lastPop >= 0){ if (k % 2 === 1) pop(hubNodes[Math.floor(k/2) % pts.length], 6); else pop(hubNodes[pts.length], 9); } lastPop = k; }
+      wb.forEach(function(b){
+        if (b.t0 === null) b.t0 = now;
+        var u = Math.min(1, (now - b.t0)/b.dur), q = ease(u), f = all[b.from], g = all[b.to];
+        b.el.setAttribute('cx', f[0] + (g[0]-f[0])*q); b.el.setAttribute('cy', f[1] + (g[1]-f[1])*q);
+        if (u >= 1){ pop(webNodes[b.to], 6); next(b); }
+      });
+      requestAnimationFrame(frame);
+    }
+    new IntersectionObserver(function(en){
+      var vis = en[0].isIntersecting;
+      if (vis && !on){ on = true; requestAnimationFrame(frame); } else if (!vis) on = false;
+    }, {threshold:.35}).observe(hub.closest('.versus'));
   })();
 
   var marks = document.querySelectorAll('[data-p]');
