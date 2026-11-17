@@ -251,23 +251,41 @@ body[data-nepc-home] .nepc-home h3 {
   gap: 12px;
 }
 .home-hero-photo {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  right: calc(-1 * max(32px, (100vw - 1120px) / 2));
-  width: calc(50% + max(32px, (100vw - 1120px) / 2) + 32px);
+  position: relative;
+  isolation: isolate;
+  width: 100%;
+  aspect-ratio: 6 / 5;
   margin: 0;
-  overflow: hidden;
+}
+.home-hero-photo::before {
+  content: "";
+  position: absolute;
+  inset: -18px -18px 18px 18px;
+  z-index: -1;
+  border-radius: 88px 24px 88px 24px;
+  background: var(--home-ice);
+  transform: rotate(4deg);
+}
+.home-hero-photo::after {
+  content: "";
+  position: absolute;
+  bottom: -12px;
+  left: 32px;
+  width: 84px;
+  height: 8px;
+  border-radius: 8px;
+  background: var(--home-lime);
 }
 .home-hero-photo img {
   display: block;
   width: 100%;
   max-width: none;
   height: 100%;
+  aspect-ratio: 6 / 5;
   object-fit: cover;
   object-position: 50% center;
-  -webkit-mask-image: linear-gradient(to right, transparent, #000 20%);
-  mask-image: linear-gradient(to right, transparent, #000 20%);
+  border-radius: 80px 20px 80px 20px;
+  box-shadow: 0 18px 40px #173d6114;
 }
 .home-approach {
   padding-block: 38px 40px;
@@ -827,9 +845,6 @@ body[data-nepc-home] .footer4_component .padding-top {
   .home-hero {
     gap: 36px;
   }
-  .home-hero-photo {
-    width: calc(50% + 50px);
-  }
   .home-club-card {
     grid-template-columns: 130px 1fr;
     gap: 18px;
@@ -862,13 +877,12 @@ body[data-nepc-home] .footer4_component .padding-top {
     font-size: 9px;
   }
   .home-hero {
-    min-height: 640px;
-    height: calc(100svh - 68px);
+    min-height: max(640px, calc(100svh - 68px));
     grid-template-columns: 1fr;
     grid-template-rows: auto minmax(240px, 1fr);
-    align-items: stretch;
-    gap: 24px;
-    padding-block: 30px 0;
+    align-items: center;
+    gap: 28px;
+    padding-block: 30px 32px;
   }
   .nepc-home .home-hero h1 {
     font-size: clamp(39px, 8.4vw, 55px);
@@ -889,20 +903,21 @@ body[data-nepc-home] .footer4_component .padding-top {
     gap: 14px;
   }
   .home-hero-photo {
-    position: relative;
-    inset: auto;
-    width: calc(100% + 40px);
-    min-height: 240px;
-    margin: 0 -20px;
+    width: 100%;
+    margin: 0;
+  }
+  .home-hero-photo::before {
+    inset: -12px -8px 12px 12px;
+    border-radius: 56px 18px 56px 18px;
   }
   .home-hero-photo img {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-position: 50% center;
-    -webkit-mask-image: none;
-    mask-image: none;
+    border-radius: 52px 16px 52px 16px;
+  }
+  .home-hero-photo::after {
+    bottom: -10px;
+    left: 24px;
+    width: 64px;
+    height: 6px;
   }
   body[data-nepc-home] .nepc-home h2 {
     font-size: 27px;
