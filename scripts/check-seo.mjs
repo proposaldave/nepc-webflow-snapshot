@@ -30,19 +30,37 @@ for (const [route, values] of Object.entries(copy)) {
   const schema = JSON.parse(html.match(/<script type="application\/ld\+json">(.*?)<\/script>/s)[1]);
   assert(schema['@graph'].some(n => n['@type'] === 'Organization'));
   assert(!schema['@graph'].some(n => ['Review', 'AggregateRating'].includes(n['@type'])));
+  if (route === '/gift-cards/') {
+    assert.deepEqual([...new Set(protectedLinks(html))], ['https://shop.newenglandpickleball.com/products/nepc-gift-card?utm_source=copyToPasteBoard&amp;utm_medium=product-links&amp;utm_content=web'], 'Gift cards must use the existing NEPC shop purchase destination');
+  }
   if (route !== '/') assert(schema['@graph'].some(n => n['@type'] === 'BreadcrumbList'));
   for (const q of structured.faq[route]?.mainEntity || []) {
     assert(text(html).includes(q.name), `${route}: FAQ question not in page`);
     assert(text(html).includes(q.acceptedAnswer.text), `${route}: FAQ answer not in page`);
   }
-  if (!['/middleton/', '/rye/', '/founder-story/'].includes(route)) {
+  if (!['/middleton/', '/rye/', '/founder-story/', '/gift-cards/'].includes(route)) {
     const before = execFileSync('git', ['show', `4072e90:${relative}`], { cwd: root, encoding: 'utf8', maxBuffer: 5e6 });
     const expectedDestinations = new Set(protectedLinks(before));
+    if (['/community-events/', '/glow-in-the-dark/'].includes(route)) {
+      // The owner explicitly retired this past event-details link. Glow now
+      // presents the offered experience and event-inquiry path instead.
+      expectedDestinations.delete('https://app.courtreserve.com/Online/Events/Details/13164/A8K47F313164330?resId=58624351');
+    }
     // Find Your Play also links directly to the two existing club portals.
     // Keep the exact original embed/shop URLs and allow only these known additions.
     if (route === '/calendar/') {
       expectedDestinations.add('https://app.courtreserve.com/Online/Portal/Index/13164');
       expectedDestinations.add('https://app.courtreserve.com/Online/Portal/Index/7432');
+    }
+    if (route === '/new-to-pickle-ball/') {
+      // Inline beginner discovery retains the exact existing club portals and
+      // location-specific Quick Start widgets as its registration fallback.
+      for (const destination of [
+        'https://app.courtreserve.com/Online/Portal/Index/7432',
+        'https://app.courtreserve.com/Online/Portal/Index/13164',
+        'https://widgets.courtreserve.com/Online/Public/EmbedCode/7432/47383',
+        'https://widgets.courtreserve.com/Online/Public/EmbedCode/13164/47384'
+      ]) expectedDestinations.add(destination);
     }
     assert.deepEqual([...new Set(protectedLinks(html))].sort(), [...expectedDestinations].sort(), `${route}: booking/shop destinations changed`);
     const expectedPrices = text(before).match(/\$[\d,.]+/g);

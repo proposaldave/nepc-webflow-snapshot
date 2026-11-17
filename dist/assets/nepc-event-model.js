@@ -9,8 +9,15 @@ export function matchesActivity(event, club, activity) {
   const namedCompetition = !groups[club]?.coaching.includes(event.categoryId) && /\b(ladder|league|tournament|scramble)\b/i.test(event.title);
   if (activity === 'competitive' && namedCompetition) return true;
   if (activity === 'social' && namedCompetition) return false;
-  if (activity === 'beginner' && /beginner|quick\s*start/i.test(event.title)) return true;
+  if (activity === 'beginner' && /beginner|quick\s*start|coach\s*(?:&|and|\+)?\s*play\s*101|ball\s*striking\s*101/i.test(event.title)) return true;
   return groups[club]?.[activity]?.includes(event.categoryId) || false;
+}
+export const beginnerPrograms = { all:'All Beginner Programs', quickstart:'Quick Start', 'coach-play':'Coach & Play 101', samara:'Beginner Guided Play with Samara' };
+export function matchesProgram(event, program) {
+  if (program==='quickstart') return /quick\s*start/i.test(event.title);
+  if (program==='coach-play') return /coach\s*(?:&|and|\+)?\s*play\s*101/i.test(event.title);
+  if (program==='samara') return /samara/i.test(event.title)&&/beginner|guided/i.test(event.title);
+  return true;
 }
 export function categoryLabel(event, club) {
   return ['beginner','coaching','competitive','social'].find(group => matchesActivity(event, club, group)) || 'other';

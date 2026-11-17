@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import { publicEvent } from './public-event-preview.mjs';
-import { matchesActivity, easternLocal, dateRange, movePeriod } from '../dist/assets/nepc-event-model.js';
+import { matchesActivity, matchesProgram, easternLocal, dateRange, movePeriod } from '../dist/assets/nepc-event-model.js';
 const event = { EventId:123, ReservationId:456, EventName:'Test public session', EventCategoryId:22572, IsPublicBookingAllowed:true, IsCanceled:false, StartDateTime:'2026-11-18T10:00:00', EndDateTime:'2026-11-18T12:00:00', PublicEventUrl:'https://app.courtreserve.com/online/publicbookings/7432?tab=explore&eventId=123&reservationId=456', SsoUrl:'must never be returned', RegisteredCount:12, Instructors:[{email:'never return'}] };
 const sanitized=publicEvent(event,'rye',new Set([22572]));
 assert.deepEqual(Object.keys(sanitized).sort(),['id','title','categoryId','start','end','featured','url'].sort());
@@ -11,6 +11,13 @@ assert(matchesActivity({title:'Friday Ladder',categoryId:22572},'rye','competiti
 assert(!matchesActivity({title:'Friday Ladder',categoryId:22572},'rye','social'));
 assert(matchesActivity({title:'Beginner Skills Clinic',categoryId:20790},'rye','beginner'));
 assert(matchesActivity({title:'Beginner Skills Clinic',categoryId:20790},'rye','coaching'));
+assert(matchesActivity({title:'Coach & Play 101',categoryId:20790},'rye','beginner'));
+assert(matchesProgram({title:'Coach & Play 101'},'coach-play'));
+assert(!matchesProgram({title:'Coach & Play 201'},'coach-play'));
+assert(matchesProgram({title:'Beginner Guided Play with Samara'},'samara'));
+assert(!matchesProgram({title:'Competitive Play with Samara'},'samara'));
+assert(matchesProgram({title:'Quick Start'},'quickstart'));
+assert(!matchesProgram({title:'Beginner Skills Clinic'},'quickstart'));
 assert.deepEqual(dateRange('2026-11-17','week'),{start:'2026-11-16',end:'2026-11-23'});
 assert.deepEqual(dateRange('2026-12-31','month'),{start:'2026-12-01',end:'2027-01-01'});
 assert.equal(movePeriod('2026-12-31','month',1),'2027-01-01');

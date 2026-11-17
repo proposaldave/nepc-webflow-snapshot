@@ -4,26 +4,21 @@ import { fileURLToPath } from "node:url";
 
 const root = dirname(dirname(fileURLToPath(import.meta.url)));
 
+const giftCardUrl = "https://shop.newenglandpickleball.com/products/nepc-gift-card?utm_source=copyToPasteBoard&amp;utm_medium=product-links&amp;utm_content=web";
 const topNav = [
-  ["CLUBS", "clubs"],
-  ["CALENDAR", "calendar"],
-  ["LEAGUES", "leagues"],
-  ["COACHING", "coaching"],
-  ["MEMBERSHIP", "membership"],
-  ["CLUB EVENTS", "community-events"],
-  ["CONTACT", "contact"],
-  ["GIFT CARDS", "https://shop.newenglandpickleball.com/products/nepc-gift-card?utm_source=copyToPasteBoard&amp;utm_medium=product-links&amp;utm_content=web"],
+  ["Our Clubs", "clubs"],
+  ["Find Your Play", "calendar"],
+  ["Lessons &amp; Coaching", "coaching"],
+  ["Memberships", "membership"],
+  ["Club Experiences", "community-events"],
+  ["Contact", "contact"],
 ];
-
 const footerNav = [
-  ["CLUBS", "clubs"],
-  ["CALENDAR", "calendar"],
-  ["LEAGUES", "leagues"],
-  ["COACHING", "coaching"],
-  ["MEMBERSHIP", "membership"],
-  ["CLUB EVENTS", "community-events"],
-  ["CONTACT", "contact"],
-  ["OUR STORY", "founder-story"],
+  ...topNav,
+  ["New to Pickleball", "new-to-pickle-ball"],
+  ["Dave’s Philosophy", "founder-story"],
+  ["Leagues", "leagues"],
+  ["Gift Cards", "gift-cards"],
 ];
 
 function walk(dir) {
@@ -42,34 +37,38 @@ function hrefFor(slugOrUrl, basePath) {
   return `${basePath}/${slugOrUrl}/`;
 }
 
-function currentText(links) {
-  const current = links.match(/<a\b[^>]*(?:aria-current="page"|w--current)[^>]*>(CLUBS|CALENDAR|LEAGUES|COACHING|MEMBERSHIP|CLUB EVENTS|CONTACT|GIFT CARDS)<\/a>/);
-  return current?.[1] || "";
-}
 
 function navAnchor([text, slugOrUrl], basePath, current) {
   const href = hrefFor(slugOrUrl, basePath);
-  const currentAttrs = text === current ? ' aria-current="page" class="navbar14_link w-nav-link w--current"' : ' class="navbar14_link w-nav-link"';
+  const currentAttrs = href === current ? ' aria-current="page" class="navbar14_link w-nav-link w--current"' : ' class="navbar14_link w-nav-link"';
   return `<a href="${href}"${currentAttrs}>${text}</a>`;
 }
 
 function footerAnchor([text, slugOrUrl], basePath, current) {
   const href = hrefFor(slugOrUrl, basePath);
-  const currentAttrs = text === current ? ' aria-current="page" class="footer4_link w--current"' : ' class="footer4_link"';
+  const currentAttrs = href === current ? ' aria-current="page" class="footer4_link w--current"' : ' class="footer4_link"';
   return `<a href="${href}"${currentAttrs}>${text}</a>`;
 }
 
 export function normalizeNavigationHtml(html) {
   const basePath = basePathFor(html);
-  return html
-    .replace(/<div class="navbar14_menu-links">([\s\S]*?)<\/div><div id="w-node/g, (_match, links) => {
-      const current = currentText(links);
-      return `<div class="navbar14_menu-links">${topNav.map((item) => navAnchor(item, basePath, current)).join("")}</div><div id="w-node`;
-    })
-    .replace(/<div class="w-layout-grid footer4_link-list">([\s\S]*?)<\/div>/g, (_match, links) => {
-      const current = currentText(links);
-      return `<div class="w-layout-grid footer4_link-list">${footerNav.map((item) => footerAnchor(item, basePath, current)).join("")}</div>`;
-    });
+  const canonical = html.match(/<link[^>]*rel="canonical"[^>]*href="([^"]+)"/);
+  let current = '';
+  if (canonical) current = basePath + new URL(canonical[1]).pathname;
+  let updated = html
+    .replace(/<div class="navbar14_menu-links">[\s\S]*?<\/div><div id="w-node/g, () =>
+      `<div class="navbar14_menu-links">${topNav.map(item => navAnchor(item, basePath, current)).join('')}</div><div id="w-node`)
+    .replace(/(<div\b[^>]*class="navbar14_button-wrapper"[^>]*>)[\s\S]*?<\/div>/g, (_match, opening) =>
+      `${opening}<a href="${basePath}/book-a-court/" class="button is-alternate is-small w-button">Book a Court</a><a href="${basePath}/new-to-pickle-ball/" class="button is-secondary is-alternate is-small w-button">New to Pickleball?</a></div>`)
+    .replace(/<div class="w-layout-grid footer4_link-list">[\s\S]*?<\/div>/g, () =>
+      `<div class="w-layout-grid footer4_link-list">${footerNav.map(item => footerAnchor(item, basePath, current)).join('')}</div>`);
+  if (canonical && new URL(canonical[1]).pathname === '/gift-cards/') {
+    updated = updated.replace(/<aside class="nepc-gift-promo"[\s\S]*?<\/aside>/g, '');
+  } else if (updated.includes('footer4_component') && !updated.includes('nepc-gift-promo')) {
+    const promo = `<aside class="nepc-gift-promo" aria-label="NEPC gift cards"><div><span>Give a little more play.</span><p>A gift for the pickleball player in your life.</p></div><a href="${giftCardUrl}">Shop Gift Cards <span aria-hidden="true">↗</span></a></aside>`;
+    updated = updated.replace(/(<footer\b[^>]*>)/, '$1' + promo);
+  }
+  return updated;
 }
 
 export function normalizeNavigationInTree(dir) {

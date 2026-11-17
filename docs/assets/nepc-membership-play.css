@@ -241,3 +241,5 @@
 .mp-event-day-title{display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin-bottom:12px}
 .nepc-clubs .mp-event-day-title .mp-event-day-heading{margin-bottom:0}
 .mp-day-count{font-size:11px;color:var(--home-muted)}
+
+.mp-beginner-programs{padding:18px 20px;margin-top:16px;background:var(--home-ice);border-radius:10px}.mp-beginner-programs[hidden]{display:none}.nepc-find-play .mp-beginner-programs>p{font-size:12px;margin:0 0 10px}.nepc-find-play .mp-beginner-programs>p:last-child{margin:12px 0 0}.mp-beginner-programs a{color:var(--home-brand-blue);text-decoration:underline}

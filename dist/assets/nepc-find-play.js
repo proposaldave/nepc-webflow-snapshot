@@ -1,4 +1,4 @@
-import { labels, matchesActivity, easternLocal, addDays, dateRange, movePeriod, clock } from './nepc-event-model.js?v=20261117-3';
+import { labels, matchesActivity, beginnerPrograms, matchesProgram, easternLocal, addDays, dateRange, movePeriod, clock } from './nepc-event-model.js?v=20261117-4';
 const root = document.querySelector('.nepc-find-play');
 if (root) {
   const $ = selector => root.querySelector(selector);
@@ -8,7 +8,8 @@ if (root) {
   const today = () => easternLocal().slice(0,10);
   const params = new URLSearchParams(location.search);
   const hashClub = ['#rye','#middleton'].includes(location.hash) ? location.hash.slice(1) : null;
-  const state = { club:hashClub || (params.get('club') === 'middleton' ? 'middleton':'rye'), activity:labels[params.get('activity')] ? params.get('activity'):'all', view:['day','week','month'].includes(params.get('view')) ? params.get('view'):'day', date:today(), dayPage:0, dayTotal:0 };
+  const state = { club:hashClub || (params.get('club') === 'middleton' ? 'middleton':'rye'), activity:root.dataset.defaultActivity || (labels[params.get('activity')] ? params.get('activity'):'all'), view:['day','week','month'].includes(params.get('view')) ? params.get('view'):'day', date:today(), dayPage:0, dayTotal:0 };
+  state.program=beginnerPrograms[params.get('program')]?params.get('program'):'all';
   const periodView = () => state.view==='day'?'week':state.view;
   const portals = { rye:'https://app.courtreserve.com/Online/Portal/Index/7432', middleton:'https://app.courtreserve.com/Online/Portal/Index/13164' };
   const cache = new Map();
@@ -17,6 +18,7 @@ if (root) {
   const dateText = (value, options) => new Intl.DateTimeFormat('en-US',{...options,timeZone:'UTC'}).format(new Date(`${value}T12:00:00Z`));
   function remember() {
     const url = new URL(location.href); url.searchParams.set('club',state.club); url.searchParams.set('activity',state.activity); url.searchParams.set('view',state.view);
+    if(state.activity==='beginner'&&state.program!=='all')url.searchParams.set('program',state.program);else url.searchParams.delete('program');
     if (['#rye','#middleton'].includes(url.hash)) url.hash=state.club;
     history.replaceState(null,'',url);
   }
@@ -26,6 +28,10 @@ if (root) {
     buttons.forEach(button=>button.setAttribute('aria-pressed',String(button.dataset.playLocation===state.club)));
     panes.forEach(pane=>{pane.hidden=pane.dataset.calendarPane!==state.club;});
     filters.forEach(button=>button.setAttribute('aria-pressed',String(button.dataset.eventFilter===state.activity)));
+    $('[data-beginner-programs]').hidden=state.activity!=='beginner';
+    root.querySelectorAll('[data-program-filter]').forEach(button=>button.setAttribute('aria-pressed',String(button.dataset.programFilter===state.program)));
+    const programDescription=$('[data-program-description]');
+    if(programDescription)programDescription.textContent={all:'Choose a program or browse the next beginner sessions at your club.',quickstart:'Learn the rules, basic shots and doubles play. Demo paddles are available.', 'coach-play':'After Quick Start, play doubles with three other beginners and guidance from an NEPC teaching professional.',samara:'Find listed beginner guided-play sessions with Samara. If none are listed, contact the club for help with your next step.'}[state.program];
     root.querySelectorAll('[data-date-view]').forEach(button=>button.setAttribute('aria-pressed',String(button.dataset.dateView===state.view)));
     $('[data-location-status]').textContent=`Showing events at NEPC ${name}.`;
     $('[data-agenda-title]').textContent=`${state.view==='day'?'Up next':range.start===current.start ? (state.view==='week'?'This week':'This month') : (state.view==='week'?'A week of play':'A month of play')} at NEPC ${name}.`;
@@ -55,7 +61,7 @@ if (root) {
   }
   function render(data) {
     const now=easternLocal();
-    const events=data.events.filter(event=>easternLocal(event.start)>=now && matchesActivity(event,state.club,state.activity));
+    const events=data.events.filter(event=>easternLocal(event.start)>=now && matchesActivity(event,state.club,state.activity) && (state.activity!=='beginner'||matchesProgram(event,state.program)));
     const days=$('[data-event-days]'); days.replaceChildren();
     const groups=new Map(); events.forEach(event=>{const day=easternLocal(event.start).slice(0,10); if(!groups.has(day))groups.set(day,[]);groups.get(day).push(event);});
     state.dayTotal=groups.size;
@@ -67,7 +73,8 @@ if (root) {
     if(state.view==='day'&&visible.length){const first=visible[0][0],last=visible[visible.length-1][0];$('[data-period-label]').textContent=first===last?dateText(first,{weekday:'short',month:'short',day:'numeric'}):`${dateText(first,{month:'short',day:'numeric'})} – ${dateText(last,{month:'short',day:'numeric',year:'numeric'})}`;}
     const range=dateRange(state.date,periodView()),current=dateRange(today(),periodView());
     $('[data-period="previous"]').disabled=range.start<=current.start&&state.dayPage===0;
-    $('[data-agenda-status]').textContent=events.length ? `${state.view==='day'?'Next day with sessions':'Upcoming sessions'} · ${labels[state.activity]}` : 'No upcoming sessions are listed for this activity in this period. Try the next week or another activity.';
+    const activeLabel=state.activity==='beginner'?beginnerPrograms[state.program]:labels[state.activity];
+    $('[data-agenda-status]').textContent=events.length ? `${state.view==='day'?'Next day with sessions':'Upcoming sessions'} · ${activeLabel}` : `No upcoming ${activeLabel.toLowerCase()} sessions are listed in this period. Try the next week, another program or contact the club.`;
     if(state.view==='day'&&state.dayPage+1<state.dayTotal)$('[data-period="next"]').disabled=false;
     $('[data-feed-error]').hidden=true;
     $('[data-event-updated]').textContent=`Updated ${new Intl.DateTimeFormat('en-US',{hour:'numeric',minute:'2-digit',timeZone:'America/New_York'}).format(new Date(data.updatedAt))} ET. Times shown in Eastern Time. Confirm availability and registration details in CourtReserve.`;
@@ -95,6 +102,7 @@ if (root) {
   $('.mp-location-controls').hidden=false;
   buttons.forEach(button=>button.addEventListener('click',()=>{state.club=button.dataset.playLocation;state.dayPage=0;refresh();}));
   filters.forEach(button=>button.addEventListener('click',()=>{state.activity=button.dataset.eventFilter;state.dayPage=0;refresh();}));
+  root.querySelectorAll('[data-program-filter]').forEach(button=>button.addEventListener('click',()=>{state.program=button.dataset.programFilter;state.dayPage=0;refresh();}));
   root.querySelectorAll('[data-date-view]').forEach(button=>button.addEventListener('click',()=>{state.view=button.dataset.dateView;state.date=today();state.dayPage=0;refresh();}));
   root.querySelectorAll('[data-period]').forEach(button=>button.addEventListener('click',()=>{
     const direction=button.dataset.period==='next'?1:-1;
