@@ -42,11 +42,13 @@ for (const [route, values] of Object.entries(copy)) {
     assert(text(html).includes(q.acceptedAnswer.text), `${route}: FAQ answer not in page`);
   }
   if (!['/middleton/', '/rye/', '/founder-story/', '/gift-cards/'].includes(route)) {
-    const before = execFileSync('git', ['show', `4072e90:${relative}`], { cwd: root, encoding: 'utf8', maxBuffer: 5e6 });
+    const baseline = route === '/calendar/' ? 'd16d80069b6efe004de79de5161c94d35c903779' : '4072e90';
+    const before = execFileSync('git', ['show', `${baseline}:${relative}`], { cwd: root, encoding: 'utf8', maxBuffer: 5e6 });
+    if (route === '/calendar/') assert.equal(html, before, 'The owner deferred the new calendar: preserve the existing production page exactly');
     const expectedDestinations = new Set(protectedLinks(before));
     // Gift promotions now open the redesigned internal landing page. The
     // original shop purchase URL is checked separately on /gift-cards/ above.
-    expectedDestinations.delete('https://shop.newenglandpickleball.com/products/nepc-gift-card?utm_source=copyToPasteBoard&amp;utm_medium=product-links&amp;utm_content=web');
+    if (route !== '/calendar/') expectedDestinations.delete('https://shop.newenglandpickleball.com/products/nepc-gift-card?utm_source=copyToPasteBoard&amp;utm_medium=product-links&amp;utm_content=web');
     if (['/community-events/', '/glow-in-the-dark/'].includes(route)) {
       // The owner explicitly retired this past event-details link. Glow now
       // presents the offered experience and event-inquiry path instead.
@@ -54,10 +56,6 @@ for (const [route, values] of Object.entries(copy)) {
     }
     // Find Your Play also links directly to the two existing club portals.
     // Keep the exact original embed/shop URLs and allow only these known additions.
-    if (route === '/calendar/') {
-      expectedDestinations.add('https://app.courtreserve.com/Online/Portal/Index/13164');
-      expectedDestinations.add('https://app.courtreserve.com/Online/Portal/Index/7432');
-    }
     if (route === '/new-to-pickle-ball/') {
       // Inline beginner discovery retains the exact existing club portals and
       // location-specific Quick Start widgets as its registration fallback.

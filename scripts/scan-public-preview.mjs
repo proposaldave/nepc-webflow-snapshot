@@ -32,6 +32,8 @@ function walk(path = "") {
   if (!statSync(full).isDirectory()) return [full];
   return readdirSync(full).flatMap((name) => {
     if (skippedDirectories.has(name)) return [];
+    // Local emulator databases are ignored development state, not site files.
+    if (path === "" && name === ".wrangler") return [];
     const child = join(full, name);
     return statSync(child).isDirectory() ? walk(join(path, name)) : [child];
   });
