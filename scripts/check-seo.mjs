@@ -37,8 +37,22 @@ for (const [route, values] of Object.entries(copy)) {
   }
   if (!['/middleton/', '/rye/', '/founder-story/'].includes(route)) {
     const before = execFileSync('git', ['show', `4072e90:${relative}`], { cwd: root, encoding: 'utf8', maxBuffer: 5e6 });
-    assert.deepEqual([...new Set(protectedLinks(html))], [...new Set(protectedLinks(before))], `${route}: booking/shop destinations changed`);
-    assert.deepEqual(text(html).match(/\$[\d,.]+/g), text(before).match(/\$[\d,.]+/g), `${route}: prices changed`);
+    const expectedDestinations = new Set(protectedLinks(before));
+    // Find Your Play also links directly to the two existing club portals.
+    // Keep the exact original embed/shop URLs and allow only these known additions.
+    if (route === '/calendar/') {
+      expectedDestinations.add('https://app.courtreserve.com/Online/Portal/Index/13164');
+      expectedDestinations.add('https://app.courtreserve.com/Online/Portal/Index/7432');
+    }
+    assert.deepEqual([...new Set(protectedLinks(html))].sort(), [...expectedDestinations].sort(), `${route}: booking/shop destinations changed`);
+    const expectedPrices = text(before).match(/\$[\d,.]+/g);
+    if (route === '/membership/') {
+      // Repeat the existing Blue hourly fee in the accessible comparison table.
+      const blueHourlyFee = text(before).match(/Court Fees:\s*(\$[\d,.]+)/)?.[1];
+      assert(blueHourlyFee, 'Existing Blue hourly court fee is required');
+      expectedPrices.push(blueHourlyFee);
+    }
+    assert.deepEqual(text(html).match(/\$[\d,.]+/g), expectedPrices, `${route}: prices changed`);
     if (route.startsWith('/legal-pages/')) {
       assert.equal(text(html.match(/<main\b[\s\S]*?<\/main>/)[0]), text(before.match(/<main\b[\s\S]*?<\/main>/)[0]).replace("[insert email]", "Middleton@Nepclub.com "), `${route}: legal wording changed`);
     }

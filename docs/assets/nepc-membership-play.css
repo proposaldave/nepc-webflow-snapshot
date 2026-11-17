@@ -1,0 +1,243 @@
+/* Membership comparison and navigation to existing CourtReserve sessions. */
+.mp-membership-hero { display:grid; grid-template-columns:1fr 380px; gap:56px; align-items:center; padding-block:42px 36px; }
+.nepc-membership .mp-membership-hero h1 { font-size:52px; }
+.nepc-clubs .mp-membership-hero .lc-lead { margin-top:18px; font-size:18px; }
+.mp-membership-hero .lc-inline-links { margin-top:20px; }
+.mp-membership-hero figure { border-radius:18px; overflow:hidden; background:var(--home-ice); }
+.nepc-clubs .mp-membership-hero img { height:230px; object-fit:cover; object-position:48% 35%; }
+.mp-membership-hero figcaption { padding:12px 18px; background:var(--home-ink); color:#fff; font-size:11px; }
+.mp-tiers { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:20px; padding-bottom:44px; }
+.mp-tier { display:flex; flex-direction:column; padding:26px 24px 24px; border:1px solid var(--home-line); border-top:4px solid var(--home-brand-blue); border-radius:14px; background:#fff; box-shadow:0 8px 24px #173d6108; }
+.mp-tier:nth-child(2) { border-top-color:#b9bec6; }
+.mp-tier:nth-child(3) { border-top-color:#8a1830; }
+.nepc-clubs .mp-tier .lc-eyebrow { margin-bottom:8px; font-size:9px; }
+.nepc-clubs .mp-tier h2 { font-size:29px; }
+.nepc-clubs .mp-tier .mp-price { color:var(--home-ink); margin-top:18px; }
+.mp-price strong { font-size:34px; line-height:1.2; font-weight:750; letter-spacing:-.04em; }
+.mp-price span { font-size:13px; }
+.nepc-clubs .mp-tier .mp-partner { font-size:12px; margin-top:6px; }
+.mp-partner strong { font-weight:650; }
+.mp-tier ul { list-style:none; margin:22px 0 28px; padding:0; font-size:13px; line-height:1.6; }
+.mp-tier li { position:relative; padding-left:18px; color:var(--home-muted); }
+.mp-tier li + li { margin-top:11px; }
+.mp-tier li::before { content:'✓'; position:absolute; left:0; color:var(--home-ocean); font-weight:800; }
+.mp-tier-actions { margin-top:auto; padding-top:18px; border-top:1px solid var(--home-line); }
+.nepc-clubs .mp-tier-actions p { font-size:11px; margin-bottom:10px; }
+.mp-tier-actions .lc-button { display:flex; width:100%; margin-top:8px; font-size:12px; min-height:44px; padding:10px 16px; }
+.nepc-clubs .lc-button--outline { border-color:var(--home-brand-blue); background:#fff; color:var(--home-brand-blue); }
+.nepc-clubs .lc-button--outline:hover { background:var(--home-ice); }
+.nepc-clubs .mp-join-note { grid-column:1/-1; font-size:12px; }
+.mp-join-note a,.mp-table-note a { color:var(--home-brand-blue); text-decoration:underline; text-underline-offset:3px; }
+.mp-shared { display:grid; grid-template-columns:300px 1fr; gap:40px; align-items:center; }
+.mp-shared ul { display:grid; grid-template-columns:1fr 1fr; gap:18px 28px; padding:0; margin:0; list-style:none; font-size:13px; color:var(--home-ink); }
+.mp-shared li { display:flex; align-items:flex-start; gap:12px; }
+.mp-shared li span { color:var(--home-ocean); font-weight:800; }
+.mp-shared li:last-child { grid-column:1/-1; }
+.mp-table-scroll { overflow-x:auto; border:1px solid var(--home-line); border-radius:12px; }
+.mp-table-scroll:focus-visible { outline:3px solid var(--home-ocean); outline-offset:5px; }
+.mp-comparison { border-collapse:collapse; width:100%; min-width:680px; font-size:13px; line-height:1.6; }
+.mp-comparison caption { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; }
+.mp-comparison th,.mp-comparison td { padding:18px 20px; text-align:left; vertical-align:middle; border-bottom:1px solid var(--home-line); }
+.mp-comparison thead { background:var(--home-brand-blue); color:#fff; }
+.mp-comparison thead th { font-size:15px; font-weight:750; }
+.mp-comparison tbody th { width:36%; font-weight:650; color:var(--home-ink); }
+.mp-comparison td { width:21.33%; color:var(--home-muted); }
+.mp-comparison tbody tr:nth-child(even) { background:var(--home-ice); }
+.mp-comparison tr:last-child th,.mp-comparison tr:last-child td { border-bottom:0; }
+.nepc-clubs .mp-table-hint { font-size:11px; margin-bottom:12px; display:none; }
+.nepc-clubs .mp-table-note { margin-top:16px; }
+.mp-member-faq { padding-top:0; }
+.mp-nonmember { margin-top:32px; padding:24px; background:var(--home-ice); border-radius:12px; display:flex; align-items:center; justify-content:space-between; gap:24px; }
+.nepc-clubs .mp-nonmember p { font-size:13px; margin-top:8px; }
+.nepc-clubs .mp-philosophy { margin-top:24px; }
+.mp-philosophy .lc-text-link { margin-left:8px; }
+.mp-play-hero { display:flex; justify-content:space-between; align-items:flex-end; gap:40px; padding-block:44px 36px; }
+.nepc-clubs .mp-play-hero h1 { font-size:56px; }
+.nepc-clubs .mp-play-hero .lc-lead { margin-top:18px; font-size:18px; }
+.mp-hero-help { display:flex; flex-direction:column; align-items:flex-start; gap:6px; font-size:13px; }
+.mp-location-step { padding-block:30px; }
+.mp-step-heading { display:flex; align-items:flex-start; gap:16px; margin-bottom:24px; }
+.mp-step-number { flex:0 0 34px; width:34px; height:34px; display:grid; place-items:center; border-radius:50%; background:var(--home-ink); color:#fff; font-size:11px; font-weight:750; }
+.nepc-clubs .mp-step-heading h2 { font-size:27px; line-height:1.25; }
+.nepc-clubs .mp-step-heading p { font-size:13px; margin-top:7px; }
+.mp-location-controls { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+.mp-location-controls[hidden],.mp-calendar-pane[hidden] { display:none !important; }
+.mp-location-button { appearance:none; position:relative; text-align:left; padding:18px 54px 18px 24px; border:1px solid var(--home-line); border-radius:10px; background:#fff; color:var(--home-ink); font:inherit; cursor:pointer; }
+.mp-location-button > span:first-child { display:block; font-size:20px; font-weight:750; letter-spacing:-.02em; }
+.mp-location-button small { display:block; font-size:12px; margin-top:4px; color:var(--home-muted); }
+.mp-location-button[aria-pressed="true"] { background:var(--home-brand-blue); color:#fff; border-color:var(--home-brand-blue); }
+.mp-location-button[aria-pressed="true"] small { color:#e2edf5; }
+.mp-location-check { position:absolute; display:grid; place-items:center; right:22px; top:calc(50% - 12px); width:24px; height:24px; border:1px solid var(--home-line); border-radius:50%; color:transparent; }
+.mp-location-button[aria-pressed="true"] .mp-location-check { color:var(--home-ink); background:var(--home-lime); border-color:var(--home-lime); }
+.nepc-clubs .mp-location-status { font-size:11px; margin-top:12px; }
+.mp-activity-grid { display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); gap:14px; }
+.mp-activity-card { display:flex; flex-direction:column; padding:20px 18px; border:1px solid var(--home-line); border-radius:12px; background:#fff; transition:box-shadow .18s,border-color .18s; }
+.mp-activity-card:hover { border-color:var(--home-ocean); box-shadow:0 5px 16px #173d610c; }
+.mp-activity-number { color:var(--home-ocean); font-size:11px; font-weight:750; }
+.nepc-clubs .mp-activity-card h3 { margin-top:22px; font-size:16px; }
+.nepc-clubs .mp-activity-card p { margin-top:12px; margin-bottom:20px; font-size:12px; }
+.mp-activity-action { display:block; margin-top:auto; padding-top:14px; color:var(--home-brand-blue); border-top:1px solid var(--home-line); font-size:11px; font-weight:750; }
+.mp-play-guide { margin-top:24px; border-bottom:1px solid var(--home-line); padding-bottom:18px; }
+.mp-play-guide summary,.mp-resource summary { cursor:pointer; color:var(--home-brand-blue); font-size:13px; font-weight:750; }
+.mp-play-guide summary:focus-visible,.mp-resource summary:focus-visible { outline:3px solid var(--home-ocean); outline-offset:4px; }
+.nepc-clubs .mp-play-guide > p { margin-top:18px; font-size:13px; max-width:850px; }
+.mp-play-guide dl { display:grid; grid-template-columns:1fr 1fr; gap:24px; margin-top:24px; }
+.mp-play-guide dt { font-weight:750; color:var(--home-ink); font-size:14px; }
+.nepc-clubs .mp-play-guide dd p { font-size:13px; margin-top:8px; }
+.mp-sessions { padding-bottom:56px; scroll-margin-top:24px; }
+.mp-calendar-pane { border:1px solid var(--home-line); border-radius:12px; overflow:hidden; background:#fff; margin-bottom:20px; }
+.mp-calendar-pane-heading { padding:18px 22px; display:flex; align-items:center; justify-content:space-between; gap:16px; background:var(--home-ice); border-bottom:1px solid var(--home-line); }
+.nepc-clubs .mp-calendar-pane-heading h3 { font-size:17px; }
+.nepc-clubs .mp-calendar-pane-heading .lc-text-link { font-size:11px; }
+.mp-calendar-pane iframe { display:block; width:100%; min-height:600px; }
+.nepc-clubs .mp-calendar-help { font-size:12px; }
+.mp-resource-grid { display:grid; grid-template-columns:1fr 1fr; gap:24px; }
+.mp-resource { padding:20px; border-radius:12px; background:#fff; border:1px solid var(--home-line); }
+.mp-resource-video { display:block; position:relative; border-radius:8px; overflow:hidden; background:var(--home-ice); }
+.nepc-clubs .mp-resource-video img { height:170px; object-fit:cover; object-position:center; }
+.mp-resource-video > span { position:absolute; right:12px; bottom:12px; background:var(--home-brand-blue); color:#fff; border-radius:6px; padding:7px 12px; font-size:11px; font-weight:750; }
+.nepc-clubs .mp-resource h3 { margin-block:18px 12px; }
+.nepc-clubs .mp-resource details p { margin-top:14px; color:var(--home-muted); font-size:13px; line-height:1.7; }
+@media(max-width:1050px) {
+  .mp-membership-hero { grid-template-columns:1fr 320px; gap:32px; }
+  .mp-tier { padding:22px 18px; }
+  .mp-activity-grid { grid-template-columns:repeat(3,minmax(0,1fr)); }
+  .mp-shared { grid-template-columns:250px 1fr; gap:32px; }
+}
+@media(max-width:700px) {
+  .mp-membership-hero { grid-template-columns:1fr; gap:24px; padding-block:30px; }
+  .nepc-membership .mp-membership-hero h1 { font-size:42px; }
+  .nepc-clubs .mp-membership-hero .lc-lead { font-size:17px; margin-top:14px; }
+  .mp-membership-hero figure { max-width:380px; }
+  .nepc-clubs .mp-membership-hero img { height:180px; }
+  .mp-tiers { grid-template-columns:1fr; gap:20px; padding-bottom:36px; }
+  .mp-tier { padding:24px; }
+  .mp-tier ul { margin-bottom:24px; }
+  .mp-tier-actions { display:grid; grid-template-columns:1fr 1fr; gap:8px; }
+  .mp-tier-actions > p { grid-column:1/-1; }
+  .mp-tier-actions .lc-button { font-size:11px; padding:10px 12px; gap:10px; margin-top:0; }
+  .mp-shared { grid-template-columns:1fr; gap:24px; }
+  .mp-shared ul { grid-template-columns:1fr; gap:14px; }
+  .nepc-clubs .mp-table-hint { display:block; }
+  .mp-comparison th,.mp-comparison td { padding:16px; }
+  .mp-member-faq { padding-top:0; }
+  .mp-nonmember { align-items:flex-start; flex-direction:column; padding:20px; }
+  .mp-nonmember .lc-button { width:100%; font-size:12px; }
+  .mp-philosophy .lc-text-link { margin-left:0; }
+  .mp-play-hero { display:block; padding-block:30px; }
+  .nepc-clubs .mp-play-hero h1 { font-size:44px; }
+  .nepc-clubs .mp-play-hero .lc-lead { font-size:17px; }
+  .nepc-clubs .mp-hero-help { margin-top:24px; }
+  .mp-location-step { padding-block:26px; }
+  .mp-step-heading { gap:12px; margin-bottom:20px; }
+  .mp-step-number { width:30px; height:30px; flex-basis:30px; }
+  .nepc-clubs .mp-step-heading h2 { font-size:25px; }
+  .mp-location-controls { gap:12px; }
+  .mp-location-button { padding:16px 12px; min-height:106px; }
+  .mp-location-button > span:first-child { font-size:17px; padding-right:16px; }
+  .mp-location-button small { font-size:10px; }
+  .mp-location-check { top:12px; right:10px; width:17px; height:17px; font-size:11px; }
+  .mp-activity-grid { grid-template-columns:1fr 1fr; gap:12px; }
+  .mp-activity-card { padding:16px 14px; }
+  .mp-activity-card:last-child { grid-column:1/-1; display:grid; grid-template-columns:1fr 1fr; gap:0 20px; }
+  .mp-activity-card:last-child .mp-activity-number { grid-column:1/-1; }
+  .mp-activity-card:last-child h3 { margin-top:12px; }
+  .mp-activity-card:last-child p { grid-column:1; margin-block:8px 0; }
+  .mp-activity-card:last-child .mp-activity-action { grid-column:2; grid-row:2/4; align-self:end; padding:12px 0; }
+  .nepc-clubs .mp-activity-card h3 { font-size:15px; margin-top:16px; }
+  .mp-play-guide dl { grid-template-columns:1fr; }
+  .mp-calendar-pane-heading { flex-direction:column; align-items:flex-start; padding:16px; gap:10px; }
+  .mp-calendar-pane iframe { min-height:660px; }
+  .mp-resource-grid { grid-template-columns:1fr; gap:20px; }
+  .nepc-clubs .mp-resource-video img { height:155px; }
+}
+@media(prefers-reduced-motion:reduce) {
+  .mp-activity-card { transition:none; }
+}
+.nepc-clubs .mp-program-note { margin-top:16px; font-size:12px; }
+@media(max-width:700px) {
+  .mp-comparison { min-width:580px; table-layout:fixed; }
+  .mp-comparison th:first-child { width:160px; position:sticky; left:0; z-index:1; background:#fff; box-shadow:1px 0 var(--home-line); }
+  .mp-comparison th:not(:first-child),.mp-comparison td { width:140px; }
+  .mp-comparison thead th:first-child { background:var(--home-brand-blue); z-index:2; }
+  .mp-comparison tbody tr:nth-child(even) th:first-child { background:var(--home-ice); }
+}
+/* A weekly agenda of real public sessions, with functioning category filters. */
+.mp-agenda-filters { padding-block:30px 24px; }
+.nepc-clubs .mp-agenda-filters h2 { font-size:24px; margin-bottom:18px; }
+.mp-event-filters { display:flex; flex-wrap:wrap; gap:10px; }
+.mp-event-filter,.mp-view-options button,.mp-date-arrow,.mp-today,.mp-retry { appearance:none; font-family:inherit; cursor:pointer; font-size:12px; font-weight:750; line-height:1.5; }
+.mp-event-filter { padding:10px 16px; border:1px solid var(--home-line); border-radius:24px; color:var(--home-brand-blue); background:#fff; }
+.mp-event-filter[aria-pressed="true"] { background:var(--home-brand-blue); border-color:var(--home-brand-blue); color:#fff; }
+.mp-event-filter:hover { border-color:var(--home-ocean); }
+.mp-agenda-heading { display:flex; justify-content:space-between; align-items:flex-end; gap:24px; padding-block:16px 22px; }
+.nepc-clubs .mp-agenda-heading h2 { font-size:32px; }
+.mp-view-options { display:flex; gap:4px; padding:4px; border-radius:8px; background:var(--home-ice); }
+.mp-view-options button { padding:8px 16px; border:0; color:var(--home-brand-blue); background:transparent; border-radius:5px; }
+.mp-view-options button[aria-pressed="true"] { background:#fff; box-shadow:0 1px 5px #173d6120; }
+.mp-date-navigation { display:flex; align-items:center; gap:16px; padding-block:18px; border-block:1px solid var(--home-line); }
+.nepc-clubs .mp-date-navigation h3 { min-width:220px; text-align:center; font-size:16px; }
+.mp-date-arrow { display:grid; place-items:center; width:36px; height:36px; border:1px solid var(--home-line); border-radius:50%; background:#fff; color:var(--home-brand-blue); font-size:20px; }
+.mp-date-arrow:disabled { opacity:.3; cursor:default; }
+.mp-today { padding:8px 14px; border:1px solid var(--home-line); border-radius:6px; background:var(--home-ice); color:var(--home-brand-blue); margin-left:auto; }
+.nepc-clubs .mp-agenda-status { font-size:13px; margin-top:20px; }
+.mp-event-day { margin-top:28px; }
+.nepc-clubs .mp-event-day-heading { font-size:14px; margin-bottom:12px; }
+.mp-event-list { padding:0; margin:0; list-style:none; }
+.mp-event-card { display:grid; grid-template-columns:116px 1fr auto; align-items:center; gap:24px; border:1px solid var(--home-line); border-radius:10px; padding:18px 20px; background:#fff; }
+.mp-event-card + .mp-event-card { margin-top:10px; }
+.mp-event-time { display:flex; flex-direction:column; color:var(--home-ink); font-size:14px; font-weight:750; line-height:1.6; }
+.mp-event-time span:last-child { color:var(--home-muted); font-weight:500; font-size:12px; }
+.nepc-clubs .mp-event-content h4 { color:var(--home-ink); font-size:16px; line-height:1.45; font-weight:750; margin:0; }
+.mp-event-category { display:inline-block; font-size:11px; color:var(--home-ocean); margin-top:7px; }
+.mp-event-register { font-size:12px; font-weight:800; color:var(--home-brand-blue); padding:11px 14px; border:1px solid var(--home-brand-blue); border-radius:7px; white-space:nowrap; }
+.mp-event-register:hover { background:var(--home-ice); }
+.nepc-clubs .mp-updated { margin-top:22px; font-size:11px; line-height:1.7; max-width:850px; }
+.mp-special-events { display:grid; grid-template-columns:220px 1fr auto; gap:24px; align-items:center; background:var(--home-ice); border-radius:12px; padding:24px; margin-top:32px; }
+.nepc-clubs .mp-special-events h3 { font-size:22px; }
+.mp-special-events .lc-eyebrow { font-size:9px; }
+.mp-special-events p { font-size:13px; }
+.mp-special-events:has(.mp-event-card) { grid-template-columns:1fr; }
+.mp-feed-error { margin-top:24px; padding:24px; border:1px solid var(--home-line); border-radius:10px; background:var(--home-ice); }
+.mp-feed-error p { font-size:14px; margin-bottom:16px; }
+.mp-retry { padding:12px 20px; border:1px solid var(--home-brand-blue); border-radius:8px; background:#fff; color:var(--home-brand-blue); }
+.mp-private-flow { padding:30px; background:var(--home-ice); border-radius:14px; }
+.mp-private-flow > p:not(.lc-eyebrow) { margin-top:16px; font-size:15px; max-width:620px; }
+.mp-private-flow ol { list-style:decimal; padding-left:24px; margin:28px 0; }
+.mp-private-flow li { padding-left:8px; font-size:14px; }
+.mp-private-flow li + li { margin-top:20px; }
+.mp-private-flow li strong,.mp-private-flow li span { display:block; }
+.mp-private-flow li strong { color:var(--home-ink); }
+.mp-private-flow li span { color:var(--home-muted); font-size:13px; margin-top:4px; }
+.mp-calendar-fallback { border-block:1px solid var(--home-line); padding-block:18px; margin-top:30px; }
+.mp-calendar-fallback summary { cursor:pointer; color:var(--home-brand-blue); font-size:13px; font-weight:750; }
+.mp-calendar-fallback[open] summary { margin-bottom:20px; }
+.mp-calendar-fallback summary:focus-visible { outline:3px solid var(--home-ocean); outline-offset:5px; }
+.mp-private-flow[hidden],[data-event-results][hidden],.mp-feed-error[hidden] { display:none !important; }
+.nepc-find-play .mp-play-hero { padding-block:30px 26px; }
+.nepc-find-play .mp-location-step { padding-block:24px; }
+.nepc-find-play .mp-location-step .mp-step-heading { margin-bottom:16px; }
+.nepc-find-play .mp-location-button { padding-block:14px; }
+@media(max-width:700px) {
+  .mp-agenda-filters { padding-block:28px 16px; }
+  .nepc-clubs .mp-agenda-filters h2 { font-size:23px; }
+  .mp-event-filters { display:grid; grid-template-columns:1fr 1fr; gap:8px; }
+  .mp-event-filter { border-radius:8px; font-size:11px; padding:10px 12px; text-align:left; }
+  .mp-agenda-heading { flex-direction:column; align-items:flex-start; gap:18px; }
+  .nepc-clubs .mp-agenda-heading h2 { font-size:28px; }
+  .mp-date-navigation { gap:10px; flex-wrap:wrap; }
+  .nepc-clubs .mp-date-navigation h3 { min-width:0; flex:1; font-size:13px; }
+  .mp-today { font-size:11px; padding:6px 10px; }
+  .mp-event-card { grid-template-columns:76px 1fr; gap:12px 16px; padding:16px; }
+  .mp-event-time { font-size:13px; align-self:start; }
+  .mp-event-time span:last-child { font-size:11px; }
+  .nepc-clubs .mp-event-content h4 { font-size:14px; }
+  .mp-event-register { grid-column:2; justify-self:start; font-size:11px; padding:8px 12px; }
+  .mp-event-category { font-size:10px; }
+  .mp-special-events { grid-template-columns:1fr; gap:16px; padding:20px; }
+  .mp-private-flow { padding:24px 20px; }
+  .mp-private-flow .lc-button { width:100%; font-size:12px; }
+}
+.mp-event-day-title{display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin-bottom:12px}
+.nepc-clubs .mp-event-day-title .mp-event-day-heading{margin-bottom:0}
+.mp-day-count{font-size:11px;color:var(--home-muted)}

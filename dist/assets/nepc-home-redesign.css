@@ -156,14 +156,14 @@ body[data-nepc-home] .navbar14_menu-button {
   width: min(1120px, calc(100% - 64px));
   margin-inline: auto;
 }
-.nepc-home h1, body[data-nepc-home] .nepc-home h2, body[data-nepc-home] .nepc-home h3 {
+.nepc-home .home-hero-title, body[data-nepc-home] .nepc-home h2, body[data-nepc-home] .nepc-home h3 {
   margin: 0;
   color: var(--home-ink);
   font-family: Raleway, Arial, sans-serif;
   font-weight: 700;
   text-wrap: balance;
 }
-.nepc-home h1 {
+.nepc-home .home-hero-title {
   font-size: clamp(42px, 4.6vw, 62px);
   line-height: 1.12;
   letter-spacing: -.055em;
@@ -267,10 +267,10 @@ body[data-nepc-home] .nepc-home h3 {
   letter-spacing: .065em;
   text-transform: uppercase;
 }
-.home-hero h1 {
+.home-hero .home-hero-title {
   font-size: clamp(48px, 5.5vw, 72px);
 }
-.home-hero h1 span {
+.home-hero .home-hero-title span {
   color: var(--home-ocean);
 }
 .home-hero-copy > p {
@@ -950,7 +950,7 @@ body[data-nepc-home] .footer4_component .padding-top {
     font-size: 12px;
     letter-spacing: .045em;
   }
-  .nepc-home .home-hero h1 {
+  .nepc-home .home-hero .home-hero-title {
     font-size: clamp(39px, 8.4vw, 55px);
     line-height: 1.12;
   }
@@ -1179,3 +1179,13 @@ body[data-nepc-home] .footer4_component .padding-top {
 .home-play::before {content: ""; position: absolute; inset: 0 calc((100% - 100vw) / 2); z-index: -1; background: var(--home-ice);}
 .home-play .home-activity {background: #fff;}
 .home-play .home-activity:hover {background: #f9fcfd; border-color: var(--home-ocean);}
+
+/* The location keyword line is the semantic H1; the slogan keeps its approved scale. */
+body[data-nepc-home] .nepc-home .home-location-heading {
+  display: block; margin: 0 0 12px; color: var(--home-ocean);
+  font-family: Raleway, Arial, sans-serif; font-size: 10px; font-weight: 800;
+  line-height: 1.6; letter-spacing: .14em; text-transform: uppercase;
+}
+@media (max-width: 767px) {
+  body[data-nepc-home] .nepc-home .home-location-heading { font-size: 9px; }
+}
