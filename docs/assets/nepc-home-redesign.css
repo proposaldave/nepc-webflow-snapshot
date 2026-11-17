@@ -1190,11 +1190,16 @@ body[data-nepc-home] .nepc-home .home-location-heading {
   body[data-nepc-home] .nepc-home .home-location-heading { font-size: 9px; }
 }
 /* Shared discovery footer and the simplified primary navigation. */
-body[data-nepc-home] .nepc-gift-promo{width:min(1120px,calc(100% - 64px));margin:0 auto 8px;padding:24px 28px;display:flex;align-items:center;justify-content:space-between;gap:24px;border-radius:12px;background:var(--home-ice);color:var(--home-ink)}
-body[data-nepc-home] .nepc-gift-promo>div>span{display:block;font-size:20px;font-weight:750;letter-spacing:-.025em}
-body[data-nepc-home] .nepc-gift-promo p{margin:6px 0 0;font-size:13px;color:var(--home-muted);line-height:1.6}
-body[data-nepc-home] .nepc-gift-promo>a{display:inline-flex;align-items:center;gap:24px;white-space:nowrap;padding:12px 18px;border-radius:7px;background:var(--home-brand-blue);color:#fff;font-size:12px;font-weight:750;text-decoration:none}
-body[data-nepc-home] .nepc-gift-promo>a:hover{background:var(--home-ink)}
+body[data-nepc-home] .nepc-gift-promo{width:min(1120px,calc(100% - 64px));margin:24px auto 20px;padding:28px 32px;display:grid;grid-template-columns:142px 1fr auto;align-items:center;gap:32px;border-radius:16px;background:var(--home-brand-blue);color:#fff}
+body[data-nepc-home] .nepc-gift-promo-visual{display:flex;flex-direction:column;justify-content:space-between;gap:16px;aspect-ratio:1.58;padding:16px;border:1px solid #ffffff70;border-radius:10px;background:var(--home-ink);box-shadow:4px 6px 0 #ffffff14;transform:rotate(-5deg)}
+body[data-nepc-home] .nepc-gift-promo-visual img{display:block;width:108px;height:auto;max-width:100%}
+body[data-nepc-home] .nepc-gift-promo-visual span{font-size:8px;line-height:1.5;text-transform:uppercase;letter-spacing:.14em;color:var(--home-lime);font-weight:750}
+body[data-nepc-home] .nepc-gift-promo-copy h2{margin:6px 0 0;font-size:25px;line-height:1.2;letter-spacing:-.03em;color:#fff;font-weight:750}
+body[data-nepc-home] .nepc-gift-promo-copy p{margin:9px 0 0;font-size:13px;color:#e1edf5;line-height:1.6;max-width:470px}
+body[data-nepc-home] .nepc-gift-promo-copy .nepc-gift-promo-label{margin:0;color:var(--home-lime);font-size:9px;font-weight:800;letter-spacing:.12em;text-transform:uppercase}
+body[data-nepc-home] .nepc-gift-promo>a{display:inline-flex;align-items:center;gap:24px;white-space:nowrap;padding:13px 20px;border-radius:8px;background:var(--home-lime);color:var(--home-ink);font-size:12px;font-weight:800;text-decoration:none}
+body[data-nepc-home] .nepc-gift-promo>a:hover{background:#e1f77a}
 body[data-nepc-home] .footer4_top-wrapper .footer4_link-list{gap:16px 24px;justify-content:flex-end}
 body[data-nepc-home] .navbar14_link[aria-current="page"]{color:var(--home-lime);text-decoration:underline;text-underline-offset:6px}
-@media(max-width:767px){body[data-nepc-home] .nepc-gift-promo{width:calc(100% - 40px);padding:22px;flex-direction:column;align-items:flex-start;gap:18px}body[data-nepc-home] .nepc-gift-promo>a{width:100%;justify-content:space-between}body[data-nepc-home] .footer4_top-wrapper .footer4_link-list{justify-content:flex-start;gap:14px 20px}}
+@media(max-width:900px){body[data-nepc-home] .nepc-gift-promo{grid-template-columns:118px 1fr;gap:22px}body[data-nepc-home] .nepc-gift-promo>a{grid-column:2;justify-self:start}body[data-nepc-home] .nepc-gift-promo-visual{grid-row:1/3;align-self:center}}
+@media(max-width:767px){body[data-nepc-home] .nepc-gift-promo{width:calc(100% - 40px);padding:24px 22px;margin-top:22px;grid-template-columns:82px 1fr;gap:18px}body[data-nepc-home] .nepc-gift-promo-visual{grid-row:auto;padding:10px;border-radius:7px;gap:10px}body[data-nepc-home] .nepc-gift-promo-visual span{font-size:6px}body[data-nepc-home] .nepc-gift-promo-copy h2{font-size:21px}body[data-nepc-home] .nepc-gift-promo-copy p:not(.nepc-gift-promo-label){grid-column:1/-1;font-size:12px}body[data-nepc-home] .nepc-gift-promo>a{grid-column:1/-1;width:100%;justify-content:space-between}body[data-nepc-home] .footer4_top-wrapper .footer4_link-list{justify-content:flex-start;gap:14px 20px}}

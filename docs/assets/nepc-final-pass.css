@@ -187,6 +187,78 @@ body[data-nepc-home] main.fv-archive { color:var(--home-ink); background:#fff; w
 .fv-quickstart-page .fv-heading h2 { font-size:24px; }
 .fv-quickstart-page .fv-hero { padding-block:28px 18px; }
 .fv-quickstart-page .fv-section { padding-block:24px 36px; }
+.fv-booking-page .fv-booking-hero { padding-block:38px 34px; max-width:1120px; }
+.nepc-services .fv-booking-hero h1 { font-size:38px; line-height:1.15; }
+.fv-booking-hero > p:not(.fv-kicker) { font-size:15px; margin-top:14px; max-width:640px; }
+.fv-booking-choices { display:grid; grid-template-columns:1fr 1fr; gap:14px; max-width:780px; margin-top:26px; }
+.nepc-services .fv-booking-choices .fv-button { font-size:15px; min-height:60px; padding:18px 22px; }
+.nepc-services .fv-booking-hero .fv-booking-help { margin-top:18px; font-size:12px; }
+.fv-booking-page .fv-section { padding-block:30px 40px; }
+.fv-booking-page .fv-heading h2 { font-size:26px; }
+.fv-booking-page .fv-details { max-width:880px; padding-block:18px; margin-bottom:30px; }
+.fv-leagues-page .fv-hero { padding-block:38px 30px; }
+.nepc-services.fv-leagues-page h1 { font-size:40px; }
+.fv-leagues-page .fv-intro { font-size:15px; }
+.fv-leagues-page .fv-section { padding-block:36px; }
+.fv-leagues-page .fv-heading h2 { font-size:28px; }
+.fv-season-card { display:flex; flex-direction:column; align-items:flex-start; gap:14px; }
+.fv-season-card .fv-kicker { margin:0; }
+.fv-season-card > p { margin:0; }
+.fv-season-card > .fv-link { margin-top:auto; padding-top:8px; }
+.fv-season-card details { width:100%; border-top:1px solid var(--home-line); padding-top:16px; }
+.fv-season-card summary { cursor:pointer; font-weight:750; color:var(--home-brand-blue); font-size:13px; }
+.fv-season-card .fv-rich { margin-top:16px; font-size:13px; }
+.fv-season-facts { display:grid; gap:12px; margin:18px 0; }
+.fv-season-facts > div { border-top:1px solid var(--home-line); padding-top:12px; }
+.fv-season-facts dt { color:var(--home-ink); font-size:12px; font-weight:750; }
+.fv-season-facts dd { margin:4px 0 0; font-size:13px; }
+.fv-league-results { display:grid; gap:12px; margin-top:16px; }
+.fv-league-result { border:1px solid var(--home-line); border-radius:9px; padding:16px; }
+.fv-league-result h4 { font-size:14px; line-height:1.4; margin:0 0 10px; color:var(--home-ink); font-weight:750; }
+.fv-league-result p { margin-top:5px; font-size:12px; }
+.fv-leagues-page .fv-help { margin-top:0; }
+.fv-archive .fall-news-page { padding:38px 0!important; min-height:0; }
+.fv-archive .fall-news-page > .codex-container { width:min(800px,calc(100% - 64px)); margin-inline:auto; }
+.fv-archive .fall-news-page :is(h1,h2,h3,h4) { font-family:Raleway,Arial,sans-serif; color:var(--home-ink); }
+.fv-archive .fall-news-page h1 { font-size:38px; line-height:1.15; margin:18px 0; }
+.fv-archive .fall-lead { font-size:15px; line-height:1.8; color:var(--home-muted); }
+.fv-archive .codex-kicker { color:var(--home-ocean); font-size:10px; letter-spacing:.12em; font-weight:800; text-transform:uppercase; }
+.fv-archive .fall-back { color:var(--home-brand-blue); font-size:12px; margin-bottom:22px; }
+.fv-archive .fall-facts > div,.fv-archive .fall-result { border-color:var(--home-line); border-radius:10px; background:var(--home-ice); box-shadow:none; }
+.fv-archive .fall-facts dt,.fv-archive .fall-result h4 { color:var(--home-ink); font-size:13px; }
+.fv-archive .fall-facts dd,.fv-archive .fall-result p { color:var(--home-muted); font-size:13px; }
+.fv-archive .fall-button { border-radius:8px; background:var(--home-brand-blue); color:#fff!important; font-size:12px; min-height:44px; }
+.fv-archive .fall-button.secondary { background:#fff; color:var(--home-brand-blue)!important; border-color:var(--home-line); }
+.fv-archive .fall-results-title { color:var(--home-ink); font-size:23px; }
+.fv-gift-page .fv-hero { padding-block:44px; gap:56px; }
+.nepc-services.fv-gift-page h1 { font-size:clamp(38px,4.2vw,54px); }
+.fv-gift-page .fv-intro { font-size:16px; }
+.fv-gift-next { display:grid; grid-template-columns:1fr auto; align-items:center; gap:36px; }
+.fv-gift-next h2 { font-size:27px; max-width:600px; }
+.fv-gift-next p:not(.fv-kicker) { font-size:14px; margin-top:14px; max-width:650px; }
+.fv-gift-purchase { max-width:500px; margin-top:26px; }
+.fv-gift-purchase[hidden],[data-gift-fallback][hidden] { display:none; }
+.fv-gift-fields { display:grid; grid-template-columns:1fr 100px; gap:16px; }
+.fv-gift-fields label { display:block; margin-bottom:8px; color:var(--home-ink); font-size:12px; font-weight:750; }
+.fv-gift-fields select,.fv-gift-fields input { width:100%; min-height:48px; padding:12px 14px; border:1px solid var(--home-line); border-radius:8px; color:var(--home-ink); background:#fff; font-family:inherit; font-size:15px; }
+.fv-gift-fields select { cursor:pointer; }
+.fv-gift-total { display:flex; justify-content:space-between; align-items:center; margin:20px 0 16px; font-size:13px; }
+.fv-gift-total strong { color:var(--home-ink); font-size:23px; font-weight:750; letter-spacing:-.025em; }
+.nepc-services .fv-gift-checkout { width:100%; min-height:50px; }
+.fv-gift-checkout[aria-disabled=true] { opacity:.5; cursor:not-allowed; }
+.nepc-services .fv-gift-payment-note { font-size:11px; margin-top:10px; }
+.nepc-services .fv-gift-recipient { margin-top:18px; font-size:11px; }
+.nepc-services .fv-gift-recipient-note { font-size:10px; margin-top:5px; max-width:400px; }
+.fv-gift-page .fv-gift { position:relative; }
+.fv-gift-face-value { position:absolute; right:38px; top:38px; color:var(--home-lime); font-size:42px; font-weight:750; letter-spacing:-.04em; line-height:1; }
+@media(max-width:700px) {
+ .fv-booking-page .fv-booking-hero{padding-block:28px}.nepc-services .fv-booking-hero h1{font-size:31px}
+ .fv-booking-choices{grid-template-columns:1fr;gap:12px;margin-top:22px}.nepc-services .fv-booking-choices .fv-button{min-height:56px;font-size:14px;padding:16px 18px}
+ .nepc-services.fv-leagues-page h1{font-size:33px}.fv-leagues-page .fv-hero{padding-block:28px 24px}.fv-leagues-page .fv-section{padding-block:30px}
+ .fv-archive .fall-news-page{padding-block:28px!important}.fv-archive .fall-news-page>.codex-container{width:calc(100% - 40px)}.fv-archive .fall-news-page h1{font-size:31px}
+ .fv-gift-page .fv-hero{padding-block:30px;gap:32px}.fv-gift-next{grid-template-columns:1fr;gap:22px}.fv-gift-next h2{font-size:24px}.nepc-services.fv-gift-page h1{font-size:37px}
+ .fv-gift-fields{grid-template-columns:1fr 84px;gap:12px}.fv-gift-face-value{font-size:34px;right:26px;top:26px}.fv-gift-page .fv-gift img{width:160px}
+}
 .fv-coaching-page .fv-hero { min-height:calc(100svh - 80px); padding-block:52px; }
 .fv-coaching-page .fv-hero h1 { font-size:clamp(48px,5.3vw,72px); line-height:1.05; }
 .fv-coaching-page .fv-photo img { height:350px; }

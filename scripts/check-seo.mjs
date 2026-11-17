@@ -31,7 +31,10 @@ for (const [route, values] of Object.entries(copy)) {
   assert(schema['@graph'].some(n => n['@type'] === 'Organization'));
   assert(!schema['@graph'].some(n => ['Review', 'AggregateRating'].includes(n['@type'])));
   if (route === '/gift-cards/') {
-    assert.deepEqual([...new Set(protectedLinks(html))], ['https://shop.newenglandpickleball.com/products/nepc-gift-card?utm_source=copyToPasteBoard&amp;utm_medium=product-links&amp;utm_content=web'], 'Gift cards must use the existing NEPC shop purchase destination');
+    assert.deepEqual([...new Set(protectedLinks(html))].sort(), [
+      'https://shop.newenglandpickleball.com/products/nepc-gift-card?utm_source=copyToPasteBoard&amp;utm_medium=product-links&amp;utm_content=web',
+      'https://shop.newenglandpickleball.com/buy/46887012729082:1'
+    ].sort(), 'Gift cards must retain the original shop fallback and the verified default checkout variant');
   }
   if (route !== '/') assert(schema['@graph'].some(n => n['@type'] === 'BreadcrumbList'));
   for (const q of structured.faq[route]?.mainEntity || []) {
@@ -41,6 +44,9 @@ for (const [route, values] of Object.entries(copy)) {
   if (!['/middleton/', '/rye/', '/founder-story/', '/gift-cards/'].includes(route)) {
     const before = execFileSync('git', ['show', `4072e90:${relative}`], { cwd: root, encoding: 'utf8', maxBuffer: 5e6 });
     const expectedDestinations = new Set(protectedLinks(before));
+    // Gift promotions now open the redesigned internal landing page. The
+    // original shop purchase URL is checked separately on /gift-cards/ above.
+    expectedDestinations.delete('https://shop.newenglandpickleball.com/products/nepc-gift-card?utm_source=copyToPasteBoard&amp;utm_medium=product-links&amp;utm_content=web');
     if (['/community-events/', '/glow-in-the-dark/'].includes(route)) {
       // The owner explicitly retired this past event-details link. Glow now
       // presents the offered experience and event-inquiry path instead.

@@ -4,7 +4,6 @@ import { fileURLToPath } from "node:url";
 
 const root = dirname(dirname(fileURLToPath(import.meta.url)));
 
-const giftCardUrl = "https://shop.newenglandpickleball.com/products/nepc-gift-card?utm_source=copyToPasteBoard&amp;utm_medium=product-links&amp;utm_content=web";
 const topNav = [
   ["Our Clubs", "clubs"],
   ["Find Your Play", "calendar"],
@@ -62,11 +61,15 @@ export function normalizeNavigationHtml(html) {
       `${opening}<a href="${basePath}/book-a-court/" class="button is-alternate is-small w-button">Book a Court</a><a href="${basePath}/new-to-pickle-ball/" class="button is-secondary is-alternate is-small w-button">New to Pickleball?</a></div>`)
     .replace(/<div class="w-layout-grid footer4_link-list">[\s\S]*?<\/div>/g, () =>
       `<div class="w-layout-grid footer4_link-list">${footerNav.map(item => footerAnchor(item, basePath, current)).join('')}</div>`);
-  if (canonical && new URL(canonical[1]).pathname === '/gift-cards/') {
+  // Keep the full promotion on the homepage only. Inner pages retain the
+  // discreet Gift Cards footer link without interrupting their main task.
+  if (!canonical || new URL(canonical[1]).pathname !== '/') {
     updated = updated.replace(/<aside class="nepc-gift-promo"[\s\S]*?<\/aside>/g, '');
-  } else if (updated.includes('footer4_component') && !updated.includes('nepc-gift-promo')) {
-    const promo = `<aside class="nepc-gift-promo" aria-label="NEPC gift cards"><div><span>Give a little more play.</span><p>A gift for the pickleball player in your life.</p></div><a href="${giftCardUrl}">Shop Gift Cards <span aria-hidden="true">↗</span></a></aside>`;
-    updated = updated.replace(/(<footer\b[^>]*>)/, '$1' + promo);
+  } else if (updated.includes('footer4_component')) {
+    const logo = `${basePath}/assets/cdn.prod.website-files.com/67d7a7154f2e71cc1081b1bf/67d7cef66ded173bdc7deee3_NEPC Logo.svg`;
+    const promo = `<aside class="nepc-gift-promo" aria-label="NEPC gift cards"><div class="nepc-gift-promo-visual" aria-hidden="true"><img src="${logo}" alt="" loading="lazy"><span>Gift Card</span></div><div class="nepc-gift-promo-copy"><p class="nepc-gift-promo-label">NEPC Gift Cards</p><h2>Good games make great gifts.</h2><p>Surprise your favorite pickleball player with an NEPC gift card.</p></div><a href="${basePath}/gift-cards/">Shop Gift Cards <span aria-hidden="true">→</span></a></aside>`;
+    if (updated.includes('nepc-gift-promo')) updated = updated.replace(/<aside class="nepc-gift-promo"[\s\S]*?<\/aside>/g, promo);
+    else updated = updated.replace(/(<footer\b[^>]*>)/, '$1' + promo);
   }
   return updated;
 }
