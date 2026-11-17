@@ -1,5 +1,6 @@
 /* Homepage presentation. Shared pages keep their existing styles. */
 body[data-nepc-home] {
+  --home-brand-blue: #104d85;
   --home-ocean: #326b91;
   --home-lime: #d7f447;
   --home-ice: #eff6f9;
@@ -42,10 +43,10 @@ body[data-nepc-home] .navbar14_component {
   margin: 0;
   padding: 0 32px;
   border: 0;
-  border-bottom: 1px solid var(--home-line);
+  border-bottom: 1px solid var(--home-brand-blue);
   border-radius: 0;
-  background: #fff;
-  color: var(--home-ink);
+  background: var(--home-brand-blue);
+  color: #fff;
   box-shadow: none;
 }
 body[data-nepc-home] .navbar14_container {
@@ -58,7 +59,7 @@ body[data-nepc-home] .navbar14_container {
   margin: 0 auto;
   padding: 0;
   gap: 28px;
-  background: #fff;
+  background: var(--home-brand-blue);
   border: 0;
   border-radius: 0;
   -webkit-backdrop-filter: none;
@@ -68,7 +69,7 @@ body[data-nepc-home] .navbar14_logo-link {
   flex: 0 0 auto;
   padding: 10px 12px;
   border-radius: 6px;
-  background: var(--home-ink);
+  background: var(--home-brand-blue);
 }
 body[data-nepc-home] .navbar14_logo {
   width: 128px;
@@ -99,14 +100,14 @@ body[data-nepc-home] .navbar14_menu-link-wrapper {
 body[data-nepc-home] .navbar14_link {
   margin: 0;
   padding: 12px 0;
-  color: var(--home-ink);
+  color: #fff;
   font-size: 11px;
   font-weight: 700;
   letter-spacing: .025em;
   white-space: nowrap;
 }
 body[data-nepc-home] .navbar14_link:hover {
-  color: var(--home-ocean);
+  color: var(--home-lime);
   text-decoration: underline;
   text-underline-offset: 6px;
 }
@@ -117,9 +118,9 @@ body[data-nepc-home] .navbar14_button-wrapper .button {
   min-height: 40px;
   margin: 0;
   padding: 10px 14px;
-  border: 1px solid var(--home-ink);
+  border: 1px solid #ffffffaa;
   border-radius: 7px;
-  background: var(--home-ink);
+  background: transparent;
   color: #fff;
   font-size: 11px;
   font-weight: 700;
@@ -141,7 +142,7 @@ body[data-nepc-home] .navbar14_button-wrapper .is-secondary:hover {
 }
 body[data-nepc-home] .navbar14_component a:focus-visible,
 body[data-nepc-home] .navbar14_component button:focus-visible {
-  outline-color: var(--home-ocean);
+  outline-color: var(--home-lime);
 }
 body[data-nepc-home] .navbar14_menu-button {
   display: none;
@@ -287,13 +288,11 @@ body[data-nepc-home] .nepc-home h3 {
   min-height: 50px;
   padding: 14px 22px;
   font-size: 13px;
-}
-.home-hero-actions .home-button:not(.home-button-primary) {
   color: #fff;
-  background: var(--home-ink);
-  border-color: var(--home-ink);
+  background: var(--home-brand-blue);
+  border-color: var(--home-brand-blue);
 }
-.home-hero-actions .home-button:not(.home-button-primary):hover {
+.home-hero-actions .home-button:hover {
   background: var(--home-ocean);
   border-color: var(--home-ocean);
 }
@@ -302,7 +301,7 @@ body[data-nepc-home] .nepc-home h3 {
   top: 0;
   bottom: 0;
   right: calc(-1 * max(32px, (100vw - 1120px) / 2));
-  width: calc(50% + max(32px, (100vw - 1120px) / 2) + 32px);
+  width: calc(65% + max(32px, (100vw - 1120px) / 2) + 32px);
   margin: 0;
   overflow: hidden;
 }
@@ -313,9 +312,9 @@ body[data-nepc-home] .nepc-home h3 {
   height: 100%;
   object-fit: cover;
   object-position: 50% center;
-  /* The original photo gradually appears from the white background, without an overlay. */
-  -webkit-mask-image: linear-gradient(to right, transparent, #000 20%);
-  mask-image: linear-gradient(to right, transparent, #000 20%);
+  /* A wide opacity ramp lets the real photo emerge behind the end of the headline. */
+  -webkit-mask-image: linear-gradient(to right, transparent, #00000009 4%, #00000038 12%, #00000094 24%, #000000e0 36%, #000 48%);
+  mask-image: linear-gradient(to right, transparent, #00000009 4%, #00000038 12%, #00000094 24%, #000000e0 36%, #000 48%);
 }
 .home-approach {
   padding-block: 38px 40px;
@@ -673,6 +672,8 @@ body[data-nepc-home] .cta42_component {
   display: block;
 }
 body[data-nepc-home] .cta42_card {
+  width: 100%;
+  max-width: none;
   min-height: 0;
   padding: 0;
   background: transparent;
@@ -681,7 +682,9 @@ body[data-nepc-home] .cta42_card {
 }
 body[data-nepc-home] .cta42_card-content {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  width: 100%;
+  max-width: none;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   align-items: center;
   gap: 60px;
   padding: 0;
@@ -701,6 +704,7 @@ body[data-nepc-home] .cta42_card-content .margin-bottom {
   margin-bottom: 8px;
 }
 body[data-nepc-home] .cta42_form-block {
+  min-width: 0;
   margin: 0;
 }
 body[data-nepc-home] .cta42_form {
@@ -708,8 +712,13 @@ body[data-nepc-home] .cta42_form {
   margin: 0;
 }
 body[data-nepc-home] .signup-form-wrapper {
-  display: flex;
-  gap: 8px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: stretch;
+  width: 100%;
+  height: auto;
+  min-height: 0;
+  gap: 10px;
   margin-bottom: 8px;
   padding: 0;
   border: 0;
@@ -718,9 +727,14 @@ body[data-nepc-home] .signup-form-wrapper {
   box-shadow: none;
 }
 body[data-nepc-home] .form_input.cta-home {
+  position: static;
+  inset: auto;
+  width: 100%;
+  max-width: none;
   min-width: 0;
-  height: 44px;
-  min-height: 44px;
+  height: 48px;
+  min-height: 48px;
+  transform: none;
   margin: 0;
   padding: 10px 12px;
   border: 1px solid #bfd0dc;
@@ -728,16 +742,27 @@ body[data-nepc-home] .form_input.cta-home {
   background: #fff;
   color: var(--home-ink);
   font-size: 12px;
+  text-align: left;
 }
 body[data-nepc-home] .button.is-subscribe {
-  height: 44px;
-  min-height: 44px;
-  padding: 10px 17px;
+  position: static;
+  inset: auto;
+  width: auto;
+  min-width: 120px;
+  height: 48px;
+  min-height: 48px;
+  margin: 0;
+  padding: 12px 20px;
+  transform: none;
   border: 0;
   border-radius: 6px;
-  background: var(--home-ocean);
+  background: var(--home-brand-blue);
   color: #fff;
   font-size: 12px;
+  text-align: center;
+}
+body[data-nepc-home] .button.is-subscribe:hover {
+  background: var(--home-ocean);
 }
 body[data-nepc-home] .cta42_card-content .text-size-xsmall {
   font-size: 11px;
@@ -832,7 +857,7 @@ body[data-nepc-home] .footer4_component .padding-top {
     padding: 22px 32px;
     border-bottom: 1px solid var(--home-line);
     border-radius: 0 0 10px 10px;
-    background: #fff;
+    background: var(--home-brand-blue);
     box-shadow: 0 16px 24px #173d6126;
     overflow: auto;
     transform: none !important;
@@ -862,7 +887,7 @@ body[data-nepc-home] .footer4_component .padding-top {
     height: 44px;
     padding: 9px;
     border-radius: 6px;
-    color: var(--home-ink);
+    color: #fff;
     background: transparent;
   }
   body[data-nepc-home] .menu-icon2 {
@@ -870,13 +895,13 @@ body[data-nepc-home] .footer4_component .padding-top {
     height: 24px;
   }
   body[data-nepc-home] .menu-icon2_line-top, body[data-nepc-home] .menu-icon2_line-middle, body[data-nepc-home] .menu-icon2_line-bottom {
-    background: var(--home-ink);
+    background: #fff;
   }
   .home-hero {
     gap: 36px;
   }
   .home-hero-photo {
-    width: calc(50% + 50px);
+    width: calc(65% + 50px);
   }
   .home-club-card {
     grid-template-columns: 130px 1fr;
@@ -1083,6 +1108,12 @@ body[data-nepc-home] .footer4_component .padding-top {
   }
   body[data-nepc-home] .cta42_card-content h2 {
     font-size: 21px;
+  }
+  body[data-nepc-home] .signup-form-wrapper {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  body[data-nepc-home] .button.is-subscribe {
+    width: 100%;
   }
   body[data-nepc-home] .footer4_top-wrapper {
     align-items: start;
