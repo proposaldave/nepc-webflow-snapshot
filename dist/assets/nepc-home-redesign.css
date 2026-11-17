@@ -256,7 +256,7 @@ body[data-nepc-home] .nepc-home h3 {
   max-width: none;
   height: calc(100% + 120px);
   object-fit: cover;
-  object-position: center 60%;
+  object-position: 70% center;
   -webkit-mask-image: linear-gradient(to right, transparent, #000 22%);
   mask-image: linear-gradient(to right, transparent, #000 22%);
 }
@@ -887,7 +887,7 @@ body[data-nepc-home] .footer4_component .padding-top {
     position: static;
     width: 100%;
     height: 100%;
-    object-position: center 55%;
+    object-position: 70% center;
     -webkit-mask-image: none;
     mask-image: none;
   }
