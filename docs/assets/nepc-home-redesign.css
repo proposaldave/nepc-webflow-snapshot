@@ -221,11 +221,20 @@ body[data-nepc-home] .nepc-home h3 {
   text-underline-offset: 5px;
 }
 .home-hero {
+  position: relative;
+  min-height: calc(100svh - 80px);
   display: grid;
   grid-template-columns: 1.1fr 1fr;
   align-items: center;
   gap: 64px;
   padding-block: 60px;
+}
+.home-hero-copy {
+  position: relative;
+  z-index: 1;
+}
+.home-hero h1 {
+  font-size: clamp(48px, 5.5vw, 72px);
 }
 .home-hero h1 span {
   color: var(--home-ocean);
@@ -242,23 +251,23 @@ body[data-nepc-home] .nepc-home h3 {
   gap: 12px;
 }
 .home-hero-photo {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: calc(-1 * max(32px, (100vw - 1120px) / 2));
+  width: calc(50% + max(32px, (100vw - 1120px) / 2) + 32px);
   margin: 0;
-  height: 330px;
-  position: relative;
-  overflow: visible;
+  overflow: hidden;
 }
 .home-hero-photo img {
-  position: absolute;
-  top: -60px;
-  right: calc(-1 * max(32px, (100vw - 1120px) / 2));
   display: block;
-  width: calc(100% + max(32px, (100vw - 1120px) / 2) + 64px);
+  width: 100%;
   max-width: none;
-  height: calc(100% + 120px);
+  height: 100%;
   object-fit: cover;
   object-position: 63% center;
-  -webkit-mask-image: linear-gradient(to right, transparent, #000 22%);
-  mask-image: linear-gradient(to right, transparent, #000 22%);
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 20%);
+  mask-image: linear-gradient(to right, transparent, #000 20%);
 }
 .home-approach {
   padding-block: 38px 40px;
@@ -819,10 +828,7 @@ body[data-nepc-home] .footer4_component .padding-top {
     gap: 36px;
   }
   .home-hero-photo {
-    height: 300px;
-  }
-  .home-hero-photo img {
-    width: calc(100% + 68px);
+    width: calc(50% + 50px);
   }
   .home-club-card {
     grid-template-columns: 130px 1fr;
@@ -856,11 +862,15 @@ body[data-nepc-home] .footer4_component .padding-top {
     font-size: 9px;
   }
   .home-hero {
+    min-height: 640px;
+    height: calc(100svh - 68px);
     grid-template-columns: 1fr;
-    gap: 28px;
-    padding-block: 34px;
+    grid-template-rows: auto minmax(240px, 1fr);
+    align-items: stretch;
+    gap: 24px;
+    padding-block: 30px 0;
   }
-  .nepc-home h1 {
+  .nepc-home .home-hero h1 {
     font-size: clamp(39px, 8.4vw, 55px);
     line-height: 1.12;
   }
@@ -879,12 +889,15 @@ body[data-nepc-home] .footer4_component .padding-top {
     gap: 14px;
   }
   .home-hero-photo {
+    position: relative;
+    inset: auto;
     width: calc(100% + 40px);
-    height: 260px;
-    margin: 0 -20px -34px;
+    min-height: 240px;
+    margin: 0 -20px;
   }
   .home-hero-photo img {
-    position: static;
+    position: absolute;
+    inset: 0;
     width: 100%;
     height: 100%;
     object-position: 63% center;
