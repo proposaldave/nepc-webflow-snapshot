@@ -3,3 +3,7 @@ release/
 Thumbs.db
 desktop.ini
 *.log
+.dev.vars*
+.env*
+.wrangler/
+node_modules/
