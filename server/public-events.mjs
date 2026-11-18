@@ -71,12 +71,18 @@ export function createPublicEventService({ fetchImpl = globalThis.fetch, now = D
     Object.entries(query).forEach(([name, value]) => url.searchParams.set(name, value));
     const response = await fetchImpl(url, {
       method: 'GET', redirect: 'error',
-      headers: { Authorization: `Basic ${btoa(`${env[`${prefix}_USERNAME`]}:${env[`${prefix}_API_KEY`]}`)}`, Accept: 'application/json' },
+      headers: { Authorization: `Basic ${btoa(`${env[`${prefix}_USERNAME`]}:${env[`${prefix}_API_KEY`]}`)}`, Accept: 'application/json', 'User-Agent': 'NEPC-Public-Calendar/1.0' },
       signal: AbortSignal.timeout(15000)
     });
-    if (!response.ok) throw new Error('Upstream unavailable');
+    if (!response.ok) {
+      console.warn('Public calendar upstream HTTP failure', { resource, status: response.status });
+      throw new Error('Upstream unavailable');
+    }
     const body = await response.json();
-    if (body.IsSuccessStatusCode !== true || !Array.isArray(body.Data)) throw new Error('Unexpected upstream response');
+    if (body.IsSuccessStatusCode !== true || !Array.isArray(body.Data)) {
+      console.warn('Public calendar upstream response shape failure', { resource });
+      throw new Error('Unexpected upstream response');
+    }
     return body.Data;
   }
   return async function publicEvents(request, env, edgeCache) {
