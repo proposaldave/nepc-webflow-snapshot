@@ -344,3 +344,56 @@ body.nepc-founder-page .navbar14_component{position:sticky;top:0;z-index:40}
   .nepc-founder .story-letter-body .chapter .prose{font-size:20px;line-height:1.6}
   .nepc-founder .story-letter-body .pull{font-size:24px}
 }
+
+/* Nov 18 2026: shorter letter. Fixed spacing around the skill cards on desktop (no full-height stretch). */
+@media(min-width:768px){
+  .nepc-founder .story-first-screen{min-height:0;display:block}
+  .nepc-founder .story-first-screen .skills{display:block;padding:64px 0}
+  .nepc-founder .story-first-screen .skills .wrap{padding-block:0}
+}
+/* Four member benefits: four across on wide screens, 2 by 2 in the middle, stacked on mobile. */
+.nepc-founder .benefits ul{grid-template-columns:repeat(4,minmax(0,1fr))}
+@media(max-width:1100px){.nepc-founder .benefits ul{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:767px){.nepc-founder .benefits ul{grid-template-columns:1fr}}
+
+/* Print the letter on one US Letter page. */
+@media print{
+  @page{size:letter;margin:.35in .5in}
+  .nepc-founder{font-size:11pt}
+  .navbar14_component,[role="banner"],footer,.footer4_component,.nepc-gift-promo,.home-skip-link,
+  .nepc-founder .btn,.nepc-founder .herocta,.nepc-founder .skills,.nepc-founder .story-dave-photo,
+  .nepc-founder .story-community,.nepc-founder .story-play,.nepc-founder .mission .rest,.nepc-founder .close .btns,
+  .nepc-founder .chapter header .no{display:none!important}
+  .nepc-founder *,.nepc-founder *::before,.nepc-founder *::after{color:#000!important;background:#fff!important;box-shadow:none!important;animation:none!important;transition:none!important}
+  .nepc-founder .mark{background:none!important}
+  .nepc-founder .hero,.nepc-founder .story-letter-heading,.nepc-founder .chapter,.nepc-founder .benefits,.nepc-founder .close{padding:0!important;margin:0 0 6pt!important;border:0!important;min-height:0!important}
+  .nepc-founder .wrap{max-width:none!important;padding:0!important;border:0!important;display:block!important}
+  .nepc-founder .story-first-screen{min-height:0!important;display:block!important}
+  .nepc-founder .hero h1{font-size:20pt!important;line-height:1.1!important}
+  .nepc-founder .hero h1 span{display:inline!important}
+  .nepc-founder .hero h1 span + span::before{content:" "}
+  .nepc-founder .hero .sub{font-size:11pt!important;margin-top:2pt!important}
+  .nepc-founder .story-letter-heading h2,.nepc-founder .story-kicker{font-size:9pt!important}
+  .nepc-founder h2{font-size:12pt!important;margin:5pt 0 1pt!important}
+  .nepc-founder .story-letter-body .chapter .prose,.nepc-founder .prose,.nepc-founder p,.nepc-founder li,.nepc-founder .benefits span{font-size:10pt!important;line-height:1.22!important}
+  .nepc-founder .story-letter-body .prose > * + *{margin-top:3pt!important}
+  .nepc-founder .story-letter-body .pull,.nepc-founder .big,.nepc-founder .long{font-size:11pt!important;line-height:1.25!important;margin:2pt 0!important}
+  .nepc-founder ul{margin:2pt 0 2pt 14pt!important;padding:0!important}
+  .nepc-founder .benefits ul{display:block!important}
+  .nepc-founder .benefits li{border:0!important;padding:0!important;margin:0 0 2pt!important}
+  .nepc-founder .benefits b,.nepc-founder .benefits span{display:inline!important;font-size:10pt!important}
+  .nepc-founder .benefits b{margin-right:4pt}
+  .nepc-founder .close h2 br,.nepc-founder .story-letter-heading{display:none!important}
+  .nepc-founder .close h2{display:inline!important;margin-right:6pt!important}
+  .nepc-founder .close .cols,.nepc-founder .close .cols > div{display:inline!important}
+  .nepc-founder .close .cols p{display:inline!important;margin:0 6pt 0 0!important}
+  .nepc-founder .close .foot{display:block!important}
+  .nepc-founder .hero .story-kicker{display:none!important}
+  .nepc-founder .close .wrap > *{display:inline!important}
+  .nepc-founder .moments li,.nepc-founder .ways li,.nepc-founder .ways li.key{padding:0!important;margin:0!important;border:0!important;font-style:normal!important;list-style:disc!important;display:list-item!important}
+  .nepc-founder .moments li::before,.nepc-founder .ways li::before{display:none!important}
+  .nepc-founder .moments,.nepc-founder .ways{gap:0!important;display:block!important}
+  .nepc-founder .close .foot,.nepc-founder .close .sig{margin-top:2pt!important;padding:0!important}
+  .nepc-founder .story-letter-heading{margin-bottom:2pt!important}
+  .nepc-founder .close .cols{display:block!important}
+}
