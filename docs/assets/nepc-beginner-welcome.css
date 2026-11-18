@@ -1,0 +1,134 @@
+/* A welcoming introduction before the club-first beginner session chooser. */
+.fv-beginner-page .fv-welcome-hero {
+  display:grid;
+  grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);
+  gap:56px;
+  align-items:center;
+  min-height:clamp(580px,calc(100svh - 81px),720px);
+  padding-block:56px;
+}
+body[data-nepc-home] .fv-beginner-page h1.nepc-keyword-heading {
+  margin:0 0 18px;
+  font-size:18px;
+  line-height:1.4;
+  letter-spacing:-.015em;
+  text-transform:none;
+}
+.fv-welcome-locations {
+  display:block;
+  margin-top:5px;
+  font-size:12px;
+  font-weight:650;
+  letter-spacing:0;
+}
+.nepc-services .fv-welcome-copy .fv-hero-title {
+  max-width:16ch;
+  font-size:clamp(44px,4.3vw,56px);
+  line-height:1.08;
+  letter-spacing:-.045em;
+  text-wrap:balance;
+}
+.nepc-services .fv-welcome-copy > p {
+  max-width:46ch;
+  margin-top:20px;
+  font-size:15px;
+  line-height:1.75;
+}
+.nepc-services .fv-welcome-copy > .fv-welcome-programs {
+  margin-top:14px;
+  font-size:14px;
+}
+.fv-welcome-cta { margin-top:26px; }
+.fv-start-band { scroll-margin-top:24px; }
+.fv-start-intro { margin-bottom:26px; }
+.nepc-services .fv-start-intro h2 { font-size:27px; }
+.nepc-services .fv-start-intro > p { margin-top:7px; font-size:14px; }
+.fv-beginner-page .fv-start-band { padding-top:40px; }
+.fv-beginner-page .fv-welcome-photo {
+  width:100%;
+  border-radius:22px 22px 64px 22px;
+}
+.fv-welcome-photo {
+  overflow:hidden;
+  border-radius:18px 18px 36px 18px;
+  background:var(--home-ice);
+}
+.fv-welcome-photo img {
+  display:block;
+  width:100%;
+  height:auto;
+  aspect-ratio:5/4;
+  object-fit:cover;
+}
+.fv-beginner-page .fv-start-controls { display:block; }
+.nepc-services .fv-welcome-step,
+.fv-beginner-page .mp-beginner-programs > .fv-welcome-step {
+  display:flex;
+  align-items:center;
+  gap:9px;
+  margin:0 0 12px;
+  font-size:11px;
+  line-height:1.5;
+  letter-spacing:.08em;
+  font-weight:800;
+  text-transform:uppercase;
+  color:var(--home-ink);
+}
+.fv-welcome-step > span {
+  display:grid;
+  place-items:center;
+  width:24px;
+  height:24px;
+  flex:none;
+  border:1px solid var(--home-line);
+  border-radius:50%;
+  background:#fff;
+  color:var(--home-brand-blue);
+  font-size:11px;
+  letter-spacing:0;
+}
+.fv-beginner-page .mp-location-controls { gap:10px; }
+.fv-beginner-page .mp-location-button {
+  min-width:170px;
+  justify-content:center;
+}
+.fv-beginner-page .mp-beginner-programs {
+  margin-top:20px;
+  padding-top:18px;
+  border-top:1px solid var(--home-line);
+}
+.fv-beginner-page .fv-program-description {
+  min-height:0;
+  margin-top:12px;
+}
+@media (max-width:900px) {
+  .fv-beginner-page .fv-welcome-hero {
+    grid-template-columns:minmax(0,1fr) 43%;
+    gap:28px;
+    min-height:0;
+    padding-block:44px;
+  }
+  .nepc-services .fv-welcome-copy .fv-hero-title { font-size:40px; }
+}
+@media (max-width:700px) {
+  .fv-beginner-page .fv-welcome-hero {
+    grid-template-columns:1fr;
+    gap:30px;
+    padding-block:32px;
+  }
+  body[data-nepc-home] .fv-beginner-page h1.nepc-keyword-heading {
+    margin-bottom:14px;
+    font-size:17px;
+  }
+  .fv-welcome-locations { max-width:34ch; font-size:11px; }
+  .nepc-services .fv-welcome-copy .fv-hero-title { font-size:38px; }
+  .nepc-services .fv-welcome-copy > p { margin-top:18px; font-size:14px; }
+  .nepc-services .fv-welcome-copy > .fv-welcome-programs { margin-top:12px; font-size:13px; }
+  .fv-welcome-cta { margin-top:22px; }
+  .fv-beginner-page .fv-welcome-photo { border-radius:18px 18px 40px 18px; }
+  .fv-beginner-page .fv-start-band { padding-top:30px; }
+  .fv-start-intro { margin-bottom:24px; }
+  .nepc-services .fv-start-intro h2 { font-size:24px; }
+  .nepc-services .fv-start-intro > p { font-size:13px; }
+  .fv-beginner-page .mp-location-button { min-width:0; flex:1; }
+}
