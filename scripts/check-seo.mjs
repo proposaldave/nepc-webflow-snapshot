@@ -16,6 +16,7 @@ for (const [route, values] of Object.entries(copy)) {
   const relative = `dist${route}index.html`;
   const html = readFileSync(join(root, relative), 'utf8');
   assert.equal((html.match(/<h1\b/gi) || []).length, 1, `${route}: H1 count`);
+  if (values.h1) assert.equal(text(html.match(/<h1\b[^>]*>([\s\S]*?)<\/h1>/i)[1]), values.h1, `${route}: descriptive H1 must remain separate from the display slogan`);
   assert.equal((html.match(/rel="canonical"/g) || []).length, 1, `${route}: canonical count`);
   assert(html.includes(`href="https://newenglandpickleball.com${route}"`), `${route}: canonical host`);
   const title = decode(html.match(/<title>(.*?)<\/title>/s)[1]);

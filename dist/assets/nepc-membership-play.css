@@ -1,6 +1,6 @@
 /* Membership comparison and navigation to existing CourtReserve sessions. */
 .mp-membership-hero { display:grid; grid-template-columns:1fr 380px; gap:56px; align-items:center; padding-block:42px 36px; }
-.nepc-membership .mp-membership-hero h1 { font-size:52px; }
+.nepc-membership .mp-membership-hero .mp-hero-title { margin:0; font-size:52px; line-height:1.09; letter-spacing:-.045em; font-weight:750; color:var(--home-ink); }
 .nepc-clubs .mp-membership-hero .lc-lead { margin-top:18px; font-size:18px; }
 .mp-membership-hero .lc-inline-links { margin-top:20px; }
 .mp-membership-hero figure { border-radius:18px; overflow:hidden; background:var(--home-ice); }
@@ -106,7 +106,7 @@
 }
 @media(max-width:700px) {
   .mp-membership-hero { grid-template-columns:1fr; gap:24px; padding-block:30px; }
-  .nepc-membership .mp-membership-hero h1 { font-size:42px; }
+  .nepc-membership .mp-membership-hero .mp-hero-title { font-size:42px; }
   .nepc-clubs .mp-membership-hero .lc-lead { font-size:17px; margin-top:14px; }
   .mp-membership-hero figure { max-width:380px; }
   .nepc-clubs .mp-membership-hero img { height:180px; }

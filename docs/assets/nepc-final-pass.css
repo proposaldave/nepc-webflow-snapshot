@@ -2,7 +2,7 @@
 .nepc-services { color:var(--home-ink); background:#fff; font-size:15px; line-height:1.65; }
 body[data-nepc-home] .nepc-services { width:100%; max-width:none; margin:0; }
 .nepc-services h1,.nepc-services h2,.nepc-services h3,.nepc-services p,.nepc-services figure { margin:0; }
-.nepc-services h1 { font-size:clamp(38px,4.6vw,60px); line-height:1.08; letter-spacing:-.045em; font-weight:750; color:var(--home-ink); }
+.nepc-services h1,.nepc-services .fv-hero-title { font-size:clamp(38px,4.6vw,60px); line-height:1.08; letter-spacing:-.045em; font-weight:750; color:var(--home-ink); }
 .nepc-services h2 { font-size:clamp(28px,3vw,38px); line-height:1.18; letter-spacing:-.035em; font-weight:750; color:var(--home-ink); }
 .nepc-services h3 { font-size:20px; line-height:1.3; letter-spacing:-.02em; color:var(--home-ink); font-weight:750; }
 .nepc-services p { color:var(--home-muted); }
@@ -145,7 +145,7 @@ body[data-nepc-home] main.fv-archive { color:var(--home-ink); background:#fff; w
 @media(max-width:1000px) { .fv-hero{gap:28px} .fv-coaches{grid-template-columns:repeat(2,minmax(0,1fr))} .fv-grid--three{gap:12px} .fv-card{padding:20px} }
 @media(max-width:700px) {
  .fv-wrap{width:calc(100% - 40px)} .fv-hero{grid-template-columns:1fr;padding-block:30px;gap:26px} .fv-hero.fv-hero--simple{padding-bottom:20px}
- .nepc-services h1{font-size:39px} .nepc-services .fv-intro{font-size:15px;margin-top:16px} .fv-section{padding-block:36px}
+ .nepc-services h1,.nepc-services .fv-hero-title{font-size:39px} .nepc-services .fv-intro{font-size:15px;margin-top:16px} .fv-section{padding-block:36px}
  .fv-photo img{height:225px} .fv-grid,.fv-grid--three,.fv-coaches,.fv-videos{grid-template-columns:1fr} .fv-grid{gap:16px}
  .fv-heading{align-items:start;flex-wrap:wrap;gap:16px} .fv-heading > p{max-width:none} .fv-card{padding:22px} .fv-card--photo{padding:0}
  .fv-actions{gap:10px;margin-top:20px} .fv-actions .fv-button{flex:1 1 150px;padding-inline:16px;gap:12px}
@@ -162,7 +162,7 @@ body[data-nepc-home] main.fv-archive { color:var(--home-ink); background:#fff; w
 
 .fv-beginner-panel .fv-card{display:flex;flex-direction:column}.fv-beginner-panel .fv-card .fv-actions{margin-top:auto;padding-top:20px}.fv-beginner-panel .fv-card>p{margin-bottom:0}.fv-beginner-page .fv-hero{padding-block:32px 20px}.fv-beginner-page .fv-section.fv-ice{padding-top:32px;padding-bottom:32px}
 .fv-start-hero { padding-block:30px 26px; }
-.nepc-services .fv-start-hero h1 { font-size:34px; line-height:1.18; letter-spacing:-.035em; }
+.nepc-services .fv-start-hero .fv-hero-title { font-size:34px; line-height:1.18; letter-spacing:-.035em; }
 .nepc-services .fv-start-hero > p:last-child { margin-top:12px; font-size:14px; }
 .fv-start-band { background:var(--home-ice); padding-block:28px 36px; }
 .fv-beginner-page .mp-location-controls { display:flex; gap:10px; }
@@ -260,7 +260,7 @@ body[data-nepc-home] main.fv-archive { color:var(--home-ink); background:#fff; w
  .fv-gift-fields{grid-template-columns:1fr 84px;gap:12px}.fv-gift-face-value{font-size:34px;right:26px;top:26px}.fv-gift-page .fv-gift img{width:160px}
 }
 .fv-coaching-page .fv-hero { min-height:calc(100svh - 80px); padding-block:52px; }
-.fv-coaching-page .fv-hero h1 { font-size:clamp(48px,5.3vw,72px); line-height:1.05; }
+.fv-coaching-page .fv-hero .fv-hero-title { font-size:clamp(48px,5.3vw,72px); line-height:1.05; }
 .fv-coaching-page .fv-photo img { height:350px; }
 .fv-tips { display:grid; grid-template-columns:1.45fr 1fr; gap:24px; align-items:start; }
 .fv-tip-stage { background:#fff; border:1px solid var(--home-line); border-radius:14px; overflow:hidden; padding:24px; }
@@ -279,7 +279,7 @@ body[data-nepc-home] main.fv-archive { color:var(--home-ink); background:#fff; w
 .fv-tip-list button[aria-selected=true] :is(small,.fv-tip-number) { color:#e2edf5; }
 @media(max-width:700px) {
  .fv-coaching-page .fv-hero{min-height:calc(100svh - 68px);padding-block:32px;gap:24px}
- .fv-coaching-page .fv-hero h1{font-size:43px}.fv-coaching-page .fv-photo img{height:210px}
+ .fv-coaching-page .fv-hero .fv-hero-title{font-size:43px}.fv-coaching-page .fv-photo img{height:210px}
  .fv-tips{grid-template-columns:1fr;gap:18px}.fv-tip-stage{padding:18px}.fv-tip-list{gap:6px}
  .fv-tip-list button{min-height:56px}.fv-tip-title h3{font-size:19px}
 }
@@ -291,7 +291,7 @@ body[data-nepc-home] main.fv-archive { color:var(--home-ink); background:#fff; w
  .fv-start-controls>.fv-program-description{grid-column:1/-1;grid-row:3;min-height:0}
 }
 @media(max-width:700px) {
- .nepc-services .fv-start-hero h1{font-size:29px}.fv-start-hero{padding-block:24px}.fv-start-band{padding-top:22px}
+ .nepc-services .fv-start-hero .fv-hero-title{font-size:29px}.fv-start-hero{padding-block:24px}.fv-start-band{padding-top:22px}
  .fv-beginner-page .mp-event-filter{padding:9px 12px;font-size:11px;min-height:40px}.fv-beginner-page .mp-agenda-heading h2{font-size:21px}
  .fv-beginner-page .mp-location-button{padding:10px 18px}.fv-beginner-page .mp-sessions{padding-top:16px}
  .fv-quickstart-page .fv-hero h1{font-size:29px}

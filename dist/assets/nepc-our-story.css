@@ -31,7 +31,7 @@ body.nepc-founder-page .navbar14_component{position:sticky;top:0;z-index:40}
 .nepc-founder a:focus-visible,.nepc-founder button:focus-visible{outline:3px solid var(--accent);outline-offset:5px}
 .nepc-founder main{margin-left:var(--rail)}
 .nepc-founder .wrap{width:min(1120px,calc(100% - 64px));margin-inline:auto}
-.nepc-founder :is(#letter,#skills,#baby-block,#boring-drop,#together,#come-play){scroll-margin-top:112px}
+.nepc-founder :is(#dave-letter,#letter,#skills,#baby-block,#boring-drop,#together,#come-play){scroll-margin-top:112px}
 .nepc-founder .story-kicker,.nepc-founder .story-label{
   display:block;color:var(--accent);font:800 11px/1.5 var(--ui);
   text-transform:uppercase;letter-spacing:.13em;
@@ -268,12 +268,12 @@ body.nepc-founder-page .navbar14_component{position:sticky;top:0;z-index:40}
 .nepc-founder .skills .after{max-width:950px;font:400 14px/1.5 var(--ui);margin-top:16px}
 .nepc-founder .skills .story-section-heading{display:block;position:absolute;width:1px;height:1px;margin:-1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap;padding:0;border:0}
 .nepc-founder .story-letter-heading{padding:36px 0 12px}
-.nepc-founder .story-letter-heading .wrap{width:min(720px,calc(100% - 40px))}
+.nepc-founder .story-letter-heading .wrap{width:min(940px,calc(100% - 40px))}
 .nepc-founder .story-letter-heading h2{font:700 34px/1.2 var(--display);letter-spacing:-.04em;margin-top:10px}
 .nepc-founder .story-letter-body{padding:0}
-.nepc-founder .story-letter-body .chapter{padding:30px 0;border:0}
-.nepc-founder .story-letter-body .chapter .wrap{display:block;width:min(720px,calc(100% - 40px))}
-.nepc-founder .story-letter-body .chapter header{position:static;margin-bottom:22px}
+.nepc-founder .story-letter-body .chapter{padding:20px 0;border:0}
+.nepc-founder .story-letter-body .chapter .wrap{display:block;width:min(940px,calc(100% - 40px))}
+.nepc-founder .story-letter-body .chapter header{position:static;margin-bottom:14px}
 .nepc-founder .story-letter-body .chapter h2{font-size:26px;line-height:1.2;text-wrap:initial}
 .nepc-founder .story-letter-body .chapter .no{display:none}
 .nepc-founder .story-letter-body .pull{font-size:27px;line-height:1.3;margin:1.1em 0!important}
@@ -329,3 +329,14 @@ body.nepc-founder-page .navbar14_component{position:sticky;top:0;z-index:40}
 .nepc-founder .story-signoff{font:700 16px/1.7 var(--ui)}
 .nepc-founder .story-signoff span{font-size:12px;font-weight:400;color:var(--mute)}
 @media(max-width:767px){.nepc-founder .story-letter-heading .wrap{grid-template-columns:1fr 120px;gap:18px}.nepc-founder .story-dave-photo img{width:120px;height:120px}.nepc-founder .story-letter-heading h2{font-size:28px}}
+
+/* A wider, continuous letter with a calmer reading rhythm. */
+.nepc-founder .story-letter-body .chapter .prose{font-size:21px;line-height:1.6}
+.nepc-founder .story-letter-body .prose > * + *{margin-top:.85em}
+.nepc-founder .story-letter-body .prose .lead::first-letter{float:none;font:inherit;padding:0;color:inherit}
+.nepc-founder .story-letter-body .pull{font-size:25px;line-height:1.35;margin:.9em 0!important}
+@media(max-width:767px){
+  .nepc-founder .story-letter-body .chapter{padding:20px 0}
+  .nepc-founder .story-letter-body .chapter .prose{font-size:20px;line-height:1.6}
+  .nepc-founder .story-letter-body .pull{font-size:24px}
+}

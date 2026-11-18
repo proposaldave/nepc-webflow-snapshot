@@ -37,7 +37,8 @@
   },
   "/coaching/": {
     "title": "Pickleball Lessons in Middleton & Rye | NEPC",
-    "description": "Explore private pickleball lessons and group clinics at NEPC in Middleton, MA and Rye, NH. Meet our teaching professionals."
+    "description": "Explore private pickleball lessons and group clinics at NEPC in Middleton, MA and Rye, NH. Meet our teaching professionals.",
+    "h1": "Pickleball Lessons & Coaching · Rye, NH & Middleton, MA"
   },
   "/community-events/": {
     "title": "Pickleball Club Events in MA & NH | NEPC",
@@ -57,7 +58,8 @@
   },
   "/": {
     "title": "Indoor Pickleball in Middleton, MA & Rye, NH | NEPC",
-    "description": "Play indoor pickleball in Middleton, MA and Rye, NH. Explore court bookings, lessons, leagues and membership at NEPC. Open up together."
+    "description": "Play indoor pickleball in Middleton, MA and Rye, NH. Explore court bookings, lessons, leagues and membership at NEPC. Open up together.",
+    "h1": "Indoor Pickleball · Rye, NH & Middleton, MA"
   },
   "/leagues/": {
     "title": "Competitive Pickleball Leagues in MA & NH | NEPC",
@@ -73,11 +75,13 @@
   },
   "/membership/": {
     "title": "Pickleball Memberships in Middleton & Rye | NEPC",
-    "description": "Explore Blue, Silver and Burgundy pickleball memberships at NEPC in Middleton, MA and Rye, NH. View current benefits and pricing."
+    "description": "Explore Blue, Silver and Burgundy pickleball memberships at NEPC in Middleton, MA and Rye, NH. View current benefits and pricing.",
+    "h1": "Pickleball Memberships · Rye, NH & Middleton, MA"
   },
   "/new-to-pickle-ball/": {
     "title": "Beginner Pickleball Classes in MA & NH | NEPC",
-    "description": "Learn doubles pickleball with NEPC Quick Start classes in Middleton, MA and Rye, NH. Explore the beginner program."
+    "description": "Learn doubles pickleball with NEPC Quick Start classes in Middleton, MA and Rye, NH. Explore the beginner program.",
+    "h1": "Beginner Pickleball Classes · Rye, NH & Middleton, MA"
   },
   "/private-events/": {
     "title": "Private Pickleball Events in MA & NH | NEPC",
