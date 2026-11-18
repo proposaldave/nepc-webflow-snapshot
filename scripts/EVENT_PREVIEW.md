@@ -6,7 +6,7 @@ Enable it with `NEPC_ENABLE_EVENT_PREVIEW=1` when starting `node serve.mjs`. Sup
 
 The adapter makes GET requests only to the organization API's event-category and event-list endpoints. It returns only active events with public booking enabled, a public category, and a public registration URL for the selected club. It excludes participant information, counts, pricing, SSO URLs, and unrelated organization fields. Responses are cached for two minutes; categories for one hour. Club/date bounds and rate limits constrain requests. The preview server listens on localhost only.
 
-The default agenda shows one upcoming day that contain matching sessions, with arrows to browse the following day. Week and month views remain optional. Counts are shown per day.
+The default agenda shows one upcoming day that contain matching sessions, with arrows to browse the following day. Week and month views remain optional. Counts are shown per day. The beginner page uses a month-sized feed while still showing one matching day at a time, so a Quick Start class later in the month is discoverable immediately. Its program filters and next-day navigation stay on the same page; the original Quick Start widgets remain a collapsed CourtReserve fallback.
 
 Activity groups use each club's verified category IDs. Explicitly named ladders, leagues, tournaments, and scrambles also appear under competitive play. Beginner-titled sessions appear in Beginner Programs as well as their applicable program category. Session times are displayed in Eastern Time. Special events use CourtReserve's featured-event flag. Private court booking opens a separate guide and the existing club portal.
 

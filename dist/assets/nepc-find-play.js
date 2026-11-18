@@ -10,7 +10,8 @@ if (root) {
   const hashClub = ['#rye','#middleton'].includes(location.hash) ? location.hash.slice(1) : null;
   const state = { club:hashClub || (params.get('club') === 'middleton' ? 'middleton':'rye'), activity:root.dataset.defaultActivity || (labels[params.get('activity')] ? params.get('activity'):'all'), view:['day','week','month'].includes(params.get('view')) ? params.get('view'):'day', date:today(), dayPage:0, dayTotal:0 };
   state.program=beginnerPrograms[params.get('program')]?params.get('program'):'all';
-  const periodView = () => state.view==='day'?'week':state.view;
+  // Beginner classes may be beyond this week; keep one-day cards over a month feed.
+  const periodView = () => state.view==='day' ? (root.dataset.dayPeriod==='month'?'month':'week') : state.view;
   const portals = { rye:'https://app.courtreserve.com/Online/Portal/Index/7432', middleton:'https://app.courtreserve.com/Online/Portal/Index/13164' };
   const cache = new Map();
   let controller, generation = 0;
@@ -35,7 +36,7 @@ if (root) {
     root.querySelectorAll('[data-date-view]').forEach(button=>button.setAttribute('aria-pressed',String(button.dataset.dateView===state.view)));
     $('[data-location-status]').textContent=`Showing events at NEPC ${name}.`;
     $('[data-agenda-title]').textContent=`${state.view==='day'?'Up next':range.start===current.start ? (state.view==='week'?'This week':'This month') : (state.view==='week'?'A week of play':'A month of play')} at NEPC ${name}.`;
-    $('[data-period-label]').textContent=state.view==='month' ? dateText(range.start,{month:'long',year:'numeric'}) : `${dateText(range.start,{month:'short',day:'numeric'})} – ${dateText(addDays(range.end,-1),{month:'short',day:'numeric',year:'numeric'})}`;
+    $('[data-period-label]').textContent=periodView()==='month' ? dateText(range.start,{month:'long',year:'numeric'}) : `${dateText(range.start,{month:'short',day:'numeric'})} – ${dateText(addDays(range.end,-1),{month:'short',day:'numeric',year:'numeric'})}`;
     $('[data-period="previous"]').disabled=range.start<=current.start && state.dayPage===0;
     $('[data-period="next"]').disabled=range.end>=addDays(today(),165);
     $('[data-period="previous"]').setAttribute('aria-label',state.view==='day'?'Previous day':`Previous ${state.view}`);
@@ -74,7 +75,7 @@ if (root) {
     const range=dateRange(state.date,periodView()),current=dateRange(today(),periodView());
     $('[data-period="previous"]').disabled=range.start<=current.start&&state.dayPage===0;
     const activeLabel=state.activity==='beginner'?beginnerPrograms[state.program]:labels[state.activity];
-    $('[data-agenda-status]').textContent=events.length ? `${state.view==='day'?'Next day with sessions':'Upcoming sessions'} · ${activeLabel}` : `No upcoming ${activeLabel.toLowerCase()} sessions are listed in this period. Try the next week, another program or contact the club.`;
+    $('[data-agenda-status]').textContent=events.length ? `${state.view==='day'?'Next day with sessions':'Upcoming sessions'} · ${activeLabel}` : `No upcoming ${activeLabel.toLowerCase()} sessions are listed in this period. Try the next ${periodView()}, another program or contact the club.`;
     if(state.view==='day'&&state.dayPage+1<state.dayTotal)$('[data-period="next"]').disabled=false;
     $('[data-feed-error]').hidden=true;
     $('[data-event-updated]').textContent=`Updated ${new Intl.DateTimeFormat('en-US',{hour:'numeric',minute:'2-digit',timeZone:'America/New_York'}).format(new Date(data.updatedAt))} ET. Times shown in Eastern Time. Confirm availability and registration details in CourtReserve.`;
