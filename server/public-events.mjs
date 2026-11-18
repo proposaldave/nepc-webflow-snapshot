@@ -58,7 +58,7 @@ function validRange(start, end, now) {
   return weekly || monthly;
 }
 
-export function createPublicEventService({ fetchImpl = globalThis.fetch, now = Date.now } = {}) {
+export function createPublicEventService({ fetchImpl = (input, init) => globalThis.fetch(input, init), now = Date.now } = {}) {
   const cache = new Map(), pending = new Map(), recent = new Map();
   function remember(key, body) {
     cache.delete(key);
@@ -132,7 +132,11 @@ export function createPublicEventService({ fetchImpl = globalThis.fetch, now = D
       pending.set(key, work);
     }
     try { return json(200, await pending.get(key)); }
-    catch { return json(502, { error: 'Events could not be loaded. Open CourtReserve to continue.' }); }
+    catch (error) {
+      const known = ['Illegal invocation', 'AbortSignal.timeout is not a function', 'The operation was aborted', 'fetch failed'];
+      console.warn('Public calendar read failed', { name: error?.name, reason: known.find(reason => String(error?.message).includes(reason)) || 'request unavailable' });
+      return json(502, { error: 'Events could not be loaded. Open CourtReserve to continue.' });
+    }
     finally { pending.delete(key); }
   };
 }
