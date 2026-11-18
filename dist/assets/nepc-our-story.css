@@ -324,11 +324,15 @@ body.nepc-founder-page .navbar14_component{position:sticky;top:0;z-index:40}
 .nepc-founder .story-first-screen .skills .wrap{padding-block:10px}
 @media(max-width:767px){.nepc-founder .story-first-screen{min-height:calc(100svh - 68px)}}
 /* Dave alone accompanies the heading of his letter. */
-.nepc-founder .story-letter-heading .wrap{display:grid;grid-template-columns:1fr 220px;gap:32px;align-items:center}
-.nepc-founder .story-dave-photo img{display:block;width:220px;height:150px;object-fit:cover;object-position:58% 40%;border-radius:10px}
+.nepc-founder .story-letter-heading .wrap{display:grid;grid-template-columns:minmax(0,1fr) 200px;gap:32px;align-items:center;padding:24px;background:var(--ice);border:1px solid var(--line);border-radius:14px}
+.nepc-founder .story-dave-photo{margin:0;overflow:hidden;border-radius:10px;background:var(--navy)}
+.nepc-founder .story-dave-photo img{display:block;width:200px;height:132px;object-fit:cover;object-position:58% 40%}
+.nepc-founder .story-dave-photo figcaption{padding:10px 12px;color:#fff;font:400 11px/1.5 var(--ui)}
+.nepc-founder .story-dave-photo figcaption strong{display:block;font-size:13px;font-weight:750}
+.nepc-founder .story-dave-photo figcaption span{display:block;margin-top:2px;color:#dce7ee}
 .nepc-founder .story-signoff{font:700 16px/1.7 var(--ui)}
 .nepc-founder .story-signoff span{font-size:12px;font-weight:400;color:var(--mute)}
-@media(max-width:767px){.nepc-founder .story-letter-heading .wrap{grid-template-columns:1fr 120px;gap:18px}.nepc-founder .story-dave-photo img{width:120px;height:120px}.nepc-founder .story-letter-heading h2{font-size:28px}}
+@media(max-width:767px){.nepc-founder .story-letter-heading .wrap{grid-template-columns:minmax(0,1fr) 120px;gap:18px;padding:18px}.nepc-founder .story-dave-photo img{width:120px;height:104px}.nepc-founder .story-letter-heading h2{font-size:28px}}
 
 /* A wider, continuous letter with a calmer reading rhythm. */
 .nepc-founder .story-letter-body .chapter .prose{font-size:21px;line-height:1.6}

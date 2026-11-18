@@ -184,14 +184,14 @@
 .mp-event-day { margin-top:28px; }
 .nepc-clubs .mp-event-day-heading { font-size:14px; margin-bottom:12px; }
 .mp-event-list { padding:0; margin:0; list-style:none; }
-.mp-event-card { display:grid; grid-template-columns:116px 1fr auto; align-items:center; gap:24px; border:1px solid var(--home-line); border-radius:10px; padding:18px 20px; background:#fff; }
+.mp-event-card { display:grid; grid-template-columns:108px 1fr auto; align-items:center; gap:20px; border:1px solid var(--home-line); border-radius:10px; padding:14px 18px; background:#fff; }
 .mp-event-card + .mp-event-card { margin-top:10px; }
 .mp-event-time { display:flex; flex-direction:column; color:var(--home-ink); font-size:14px; font-weight:750; line-height:1.6; }
 .mp-event-time span:last-child { color:var(--home-muted); font-weight:500; font-size:12px; }
 .nepc-clubs .mp-event-content h4 { color:var(--home-ink); font-size:16px; line-height:1.45; font-weight:750; margin:0; }
 .mp-event-category { display:inline-block; font-size:11px; color:var(--home-ocean); margin-top:7px; }
-.mp-event-register { font-size:12px; font-weight:800; color:var(--home-brand-blue); padding:11px 14px; border:1px solid var(--home-brand-blue); border-radius:7px; white-space:nowrap; }
-.mp-event-register:hover { background:var(--home-ice); }
+.mp-event-register { display:inline-flex; align-items:center; justify-content:center; min-height:40px; font-size:12px; line-height:1.4; font-weight:800; color:#fff; background:var(--home-brand-blue); padding:9px 12px; border:1px solid var(--home-brand-blue); border-radius:7px; white-space:nowrap; }
+.mp-event-register:hover { color:#fff; background:var(--home-ink); border-color:var(--home-ink); }
 .nepc-clubs .mp-updated { margin-top:22px; font-size:11px; line-height:1.7; max-width:850px; }
 .mp-special-events { display:grid; grid-template-columns:220px 1fr auto; gap:24px; align-items:center; background:var(--home-ice); border-radius:12px; padding:24px; margin-top:32px; }
 .nepc-clubs .mp-special-events h3 { font-size:22px; }
@@ -228,11 +228,11 @@
   .mp-date-navigation { gap:10px; flex-wrap:wrap; }
   .nepc-clubs .mp-date-navigation h3 { min-width:0; flex:1; font-size:13px; }
   .mp-today { font-size:11px; padding:6px 10px; }
-  .mp-event-card { grid-template-columns:76px 1fr; gap:12px 16px; padding:16px; }
+  .mp-event-card { grid-template-columns:76px 1fr; gap:8px 14px; padding:12px 14px; }
   .mp-event-time { font-size:13px; align-self:start; }
   .mp-event-time span:last-child { font-size:11px; }
   .nepc-clubs .mp-event-content h4 { font-size:14px; }
-  .mp-event-register { grid-column:2; justify-self:start; font-size:11px; padding:8px 12px; }
+  .mp-event-register { grid-column:2; justify-self:start; min-height:44px; font-size:11px; padding:8px 12px; }
   .mp-event-category { font-size:10px; }
   .mp-special-events { grid-template-columns:1fr; gap:16px; padding:20px; }
   .mp-private-flow { padding:24px 20px; }
