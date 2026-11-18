@@ -1,0 +1,47 @@
+/* Seasonal junior instruction is offered at NEPC Rye only. */
+.fv-junior-card {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 300px;
+  align-items: center;
+  gap: 36px;
+  margin-top: 24px;
+  padding: 28px;
+  border: 1px solid var(--home-line);
+  border-radius: 18px;
+  background: var(--home-ice);
+  scroll-margin-top: 24px;
+}
+.nepc-services .fv-junior-copy h3 {
+  font-size: 28px;
+  line-height: 1.2;
+  letter-spacing: -.035em;
+}
+.fv-junior-copy > p:not(.fv-kicker) {
+  max-width: 500px;
+  margin-top: 14px;
+  font-size: 14px;
+}
+.nepc-services .fv-junior-copy .fv-junior-details {
+  margin-top: 10px;
+  font-size: 12px;
+}
+.fv-junior-copy .fv-actions { margin-top: 20px; }
+.nepc-services .fv-junior-copy .fv-button { font-size: 12px; }
+.fv-junior-photo {
+  display: block;
+  width: 100%;
+  height: 260px;
+  border-radius: 12px 12px 36px 12px;
+  object-fit: cover;
+  object-position: center 25%;
+}
+@media (max-width: 767px) {
+  .fv-junior-card {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 24px;
+    padding: 22px;
+  }
+  .nepc-services .fv-junior-copy h3 { font-size: 25px; }
+  .fv-junior-copy .fv-button { width: 100%; }
+  .fv-junior-photo { height: 260px; }
+}
