@@ -316,6 +316,32 @@ body[data-nepc-home] .nepc-home h3 {
   -webkit-mask-image: linear-gradient(to right, transparent, #00000009 4%, #00000038 12%, #00000094 24%, #000000e0 36%, #000 48%);
   mask-image: linear-gradient(to right, transparent, #00000009 4%, #00000038 12%, #00000094 24%, #000000e0 36%, #000 48%);
 }
+/* Scale the opening composition with the screen, without relying on browser zoom. */
+@media (min-width: 1200px) {
+  .home-hero {
+    width: min(1600px, 80vw);
+  }
+  .home-hero .home-hero-title {
+    font-size: clamp(72px, 5.5vw, 112px);
+  }
+  .home-hero-brand {
+    font-size: clamp(14px, 1.05vw, 19px);
+  }
+  .home-hero-copy > p {
+    max-width: 540px;
+    font-size: clamp(16px, 1.05vw, 20px);
+    margin-block: 26px 30px;
+  }
+  .home-hero-actions .home-button {
+    min-height: 54px;
+    padding: 15px 24px;
+    font-size: clamp(13px, .85vw, 16px);
+  }
+  .home-hero-photo {
+    right: calc((100% - 100vw) / 2);
+    width: calc(74% + (100vw - 100%) / 2 + 32px);
+  }
+}
 .home-approach {
   padding-block: 38px 40px;
   background: var(--home-ice);
@@ -633,13 +659,25 @@ body[data-nepc-home] .home-activity h3 {
   line-height: 1;
 }
 .home-beginner {
-  display: flex;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(240px, 340px);
   align-items: center;
   justify-content: space-between;
   gap: 35px;
   margin-bottom: 48px;
   padding: 30px 0;
   border-block: 1px solid var(--home-line);
+}
+.home-beginner-copy .home-button {
+  margin-top: 20px;
+}
+.home-beginner-photo {
+  display: block;
+  width: 100%;
+  height: 220px;
+  border-radius: 18px 18px 42px 18px;
+  object-fit: cover;
+  object-position: center 24%;
 }
 body[data-nepc-home] .home-beginner h2 {
   font-size: 27px;
@@ -1097,11 +1135,14 @@ body[data-nepc-home] .footer4_component .padding-top {
     font-size: 16px;
   }
   .home-beginner {
-    flex-direction: column;
+    grid-template-columns: 1fr;
     align-items: start;
     gap: 20px;
     margin-bottom: 34px;
     padding-block: 26px;
+  }
+  .home-beginner-photo {
+    height: 240px;
   }
   .home-beginner p {
     max-width: 360px;
