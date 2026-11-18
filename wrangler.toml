@@ -1,3 +1,6 @@
 name = "nepc-website"
 pages_build_output_dir = "dist"
 compatibility_date = "2026-11-17"
+
+[vars]
+NEPC_ENABLE_PUBLIC_EVENTS = "1"

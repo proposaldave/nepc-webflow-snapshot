@@ -20,13 +20,13 @@ In Cloudflare, select **Workers & Pages → nepc-website → Settings → Variab
 
 | Name | Type | Purpose |
 | --- | --- | --- |
-| `NEPC_ENABLE_PUBLIC_EVENTS` | Text variable, value `1` | Enables the public agenda |
+| `NEPC_ENABLE_PUBLIC_EVENTS` | Public text variable, value `1`, managed in `wrangler.toml` | Enables the public agenda |
 | `RYE_USERNAME` | Encrypted secret | Rye Organization API username |
 | `RYE_API_KEY` | Encrypted secret | Rye Organization API key |
 | `MIDDLETON_USERNAME` | Encrypted secret | Middleton Organization API username |
 | `MIDDLETON_API_KEY` | Encrypted secret | Middleton Organization API key |
 
-Never add credential values to Git, a build command, a URL, browser JavaScript, screenshots, or this document. Store them as encrypted runtime secrets. Use an existing approved credential source; do not request keys in chat. Secrets must exist before deploying the Function that uses them. Changing them requires a new deployment to take effect.
+Never add credential values to Git, a build command, a URL, browser JavaScript, screenshots, or this document. Store them as encrypted runtime secrets. Use an existing approved credential source; do not request keys in chat. Secrets must exist before deploying the Function that uses them. Changing them requires a new deployment to take effect. With Wrangler managing the project, configure only the four encrypted credentials in the dashboard; the non-sensitive enable flag is defined in the versioned configuration and applies to Preview and Production.
 
 Deploy and verify the design branch in Preview first. Check both clubs, activity changes, Day navigation, Month view, beginner program filters, and registration links. Responses must contain only the public field allowlist. Missing configuration returns a generic 503, upstream failures return a generic 502, and the interface retains the existing embedded calendars and club portal links. Do not promote a failed calendar to production.
 
