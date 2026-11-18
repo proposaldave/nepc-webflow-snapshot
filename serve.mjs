@@ -2,6 +2,7 @@ import http from "node:http";
 import fs from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { eventPreview } from "./scripts/public-event-preview.mjs";
 
 const PORT = Number(process.env.PORT || 4177);
 const ROOT = path.join(path.dirname(fileURLToPath(import.meta.url)), "dist");
@@ -46,6 +47,8 @@ async function findFile(urlPath) {
 
 http
   .createServer(async (req, res) => {
+    const url = new URL(req.url || '/', 'http://localhost');
+    if (url.pathname === '/api/public-events') return eventPreview(req, res, url);
     const file = await findFile(req.url || "/");
     if (!file) {
       res.writeHead(404, { "content-type": "text/plain; charset=utf-8" });

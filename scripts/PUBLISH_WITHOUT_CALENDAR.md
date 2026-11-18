@@ -1,4 +1,4 @@
-# Redesign release with the existing calendar
+# Published redesign checkpoint before the new calendar
 
 The owner approved publishing the redesign while postponing the new daily agenda and Cloudflare event-feed configuration.
 
@@ -10,3 +10,7 @@ The owner approved publishing the redesign while postponing the new daily agenda
 The complete daily-agenda prototype and protected endpoint remain on `codex/nepc-clubs-phase-3` at `9d28de34df114b27b6e126212155b3badcaa7e40`. Resume that work separately when the owner requests it. Preserve this published release's later changes when reintroducing the agenda.
 
 Build `docs/` from `dist/`, run SEO, gift-card and public safety checks, then verify the production domain after the approved push to `main`. The SEO check additionally verifies that the deferred calendar page is unchanged.
+
+## Find Your Play continuation
+
+The owner subsequently reported that Find Your Play was not updated. Its existing approved daily agenda and protected public-event endpoint have been restored on a continuation branch based on the published redesign. The current beginner page remains unchanged. The live calendar must not be replaced until encrypted Cloudflare configuration is authorized and the hosted preview succeeds for both clubs.
