@@ -70,7 +70,8 @@ export function createPublicEventService({ fetchImpl = (input, init) => globalTh
     const url = new URL(`https://api.courtreserve.com/api/v1/${resource}`);
     Object.entries(query).forEach(([name, value]) => url.searchParams.set(name, value));
     const response = await fetchImpl(url, {
-      method: 'GET', redirect: 'error',
+      // Workers supports manual/follow only. Never forward credentials on redirects.
+      method: 'GET', redirect: 'manual',
       headers: { Authorization: `Basic ${btoa(`${env[`${prefix}_USERNAME`]}:${env[`${prefix}_API_KEY`]}`)}`, Accept: 'application/json', 'User-Agent': 'NEPC-Public-Calendar/1.0' },
       signal: AbortSignal.timeout(15000)
     });
@@ -134,7 +135,8 @@ export function createPublicEventService({ fetchImpl = (input, init) => globalTh
     try { return json(200, await pending.get(key)); }
     catch (error) {
       const known = ['Illegal invocation', 'AbortSignal.timeout is not a function', 'The operation was aborted', 'fetch failed'];
-      console.warn('Public calendar read failed', { name: error?.name, reason: known.find(reason => String(error?.message).includes(reason)) || 'request unavailable' });
+      const name = ['TypeError', 'TimeoutError', 'AbortError'].includes(error?.name) ? error.name : 'Error';
+      console.warn('Public calendar read failed', { name, reason: known.find(reason => String(error?.message).includes(reason)) || 'request unavailable' });
       return json(502, { error: 'Events could not be loaded. Open CourtReserve to continue.' });
     }
     finally { pending.delete(key); }

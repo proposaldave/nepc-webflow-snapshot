@@ -22,7 +22,7 @@ const calls = [];
 const fetchImpl = async (url, options) => {
   assert.equal(url.origin, 'https://api.courtreserve.com');
   assert.equal(options.method, 'GET');
-  assert.equal(options.redirect, 'error');
+  assert.equal(options.redirect, 'manual');
   calls.push({ url, options });
   if (url.pathname.endsWith('/categories')) return Response.json({ IsSuccessStatusCode: true, Data: [{ Id: 10, IsPublic: true }, { Id: 20, IsPublic: false }] });
   assert.equal(url.pathname, '/api/v1/eventcalendar/eventlist');
@@ -34,6 +34,19 @@ const fetchImpl = async (url, options) => {
     { ...event(org), StartDateTime: '2026-11-24T10:00:00', EndDateTime: '2026-11-24T12:00:00' }
   ] });
 };
+// Native runtime fetch implementations may require their global receiver.
+const nativeFetch = globalThis.fetch;
+try {
+  globalThis.fetch = function (url, options) {
+    assert.equal(this, globalThis);
+    return fetchImpl(url, options);
+  };
+  const runtimeService = createPublicEventService({ now: () => currentTime });
+  assert.equal((await runtimeService(request(), env)).status, 200);
+} finally {
+  globalThis.fetch = nativeFetch;
+  calls.length = 0;
+}
 const service = createPublicEventService({ fetchImpl, now: () => currentTime });
 const edgeEntries = new Map();
 const edgeCache = {
@@ -99,6 +112,17 @@ response = await failingService(request(), env);
 assert.equal(response.status, 502);
 assert(!(await response.text()).includes('internal detail'));
 assert.equal(response.headers.get('Cache-Control'), 'no-store');
+
+// Reject redirects before following Location or transmitting credentials elsewhere.
+let redirectCalls = 0;
+const redirectService = createPublicEventService({ now: () => currentTime, fetchImpl: async (url, options) => {
+  redirectCalls++;
+  assert.equal(url.origin, 'https://api.courtreserve.com');
+  assert.equal(options.redirect, 'manual');
+  return new Response(null, { status: 302, headers: { Location: 'https://other.example/' } });
+} });
+assert.equal((await redirectService(request(), env)).status, 502);
+assert.equal(redirectCalls, 1);
 
 // Coalesce concurrent identical requests, then refresh after two minutes.
 let time = currentTime, concurrentCalls = 0;
