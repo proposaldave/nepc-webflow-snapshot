@@ -1,0 +1,61 @@
+/* Paid-visit welcome page, using the established NEPC visual system. */
+.pw-hero {
+  display:grid;
+  grid-template-columns:minmax(0,1fr) minmax(0,1fr);
+  align-items:center;
+  gap:48px;
+  padding-block:56px;
+}
+.nepc-services .pw-title {
+  color:var(--home-ink);
+  font-size:clamp(38px,4vw,54px);
+  font-weight:750;
+  line-height:1.08;
+  letter-spacing:-.045em;
+}
+.nepc-services .pw-intro { margin-top:22px; max-width:48ch; font-size:16px; }
+.nepc-services .pw-welcome { margin-top:14px; color:var(--home-ink); font-weight:750; }
+.nepc-services .pw-address { margin-top:18px; font-size:12px; }
+.pw-photo { overflow:hidden; border-radius:20px 20px 52px 20px; background:var(--home-ice); }
+.pw-photo img { display:block; width:100%; height:auto; aspect-ratio:1.4; object-fit:cover; }
+.pw-photo figcaption { display:flex; justify-content:space-between; gap:12px; padding:14px 20px; background:var(--home-ink); color:#fff; font-size:13px; font-weight:750; }
+.pw-photo figcaption span { font-size:11px; font-weight:500; }
+.pw-ways { padding-block:40px; background:var(--home-ice); }
+.pw-ways h2 { margin-bottom:24px; }
+.pw-ways .fv-card { display:flex; flex-direction:column; padding:24px; }
+.pw-ways .fv-link { margin-top:auto; padding-top:22px; }
+.pw-first-visit { display:grid; grid-template-columns:1fr 2fr; gap:50px; padding-block:48px; }
+.pw-steps { display:grid; gap:22px; margin:0; padding:0; list-style:none; }
+.pw-steps li { display:flex; align-items:start; gap:16px; }
+.pw-steps li > span { display:grid; place-items:center; width:30px; height:30px; border-radius:50%; flex:none; background:var(--home-ice); color:var(--home-brand-blue); font-size:12px; font-weight:800; }
+.nepc-services .pw-steps h3 { font-size:17px; }
+.nepc-services .pw-steps p { margin-top:5px; font-size:14px; }
+.pw-help-band { padding-block:36px; background:var(--home-ice); }
+.pw-help { display:flex; align-items:center; justify-content:space-between; gap:40px; }
+.pw-help > div:first-child { max-width:640px; }
+.nepc-services .pw-help h2 { font-size:30px; }
+.nepc-services .pw-help p:not(.fv-kicker) { margin-top:12px; font-size:14px; }
+.pw-help-actions { display:grid; gap:16px; flex:none; }
+.pw-help-actions .fv-button { flex-direction:column; align-items:start; gap:3px; }
+.pw-help-actions .fv-button span { font-weight:500; font-size:12px; }
+@media (max-width:900px) {
+  .pw-hero { gap:30px; }
+  .pw-hero .fv-actions { display:grid; justify-items:start; }
+  .pw-first-visit { gap:28px; }
+}
+@media (max-width:700px) {
+  .pw-hero { grid-template-columns:1fr; padding-block:30px; gap:28px; }
+  .nepc-services .pw-title { font-size:37px; }
+  .nepc-services .pw-intro { margin-top:18px; font-size:14px; }
+  .nepc-services .pw-welcome { font-size:13px; }
+  .pw-hero .fv-actions { display:flex; }
+  .pw-hero .fv-button { width:100%; }
+  .pw-photo figcaption { padding:12px 16px; }
+  .pw-ways { padding-block:30px; }
+  .pw-ways .fv-grid { grid-template-columns:1fr; gap:14px; }
+  .pw-first-visit { grid-template-columns:1fr; padding-block:34px; gap:24px; }
+  .pw-help { flex-direction:column; align-items:start; gap:24px; }
+  .pw-help-actions { width:100%; }
+  .pw-help-actions .fv-button { align-items:center; }
+  .nepc-services .pw-help h2 { font-size:27px; }
+}
