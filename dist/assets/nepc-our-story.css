@@ -358,7 +358,9 @@ body.nepc-founder-page .navbar14_component{position:sticky;top:0;z-index:40}
 
 /* Print the letter on one US Letter page. */
 @media print{
-  @page{size:letter;margin:.35in .5in}
+  @page{size:letter;margin:.3in .45in}
+  html,body,.page-wrapper,main{height:auto!important;min-height:0!important;margin:0!important;padding-bottom:0!important}
+  body{overflow:visible!important}
   .nepc-founder{font-size:11pt}
   .navbar14_component,[role="banner"],footer,.footer4_component,.nepc-gift-promo,.home-skip-link,
   .nepc-founder .btn,.nepc-founder .herocta,.nepc-founder .skills,.nepc-founder .story-dave-photo,
@@ -375,7 +377,7 @@ body.nepc-founder-page .navbar14_component{position:sticky;top:0;z-index:40}
   .nepc-founder .hero .sub{font-size:11pt!important;margin-top:2pt!important}
   .nepc-founder .story-letter-heading h2,.nepc-founder .story-kicker{font-size:9pt!important}
   .nepc-founder h2{font-size:12pt!important;margin:5pt 0 1pt!important}
-  .nepc-founder .story-letter-body .chapter .prose,.nepc-founder .prose,.nepc-founder p,.nepc-founder li,.nepc-founder .benefits span{font-size:10pt!important;line-height:1.22!important}
+  .nepc-founder .story-letter-body .chapter .prose,.nepc-founder .prose,.nepc-founder p,.nepc-founder li,.nepc-founder .benefits span{font-size:10pt!important;line-height:1.2!important}
   .nepc-founder .story-letter-body .prose > * + *{margin-top:3pt!important}
   .nepc-founder .story-letter-body .pull,.nepc-founder .big,.nepc-founder .long{font-size:11pt!important;line-height:1.25!important;margin:2pt 0!important}
   .nepc-founder ul{margin:2pt 0 2pt 14pt!important;padding:0!important}
@@ -421,3 +423,8 @@ body.nepc-founder-page .navbar14_component{position:sticky;top:0;z-index:40}
 }
 .nepc-founder .ways.ways-cards li.key::before{display:none}
 @media print{.nepc-founder .ways.ways-cards{display:block!important;margin:0 0 0 14pt!important}.nepc-founder .ways.ways-cards li{padding:0!important;display:list-item!important}.nepc-founder .ways.ways-cards li::before{display:none!important}.nepc-founder .ways.ways-cards li.key span{display:inline!important}.nepc-founder .ways.ways-cards li.key small{color:#000!important}}
+@media print{
+  .nepc-founder .prose,.nepc-founder p,.nepc-founder li,.nepc-founder .benefits span,.nepc-founder .benefits b,.nepc-founder .ways.ways-cards li,.nepc-founder .ways.ways-cards li.key small,.nepc-founder .ways.ways-cards li.key strong{font-size:9.7pt!important}
+  .nepc-founder .story-letter-body .pull,.nepc-founder .big,.nepc-founder .long{font-size:10.5pt!important}
+  .nepc-founder h2{margin:4pt 0 1pt!important}
+}
