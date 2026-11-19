@@ -435,3 +435,7 @@ body.nepc-founder-page .navbar14_component{position:sticky;top:0;z-index:40}
   .nepc-founder .big{padding:0!important}
   .nepc-founder .big{margin:2pt 0!important}
 }
+@media print{
+  .nepc-founder .prose,.nepc-founder p,.nepc-founder li,.nepc-founder .benefits span,.nepc-founder .benefits b,.nepc-founder .ways.ways-cards li,.nepc-founder .ways.ways-cards li.key small,.nepc-founder .ways.ways-cards li.key strong{font-size:9.4pt!important}
+  .nepc-founder .story-letter-body .pull,.nepc-founder .big,.nepc-founder .long{font-size:10.2pt!important}
+}
