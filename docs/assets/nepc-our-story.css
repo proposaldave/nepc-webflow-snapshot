@@ -428,3 +428,10 @@ body.nepc-founder-page .navbar14_component{position:sticky;top:0;z-index:40}
   .nepc-founder .story-letter-body .pull,.nepc-founder .big,.nepc-founder .long{font-size:10.5pt!important}
   .nepc-founder h2{margin:4pt 0 1pt!important}
 }
+@media print{
+  .nepc-founder .close .cols,.nepc-founder .close .cols > div,.nepc-founder .close .foot,.nepc-founder .close .sig,.nepc-founder .close p{margin:0!important;padding:0!important;border:0!important;gap:0!important}
+  .nepc-founder .close h2{display:block!important;margin:4pt 0 1pt!important}
+  .nepc-founder .close .wrap > *{display:block!important}
+  .nepc-founder .big{padding:0!important}
+  .nepc-founder .big{margin:2pt 0!important}
+}
