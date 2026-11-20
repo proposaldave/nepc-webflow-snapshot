@@ -208,3 +208,81 @@ body[data-nepc-home] .nepc-clubs { width:100%; max-width:none; margin:0; }
 .lc-owners-caption strong,.lc-owners-caption span{display:block}
 .lc-owners-caption strong{color:var(--home-ink);font-weight:750}
 .lc-owners-caption span{font-size:11px;margin-top:3px;color:var(--home-muted)}
+
+.lc-person-bio-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 32px;
+  margin-top: 4px;
+  padding: 4px 0;
+  border: 0;
+  background: transparent;
+  color: var(--home-brand-blue);
+  font: inherit;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.lc-person-bio-link:hover { text-decoration: underline; text-underline-offset: 4px; }
+.lc-person-bio-link:focus-visible, .lc-bio-close:focus-visible {
+  outline: 2px solid var(--home-ocean);
+  outline-offset: 4px;
+  border-radius: 4px;
+}
+.nepc-bio-open { overflow: hidden; }
+.lc-staff-bio {
+  position: fixed;
+  inset: 0;
+  width: min(560px, calc(100% - 32px));
+  max-width: none;
+  max-height: calc(100% - 48px);
+  margin: auto;
+  padding: 36px;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  border: 1px solid var(--home-line);
+  border-radius: 20px;
+  background: #fff;
+  color: var(--home-ink);
+  box-shadow: 0 24px 80px #173d6133;
+}
+.lc-staff-bio::backdrop { background: #173d6180; }
+.lc-bio-close-form { position: absolute; top: 12px; right: 12px; margin: 0; }
+.lc-bio-close {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: var(--home-ice);
+  color: var(--home-ink);
+  font: inherit;
+  font-size: 25px;
+  cursor: pointer;
+}
+.lc-bio-close:hover { background: #dceaf1; }
+.lc-bio-heading { display: flex; align-items: center; gap: 20px; padding-right: 12px; }
+.nepc-clubs .lc-bio-heading img {
+  width: 88px;
+  height: 100px;
+  flex: 0 0 88px;
+  object-fit: cover;
+  object-position: 50% 35%;
+  border-radius: 12px;
+}
+.nepc-clubs .lc-staff-bio .lc-eyebrow { font-size: 10px; margin: 0 0 6px; }
+.nepc-clubs .lc-staff-bio h2 { font-size: 27px; line-height: 1.2; letter-spacing: -.025em; margin: 0; }
+.nepc-clubs .lc-staff-bio .lc-bio-role { font-size: 13px; line-height: 1.5; margin: 6px 0 0; }
+.nepc-clubs .lc-bio-copy { margin-top: 24px; }
+.nepc-clubs .lc-bio-copy p { font-size: 16px; line-height: 1.75; margin: 0; }
+.lc-bio-video { margin-top: 24px; font-size: 13px; }
+@media (max-width: 700px) {
+  .lc-staff-bio { padding: 40px 24px 28px; }
+  .lc-bio-heading { gap: 14px; padding-right: 0; }
+  .nepc-clubs .lc-bio-heading img { width: 64px; height: 76px; flex-basis: 64px; }
+  .nepc-clubs .lc-staff-bio h2 { font-size: 23px; }
+  .nepc-clubs .lc-bio-copy p { font-size: 15px; line-height: 1.7; }
+}
