@@ -42,7 +42,7 @@
       rail.setAttribute('aria-valuetext', 'Shot ' + count + ' of 34');
       lastShot = count;
     }
-    if (reduced) return;
+    if (reduced || !rallyBall) return;
     var index = Math.min(N - 1, Math.floor(p * N));
     var t = ease(p >= 1 ? 1 : p * N - index);
     var a = spots[index], b = spots[index + 1];
@@ -51,13 +51,12 @@
     rallyBall.style.setProperty('--bs', 1 + .16 * Math.sin(Math.PI * t));
   }
   function updateButton(scene) {
-    scene.button.hidden = reduced;
-    var label = scene.playing ? 'Pause' : scene.completed ? 'Replay' : scene.started ? 'Continue' : 'Play';
+    scene.button.hidden = false;
+    var label = scene.playing ? 'Pause' : scene.completed && scene.started ? 'Replay' : scene.started ? 'Continue' : 'Play';
     scene.button.textContent = label;
     scene.button.setAttribute('aria-label', label + ' ' + scene.name);
   }
   function startScene(scene) {
-    if (reduced) return;
     if (scene.completed) scene.elapsed = 0;
     scene.completed = false;
     scene.started = true;
@@ -164,7 +163,7 @@
       mark.style.setProperty('--p', value.toFixed(3));
     });
     scenes.forEach(function (scene) {
-      if (!scene.visible || !scene.playing || reduced) return;
+      if (!scene.visible || !scene.playing) return;
       scene.elapsed = Math.min(scene.duration, scene.elapsed + dt);
       scene.render(scene.elapsed / scene.duration, false);
       if (scene.elapsed >= scene.duration) {
@@ -201,7 +200,7 @@
     if (reduced) {
       marks.forEach(function (mark) { mark.style.setProperty('--p', 1); });
       scenes.forEach(function (scene) {
-        scene.playing = false; scene.completed = true; scene.started = true;
+        scene.playing = false; scene.completed = true; scene.started = false;
         scene.elapsed = scene.duration; scene.render(1, true); updateButton(scene);
       });
     } else scenes.forEach(updateButton);
