@@ -24,7 +24,7 @@ export function categoryLabel(event, club) {
 }
 export function visualCategory(event, club) {
   // Only explicitly named coaching events receive the private-lesson treatment.
-  if (matchesActivity(event, club, 'coaching') && /\bprivate[\s-]+lessons?\b/i.test(event.title)) return 'lesson';
+  if (matchesActivity(event, club, 'coaching')) return /\bprivate[\s-]+lessons?\b/i.test(event.title) ? 'lesson' : 'coaching';
   return categoryLabel(event, club);
 }
 export function easternLocal(value = new Date()) {
