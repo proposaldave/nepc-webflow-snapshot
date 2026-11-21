@@ -3,7 +3,8 @@
   'use strict';
 
   var ACTION = 'https://newenglandpickleball.us21.list-manage.com/subscribe/post?u=adb018edc16a2bde62eae0bcc&id=f7591a4b47';
-  var JSONP = ACTION.replace('/subscribe/post?', '/subscribe/post-json?');
+  // Mailchimp's old /post-json address now returns 404; /subscribe/post answers JSONP when a c= callback is given (checked Nov 21, 2026).
+  var JSONP = ACTION;
   var BOT_FIELD = 'b_adb018edc16a2bde62eae0bcc_f7591a4b47';
   var LOGO = 'https://mcusercontent.com/adb018edc16a2bde62eae0bcc/images/01dc4a7a-4a03-b386-674f-b0f526f63a9c.png';
   var KEY_SUBSCRIBED = 'nepcEmailSubscribed';
