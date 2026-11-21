@@ -243,3 +243,26 @@
 .mp-day-count{font-size:11px;color:var(--home-muted)}
 
 .mp-beginner-programs{padding:18px 20px;margin-top:16px;background:var(--home-ice);border-radius:10px}.mp-beginner-programs[hidden]{display:none}.nepc-find-play .mp-beginner-programs>p{font-size:12px;margin:0 0 10px}.nepc-find-play .mp-beginner-programs>p:last-child{margin:12px 0 0}.mp-beginner-programs a{color:var(--home-brand-blue);text-decoration:underline}
+
+/* Membership tier cards: each card is filled with its own colour. */
+.nepc-clubs .mp-tier { --t-bg:#104d85; --t-fg:#fff; --t-soft:#ffffffd9; --t-line:#ffffff47; --t-btn-fg:#104d85; border:0; background:var(--t-bg); background-image:linear-gradient(160deg,#ffffff1f,#ffffff00 55%); color:var(--t-fg); box-shadow:0 14px 32px #173d6133; }
+.nepc-clubs .mp-tier:nth-child(2) { --t-bg:#bfc5ce; --t-fg:#12324f; --t-soft:#12324fe6; --t-line:#12324f40; --t-btn-fg:#fff; background-image:linear-gradient(160deg,#ffffff8c,#ffffff00 45%,#00000012); }
+.nepc-clubs .mp-tier:nth-child(3) { --t-bg:#8a1830; --t-btn-fg:#8a1830; }
+.nepc-clubs .mp-tier .lc-eyebrow,
+.nepc-clubs .mp-tier .mp-partner,
+.nepc-clubs .mp-tier li,
+.nepc-clubs .mp-tier-actions p { color:var(--t-soft); }
+.nepc-clubs .mp-tier h2,
+.nepc-clubs .mp-tier .mp-price,
+.nepc-clubs .mp-tier .mp-price span,
+.nepc-clubs .mp-tier .mp-partner strong,
+.nepc-clubs .mp-tier li::before { color:var(--t-fg); }
+.nepc-clubs .mp-tier .mp-tier-actions { border-top-color:var(--t-line); }
+.nepc-clubs .mp-tier .lc-button--blue { background:#fff; border-color:#fff; color:var(--t-btn-fg); }
+.nepc-clubs .mp-tier .lc-button--blue:hover { background:#ffffffe6; box-shadow:0 4px 14px #00000026; }
+.nepc-clubs .mp-tier .lc-button--outline { background:transparent; border-color:var(--t-fg); color:var(--t-fg); }
+.nepc-clubs .mp-tier .lc-button--outline:hover { background:#ffffff26; }
+.nepc-clubs .mp-tier .lc-button:focus-visible { outline-color:var(--t-fg); }
+.nepc-clubs .mp-tier:nth-child(2) .lc-button--blue { background:#12324f; border-color:#12324f; }
+.nepc-clubs .mp-tier:nth-child(2) .lc-button--blue:hover { background:#0b2338; }
+.nepc-clubs .mp-tier:nth-child(2) .lc-button--outline:hover { background:#12324f1a; }
