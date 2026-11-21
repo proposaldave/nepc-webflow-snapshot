@@ -243,3 +243,86 @@
 .mp-day-count{font-size:11px;color:var(--home-muted)}
 
 .mp-beginner-programs{padding:18px 20px;margin-top:16px;background:var(--home-ice);border-radius:10px}.mp-beginner-programs[hidden]{display:none}.nepc-find-play .mp-beginner-programs>p{font-size:12px;margin:0 0 10px}.nepc-find-play .mp-beginner-programs>p:last-child{margin:12px 0 0}.mp-beginner-programs a{color:var(--home-brand-blue);text-decoration:underline}
+
+/* Activity colors stay consistent across the day, week, and month views. */
+.nepc-find-play [data-event-tone], .nepc-find-play [data-event-filter] {
+  --event-accent: #718398;
+  --event-soft: #eef2f6;
+  --event-ink: #42556a;
+}
+.nepc-find-play [data-event-tone="social"], .nepc-find-play [data-event-filter="social"] {
+  --event-accent: #326b91;
+  --event-soft: #eff6f9;
+  --event-ink: #173d61;
+}
+.nepc-find-play [data-event-tone="competitive"], .nepc-find-play [data-event-filter="competitive"] {
+  --event-accent: #c15c3e;
+  --event-soft: #fff1ea;
+  --event-ink: #8e3d25;
+}
+.nepc-find-play [data-event-tone="coaching"], .nepc-find-play [data-event-filter="coaching"] {
+  --event-accent: #8156b3;
+  --event-soft: #f4eefc;
+  --event-ink: #613c8c;
+}
+.nepc-find-play [data-event-tone="beginner"], .nepc-find-play [data-event-filter="beginner"] {
+  --event-accent: #50834b;
+  --event-soft: #eef7e9;
+  --event-ink: #335a2f;
+}
+.nepc-find-play [data-event-tone="lesson"] {
+  --event-accent: #d6a51d;
+  --event-soft: #fff7d6;
+  --event-ink: #78560a;
+}
+.nepc-find-play .mp-event-filter[data-event-filter]:not([data-event-filter="all"]) {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.nepc-find-play .mp-event-filter[data-event-filter]:not([data-event-filter="all"])::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  flex: 0 0 8px;
+  border-radius: 50%;
+  background: var(--event-accent);
+}
+.nepc-find-play .mp-event-filter[data-event-filter="coaching"]::before {
+  box-shadow: 7px 0 0 #d6a51d;
+  margin-right: 7px;
+}
+.nepc-find-play .mp-event-filter[data-event-filter]:not([data-event-filter="all"])[aria-pressed="true"] {
+  background: var(--event-soft);
+  color: var(--event-ink);
+  border-color: var(--event-accent);
+  box-shadow: inset 0 0 0 1px var(--event-accent);
+}
+.nepc-find-play .mp-event-filter:focus-visible {
+  outline: 2px solid var(--home-ink);
+  outline-offset: 3px;
+}
+.nepc-find-play .mp-event-card {
+  border-left: 4px solid var(--event-accent);
+}
+.mp-event-categories { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+.nepc-find-play .mp-event-category {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin: 0;
+  padding: 4px 8px;
+  border-radius: 5px;
+  background: var(--event-soft);
+  color: var(--event-ink);
+  font-weight: 700;
+  line-height: 1.4;
+}
+.nepc-find-play .mp-event-category::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  flex: 0 0 6px;
+  border-radius: 50%;
+  background: var(--event-accent);
+}

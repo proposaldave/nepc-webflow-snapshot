@@ -22,6 +22,11 @@ export function matchesProgram(event, program) {
 export function categoryLabel(event, club) {
   return ['beginner','coaching','competitive','social'].find(group => matchesActivity(event, club, group)) || 'other';
 }
+export function visualCategory(event, club) {
+  // Only explicitly named coaching events receive the private-lesson treatment.
+  if (matchesActivity(event, club, 'coaching') && /\bprivate[\s-]+lessons?\b/i.test(event.title)) return 'lesson';
+  return categoryLabel(event, club);
+}
 export function easternLocal(value = new Date()) {
   if (typeof value === 'string' && !/(Z|[+-]\d\d:\d\d)$/.test(value)) return value.slice(0,19);
   const parts = Object.fromEntries(new Intl.DateTimeFormat('en-CA', { timeZone:'America/New_York', year:'numeric', month:'2-digit', day:'2-digit', hour:'2-digit', minute:'2-digit', second:'2-digit', hourCycle:'h23' }).formatToParts(new Date(value)).map(p => [p.type,p.value]));

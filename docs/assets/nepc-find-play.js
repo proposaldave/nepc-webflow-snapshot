@@ -1,4 +1,4 @@
-import { labels, matchesActivity, beginnerPrograms, matchesProgram, easternLocal, addDays, dateRange, movePeriod, clock } from './nepc-event-model.js?v=20261117-4';
+import { labels, matchesActivity, visualCategory, beginnerPrograms, matchesProgram, easternLocal, addDays, dateRange, movePeriod, clock } from './nepc-event-model.js?v=20261121-1';
 const root = document.querySelector('.nepc-find-play');
 if (root) {
   const $ = selector => root.querySelector(selector);
@@ -50,10 +50,19 @@ if (root) {
   }
   function eventCard(event) {
     const item=make('li','mp-event-card'); const time=make('div','mp-event-time'); time.append(make('span','',clock(event.start)),make('span','',`to ${clock(event.end)}`));
+    const tone=visualCategory(event,state.club);
+    item.dataset.eventTone=tone;
     const content=make('div','mp-event-content'); content.append(make('h4','',event.title));
     const categories=['social','competitive','coaching','beginner'].filter(group=>matchesActivity(event,state.club,group));
     if(categories.includes(state.activity))categories.sort((a,b)=>Number(b===state.activity)-Number(a===state.activity));
-    content.append(make('span','mp-event-category',categories.length?categories.map(group=>labels[group]).join(' · '):'Club event'));
+    const badges=make('div','mp-event-categories');
+    (categories.length?categories:['other']).forEach(group=>{
+      const privateLesson=group==='coaching'&&tone==='lesson';
+      const badge=make('span','mp-event-category',privateLesson?'Private Lessons':group==='other'?'Club event':labels[group]);
+      badge.dataset.eventTone=privateLesson?'lesson':group;
+      badges.append(badge);
+    });
+    content.append(badges);
     const link=make('a','mp-event-register','View details & spots ↗');
     // Only the adapter's public CourtReserve booking URLs are used.
     const url=new URL(event.url); if(url.protocol!=='https:' || url.hostname!=='app.courtreserve.com') return null;
