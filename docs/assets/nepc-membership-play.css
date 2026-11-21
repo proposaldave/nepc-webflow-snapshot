@@ -349,3 +349,33 @@
 .nepc-clubs .mp-tier:nth-child(2) .lc-button--blue { background:#12324f; border-color:#12324f; }
 .nepc-clubs .mp-tier:nth-child(2) .lc-button--blue:hover { background:#0b2338; }
 .nepc-clubs .mp-tier:nth-child(2) .lc-button--outline:hover { background:#12324f1a; }
+
+/* An optional full calendar, directly below the selected club. */
+.mp-calendar-access { border: 0; padding: 0; margin-top: 16px; }
+.mp-calendar-access > summary {
+  display: inline-flex;
+  align-items: center;
+  gap: 18px;
+  max-width: 100%;
+  min-height: 46px;
+  padding: 12px 18px;
+  border: 1.5px solid var(--home-brand-blue);
+  border-radius: 8px;
+  background: #fff;
+  color: var(--home-brand-blue);
+  font-size: 13px;
+  line-height: 1.4;
+  list-style: none;
+}
+.mp-calendar-access > summary::-webkit-details-marker { display: none; }
+.mp-calendar-access > summary:hover { background: var(--home-ice); }
+.mp-calendar-access .mp-calendar-close-label,
+.mp-calendar-access[open] .mp-calendar-open-label { display: none; }
+.mp-calendar-access[open] .mp-calendar-close-label { display: inline; }
+.mp-calendar-access[open] > summary { margin-bottom: 18px; }
+.mp-calendar-chevron { margin-left: auto; font-size: 20px; line-height: 1; }
+.mp-calendar-access[open] .mp-calendar-chevron { transform: rotate(180deg); }
+.mp-calendar-access .mp-calendar-pane { margin-bottom: 0; }
+@media (max-width: 700px) {
+  .mp-calendar-access > summary { width: 100%; justify-content: space-between; font-size: 12px; }
+}
