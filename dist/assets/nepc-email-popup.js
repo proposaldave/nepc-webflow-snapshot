@@ -113,7 +113,6 @@
           '<div class="nepc-pop-hp" aria-hidden="true"><input type="text" name="' + BOT_FIELD + '" tabindex="-1" autocomplete="off" value=""></div>' +
           '<button type="submit" class="nepc-pop-btn">Count me in</button>' +
           '<div class="nepc-pop-msg" role="status" aria-live="polite"></div>' +
-          '<p class="nepc-pop-fine">One or two emails a week at most. Unsubscribe anytime.</p>' +
         '</form>' +
       '</div>';
     document.body.appendChild(root);
