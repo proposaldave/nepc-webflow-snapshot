@@ -10,6 +10,8 @@
   var KEY_SUBSCRIBED = 'nepcEmailSubscribed';
   var KEY_LAST_SHOWN = 'nepcPopupLastShown';
   var THIRTY_DAYS = 30 * 24 * 60 * 60 * 1000;
+  // The Pink Friday line hides itself automatically after Wednesday, Nov 25, 2026 (Eastern time).
+  var PINK_TEASER = Date.now() < Date.parse('2026-11-26T05:00:00Z');
   var EXCLUDED = [/^\/join\/?$/, /^\/founder-story(\/|$)/, /^\/book-a-court(\/|$)/, /^\/choose-club(\/|$)/, /^\/gift-cards(\/|$)/, /checkout/i];
 
   function store(key, value) {
@@ -57,6 +59,7 @@
     '.nepc-pop-btn:hover{background:#b8246a}' +
     '.nepc-pop-btn:focus-visible,.nepc-pop-close:focus-visible{outline:3px solid #0C4D85;outline-offset:2px}' +
     '.nepc-pop-btn[disabled]{opacity:.7;cursor:wait}' +
+    '.nepc-pop-tag{display:inline-block;margin:0 0 10px!important;padding:5px 12px;border-radius:999px;background:#fde8f1;color:#b0124f!important;font-size:13px!important;font-weight:800;line-height:1.3!important}' +
     '.nepc-pop-fine{margin:12px 0 0!important;font-size:13px!important;color:#5a7491!important}' +
     '.nepc-pop-msg{margin:12px 0 0;font-size:15px;line-height:1.45;color:#b0124f;min-height:0}' +
     '.nepc-pop-msg:empty{display:none}' +
@@ -101,8 +104,9 @@
       '<button type="button" class="nepc-pop-close" aria-label="Close">&times;</button>' +
       '<img class="nepc-pop-logo" src="' + LOGO + '" alt="New England Pickleball Club" width="92" onerror="this.style.display=\'none\'">' +
       '<div class="nepc-pop-body">' +
-        '<h2 id="nepc-pop-title">Get the Pink Friday announcement.</h2>' +
-        '<p id="nepc-pop-desc">Our first-ever monthly open play membership is announced Wednesday, November 25. Be the first to know.</p>' +
+        (PINK_TEASER ? '<p class="nepc-pop-tag">Pink Friday news drops Wednesday, Nov 25</p>' : '') +
+        '<h2 id="nepc-pop-title">Get NEPC news first.</h2>' +
+        '<p id="nepc-pop-desc">Club news, events and new programs in Rye and Middleton.</p>' +
         '<form id="nepc-pop-form" method="post" action="' + ACTION + '" target="_blank" novalidate>' +
           '<label for="nepc-pop-email">Email address</label>' +
           '<input id="nepc-pop-email" type="email" name="EMAIL" placeholder="Your email" autocomplete="email" required>' +
