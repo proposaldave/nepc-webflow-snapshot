@@ -1328,3 +1328,7 @@ body[data-nepc-home] h1.nepc-keyword-heading { margin:0 0 12px; max-width:64ch; 
 .home-hero-actions .home-button.home-button-pink:focus-visible { background: #B8155F; border-color: #B8155F; color: #fff; }
 .home-hero-actions .home-button.home-button-pink:focus-visible { outline: 3px solid #0C4D85; outline-offset: 3px; }
 @media (max-width: 479px) { .home-hero-actions .home-button.home-button-pink { padding-left: 12px; padding-right: 12px; gap: 10px; } }
+
+/* Membership button: bottom strip in the three membership colours (Pink, Blue, Burgundy). */
+.home-hero-actions .home-button.home-button-tiers { position: relative; overflow: hidden; padding-bottom: 20px; }
+.home-hero-actions .home-button.home-button-tiers::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 7px; border-top: 1px solid #ffffffd9; background: linear-gradient(90deg, #D61B72 0 33.33%, #2f7fc4 33.33% 66.66%, #8a1830 66.66% 100%); }
