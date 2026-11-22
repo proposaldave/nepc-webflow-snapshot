@@ -368,7 +368,7 @@
 .nepc-clubs .mp-tier:nth-child(2) .lc-button--outline:hover { background:#12324f1a; }
 
 /* Short tier summaries; the full comparison preserves every benefit below. */
-.nepc-membership .mp-tier { padding:20px; }
+.nepc-membership .mp-tier { padding:20px; border-radius:18px; box-shadow:0 6px 18px #173d6114; }
 .mp-tier-heading { display:flex; align-items:baseline; justify-content:space-between; gap:12px; }
 .nepc-membership .mp-tier h2 { font-size:25px; }
 .nepc-membership .mp-tier .mp-price { margin:0; white-space:nowrap; }
@@ -382,6 +382,13 @@
 .nepc-membership .mp-tier-actions .lc-button { min-height:44px; margin-top:0; padding:9px; gap:6px; font-size:11px; }
 .nepc-membership .mp-tier-compare { grid-column:1/-1; margin:0; text-align:center; }
 .nepc-membership .mp-tiers { row-gap:16px; }
+@media (min-width:992px) {
+  .nepc-membership .mp-membership-hero { padding-block:24px; }
+  .nepc-membership .mp-membership-hero .mp-hero-title { font-size:46px; }
+  .nepc-membership .mp-membership-hero .lc-lead { margin-top:12px; font-size:16px; }
+  .nepc-membership .mp-membership-hero .lc-inline-links { margin-top:16px; }
+  .nepc-membership .mp-membership-hero img { height:190px; }
+}
 @media (max-width:767px) {
   .nepc-membership .mp-tier { padding:20px 18px; }
 }
