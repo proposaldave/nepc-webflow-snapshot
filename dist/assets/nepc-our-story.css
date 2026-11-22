@@ -446,3 +446,6 @@ body.nepc-founder-page .navbar14_component{position:sticky;top:0;z-index:40}
   .nepc-founder .hero h1{font-size:18pt!important}
 }
 @media print{.nepc-founder .mission .rest{display:block!important;margin:0!important;max-width:none!important}}
+
+/* Skill cards use the pink of The Pink Charts. */
+.nepc-founder .skill{--accent:#D61B72}

@@ -15,7 +15,7 @@ const topNav = [
 const footerNav = [
   ...topNav,
   ["New to Pickleball", "new-to-pickle-ball"],
-  ["The NEPC Approach", "founder-story"],
+  ["Long Point Pickleball", "founder-story"],
   ["Leagues", "leagues"],
   ["Gift Cards", "gift-cards"],
 ];
