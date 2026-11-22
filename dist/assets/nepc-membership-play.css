@@ -367,6 +367,23 @@
 .nepc-clubs .mp-tier:nth-child(2) .lc-button--blue:hover { background:#0b2338; }
 .nepc-clubs .mp-tier:nth-child(2) .lc-button--outline:hover { background:#12324f1a; }
 
+/* Compact tiers keep every benefit visible and both club links aligned. */
+.nepc-membership .mp-tier { padding:20px 20px 18px; }
+.nepc-membership .mp-tier .lc-eyebrow { margin-bottom:6px; }
+.nepc-membership .mp-tier h2 { font-size:25px; }
+.nepc-membership .mp-tier .mp-price { margin-top:12px; }
+.nepc-membership .mp-tier .mp-price strong { font-size:29px; }
+.nepc-membership .mp-tier .mp-partner { margin-top:4px; }
+.nepc-membership .mp-tier ul { margin:16px 0 18px; font-size:13px; line-height:1.5; }
+.nepc-membership .mp-tier li + li { margin-top:7px; }
+.nepc-membership .mp-tier-actions { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:8px; padding-top:12px; }
+.nepc-membership .mp-tier-actions > p { grid-column:1/-1; margin-bottom:0; }
+.nepc-membership .mp-tier-actions .lc-button { min-height:44px; margin-top:0; padding:9px 10px; gap:8px; font-size:11px; }
+@media (max-width:767px) {
+  .nepc-membership .mp-tiers { gap:16px; }
+  .nepc-membership .mp-tier { padding:20px 18px 18px; }
+}
+
 /* An optional full calendar, directly below the selected club. */
 .mp-calendar-access { border: 0; padding: 0; margin-top: 16px; }
 .mp-calendar-access > summary {

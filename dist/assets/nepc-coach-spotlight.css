@@ -1,12 +1,15 @@
 .fv-coach-spotlight { min-width: 0; }
 .fv-coach-spotlight > .fv-kicker { margin: 0 0 14px; }
+.nepc-services .fv-coach-spotlight-intro { margin: 0 0 16px; color: var(--home-ink, #173d61); font-size: 16px; font-weight: 650; line-height: 1.5; }
 .fv-coach-spotlight-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; align-items: start; }
 .fv-coach-action { display: block; overflow: hidden; border-radius: 16px; background: var(--home-ice, #eff6f9); color: var(--home-ink, #173d61); box-shadow: 0 8px 24px #173d610d; text-decoration: none; border: 1px solid var(--home-line, #d6e4eb); }
 .fv-coach-action:nth-child(2) { margin-top: 28px; }
 .fv-coach-action img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; }
-.fv-coach-action-caption { position: relative; display: grid; gap: 5px; min-height: 82px; padding: 15px 34px 15px 15px; }
+.fv-coach-action-caption { position: relative; display: grid; gap: 5px; min-height: 82px; padding: 15px; }
 .fv-coach-action-caption strong { color: var(--home-ink, #173d61); font-size: 16px; font-weight: 750; line-height: 1.3; }
-.fv-coach-action-caption > span:not(.fv-coach-action-arrow) { color: #42637b; font-size: 11px; line-height: 1.5; }
+.fv-coach-action-role { padding-right: 18px; color: #42637b; font-size: 11px; line-height: 1.5; }
+.fv-coach-action-description { display: block; margin-top: 6px; color: #36536a; font-size: 13px; line-height: 1.55; }
+.fv-coach-action-caption strong { padding-right: 18px; }
 .fv-coach-action-arrow { position: absolute; right: 14px; top: 15px; color: var(--home-ocean, #326b91); font-size: 20px; }
 .fv-coach-action:hover { border-color: var(--home-ocean, #326b91); }
 .fv-coach-action:focus-visible { outline: 3px solid var(--home-ink, #173d61); outline-offset: 4px; }
@@ -18,8 +21,10 @@
   .fv-coach-spotlight > .fv-kicker { margin-bottom: 10px; }
   .fv-coach-action { border-radius: 12px; }
   .fv-coach-action:nth-child(2) { margin-top: 18px; }
-  .fv-coach-action-caption { min-height: 78px; padding: 12px 24px 12px 11px; }
+  .fv-coach-action-caption { min-height: 78px; padding: 12px 11px; }
   .fv-coach-action-caption strong { font-size: 14px; }
-  .fv-coach-action-caption > span:not(.fv-coach-action-arrow) { font-size: 10px; }
+  .fv-coach-action-role { font-size: 10px; }
+  .fv-coach-action-description { font-size: 12px; }
+  .nepc-services .fv-coach-spotlight-intro { font-size: 14px; }
   .fv-coach-action-arrow { right: 9px; top: 11px; font-size: 17px; }
 }
