@@ -261,7 +261,7 @@
     if (isMobile) {
       window.addEventListener('scroll', onScroll, { passive: true });
     } else {
-      timer = setTimeout(show, 20000);
+      timer = setTimeout(show, 7000);
       document.addEventListener('mouseout', onMouseOut);
     }
   }
