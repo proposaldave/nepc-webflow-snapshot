@@ -8,7 +8,7 @@ const topNav = [
   ["Our Clubs", "clubs"],
   ["Find Your Play", "calendar"],
   ["Lessons &amp; Coaching", "coaching"],
-  ["Memberships", "membership"],
+  ["Membership", "membership"],
   ["Club Experiences", "community-events"],
   ["Contact", "contact"],
 ];
