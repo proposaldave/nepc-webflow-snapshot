@@ -5,10 +5,10 @@ import { fileURLToPath } from "node:url";
 const root = dirname(dirname(fileURLToPath(import.meta.url)));
 
 const topNav = [
+  ["Membership", "membership"],
   ["Our Clubs", "clubs"],
   ["Find Your Play", "calendar"],
   ["Lessons &amp; Coaching", "coaching"],
-  ["Membership", "membership"],
   ["Club Experiences", "community-events"],
   ["Contact", "contact"],
 ];
