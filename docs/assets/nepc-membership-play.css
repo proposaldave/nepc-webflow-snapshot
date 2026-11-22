@@ -251,9 +251,9 @@
   --event-ink: #42556a;
 }
 .nepc-find-play [data-event-tone="social"], .nepc-find-play [data-event-filter="social"] {
-  --event-accent: #326b91;
-  --event-soft: #eff6f9;
-  --event-ink: #173d61;
+  --event-accent: #3f7d50;
+  --event-soft: #edf6ed;
+  --event-ink: #275434;
 }
 .nepc-find-play [data-event-tone="competitive"], .nepc-find-play [data-event-filter="competitive"] {
   --event-accent: #c15c3e;
@@ -266,9 +266,9 @@
   --event-ink: #613c8c;
 }
 .nepc-find-play [data-event-tone="beginner"], .nepc-find-play [data-event-filter="beginner"] {
-  --event-accent: #50834b;
-  --event-soft: #eef7e9;
-  --event-ink: #335a2f;
+  --event-accent: #237a7a;
+  --event-soft: #e8f5f4;
+  --event-ink: #175658;
 }
 .nepc-find-play [data-event-tone="lesson"] {
   --event-accent: #d6a51d;
@@ -279,6 +279,9 @@
   display: inline-flex;
   align-items: center;
   gap: 8px;
+  background: var(--event-soft);
+  color: var(--event-ink);
+  border-color: var(--event-accent);
 }
 .nepc-find-play .mp-event-filter[data-event-filter]:not([data-event-filter="all"])::before {
   content: "";
@@ -293,10 +296,24 @@
   margin-right: 7px;
 }
 .nepc-find-play .mp-event-filter[data-event-filter]:not([data-event-filter="all"])[aria-pressed="true"] {
-  background: var(--event-soft);
-  color: var(--event-ink);
-  border-color: var(--event-accent);
-  box-shadow: inset 0 0 0 1px var(--event-accent);
+  background: var(--event-ink);
+  color: #fff;
+  border-color: var(--event-ink);
+  box-shadow: inset 0 0 0 1px var(--event-ink);
+}
+.nepc-find-play .mp-event-filter[data-event-filter]:not([data-event-filter="all"])[aria-pressed="true"]::before {
+  background: #fff;
+}
+.nepc-find-play .mp-event-card .mp-event-register {
+  background: var(--event-ink);
+  border-color: var(--event-ink);
+  color: #fff;
+}
+.nepc-find-play .mp-event-card .mp-event-register:hover { filter: brightness(.9); }
+.nepc-find-play .mp-event-card[data-event-tone="lesson"] .mp-event-register {
+  background: #f3d675;
+  border-color: #d6a51d;
+  color: #654900;
 }
 .nepc-find-play .mp-event-filter:focus-visible {
   outline: 2px solid var(--home-ink);

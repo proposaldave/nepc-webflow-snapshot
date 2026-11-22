@@ -1203,8 +1203,96 @@ body[data-nepc-home] .footer4_component .padding-top {
 /* The useful play choices inherit the light-blue band from the former Approach block. */
 .home-play {position: relative; isolation: isolate;}
 .home-play::before {content: ""; position: absolute; inset: 0 calc((100% - 100vw) / 2); z-index: -1; background: var(--home-ice);}
-.home-play .home-activity {background: #fff;}
-.home-play .home-activity:hover {background: #f9fcfd; border-color: var(--home-ocean);}
+.home-play .home-activity {
+  --play-bg: #326b91;
+  --play-ink: #fff;
+  --play-muted: #f1f6fa;
+  --play-arrow-bg: #fff;
+  --play-arrow-ink: #173d61;
+  grid-template-columns: minmax(0, 1fr) 38px;
+  grid-template-rows: auto 1fr auto;
+  min-height: 190px;
+  padding: 22px;
+  border: 1px solid transparent;
+  border-radius: 14px;
+  background: var(--play-bg);
+  color: var(--play-ink);
+  box-shadow: 0 5px 18px #173d6108;
+  transition: transform .18s, box-shadow .18s;
+}
+.home-play .home-activity[data-play-tone="social"] {
+  --play-bg: #e2f1e2;
+  --play-ink: #275434;
+  --play-muted: #3d6346;
+  --play-arrow-bg: #275434;
+  --play-arrow-ink: #fff;
+}
+.home-play .home-activity[data-play-tone="competitive"] {
+  --play-bg: #fbe5dc;
+  --play-ink: #8e3d25;
+  --play-muted: #7f4935;
+  --play-arrow-bg: #8e3d25;
+  --play-arrow-ink: #fff;
+}
+.home-play .home-activity[data-play-tone="coaching"] {
+  --play-bg: #ede2f7;
+  --play-ink: #613c8c;
+  --play-muted: #614d73;
+  --play-arrow-bg: #613c8c;
+  --play-arrow-ink: #fff;
+}
+.home-play .home-activity:hover { background: var(--play-bg); transform: translateY(-3px); box-shadow: 0 10px 24px #173d6114; }
+body[data-nepc-home] .home-play .home-activity h3 {
+  grid-column: 1;
+  grid-row: 1;
+  align-self: center;
+  color: var(--play-ink);
+  line-height: 1.3;
+}
+.home-play .home-activity p {
+  grid-column: 1 / -1;
+  grid-row: 2;
+  margin: 12px 0 18px;
+  color: var(--play-muted);
+  line-height: 1.6;
+}
+.home-play .home-activity > .home-activity-icon {
+  display: grid;
+  place-items: center;
+  grid-column: 2;
+  grid-row: 1;
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  background: #ffffff38;
+  color: var(--play-ink);
+}
+.home-activity-icon svg { width: 24px; height: 24px; }
+.home-play .home-activity > .home-activity-arrow {
+  display: grid;
+  place-items: center;
+  grid-column: 2;
+  grid-row: 3;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--play-arrow-bg);
+  color: var(--play-arrow-ink);
+  font-size: 21px;
+}
+@media (max-width: 767px) {
+  .home-play .home-activity { grid-template-columns: minmax(0, 1fr) 30px; min-height: 180px; padding: 17px; }
+  .home-play .home-activity > .home-activity-icon { width: 30px; height: 30px; border-radius: 8px; }
+  .home-activity-icon svg { width: 21px; height: 21px; }
+  .home-play .home-activity > .home-activity-arrow { width: 29px; height: 29px; font-size: 19px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .home-play .home-activity:hover { transform: none; }
+}
+@media (max-width: 359px) {
+  .home-play .home-activity-grid { grid-template-columns: 1fr; }
+  .home-play .home-activity { min-height: 160px; }
+}
 
 /* The location keyword line is the semantic H1; the slogan keeps its approved scale. */
 body[data-nepc-home] .nepc-home .home-location-heading {
