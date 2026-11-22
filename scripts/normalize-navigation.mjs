@@ -8,14 +8,14 @@ const topNav = [
   ["Our Clubs", "clubs"],
   ["Find Your Play", "calendar"],
   ["Lessons &amp; Coaching", "coaching"],
-  ["Memberships", "membership"],
+  ["Membership", "membership"],
   ["Club Experiences", "community-events"],
   ["Contact", "contact"],
 ];
 const footerNav = [
   ...topNav,
   ["New to Pickleball", "new-to-pickle-ball"],
-  ["The NEPC Approach", "founder-story"],
+  ["Long Point Pickleball", "founder-story"],
   ["Leagues", "leagues"],
   ["Gift Cards", "gift-cards"],
 ];
