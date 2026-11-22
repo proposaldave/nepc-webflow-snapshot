@@ -1,7 +1,4 @@
 .fv-coach-spotlight { min-width: 0; }
-.nepc-services .fv-coach-team-banner { margin: 0 0 18px; padding: 14px 18px; border-left: 4px solid #d7f447; border-radius: 10px; background: #173d61; color: #fff; }
-.fv-coach-team-banner > span { display: block; margin-bottom: 4px; color: #d7f447; font-size: 10px; font-weight: 750; letter-spacing: .12em; line-height: 1.4; text-transform: uppercase; }
-.fv-coach-team-banner > strong { display: block; color: #fff; font-size: 22px; font-weight: 750; line-height: 1.3; letter-spacing: -.025em; }
 .fv-coach-spotlight-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; align-items: start; }
 .fv-coach-action { display: block; overflow: hidden; border-radius: 16px; background: var(--home-ice, #eff6f9); color: var(--home-ink, #173d61); box-shadow: 0 8px 24px #173d610d; text-decoration: none; border: 1px solid var(--home-line, #d6e4eb); }
 .fv-coach-action:nth-child(2) { margin-top: 28px; }
@@ -13,13 +10,12 @@
 .fv-coach-action-arrow { position: absolute; right: 14px; top: 15px; color: var(--home-ocean, #326b91); font-size: 20px; }
 .fv-coach-action:hover { border-color: var(--home-ocean, #326b91); }
 .fv-coach-action:focus-visible { outline: 3px solid var(--home-ink, #173d61); outline-offset: 4px; }
-.nepc-services .fv-coach-spotlight-clubs { margin: 14px 0 0; font-size: 12px; color: #42637b; }
+.nepc-services .fv-coach-team-note { margin:14px 0 0; color:#173d61; font-size:14px; font-weight:700; line-height:1.6; }
+.fv-coach-team-number { display:inline-grid; place-items:center; width:30px; height:30px; margin-inline:3px; border-radius:50%; background:#d7f447; color:#173d61; font-size:15px; font-weight:800; line-height:1; vertical-align:middle; }
 .fv-coaching-page .fv-coach[id] { scroll-margin-top: 28px; }
 .fv-coach:target { border-color: var(--home-ocean, #326b91); box-shadow: 0 0 0 2px #326b9126; }
 @media (max-width: 767px) {
   .fv-coach-spotlight { width: 100%; max-width: 480px; margin-inline: auto; }
-  .nepc-services .fv-coach-team-banner { margin-bottom: 14px; padding: 12px 14px; }
-  .fv-coach-team-banner > strong { font-size: 18px; }
   .fv-coach-action { border-radius: 12px; }
   .fv-coach-action:nth-child(2) { margin-top: 18px; }
   .fv-coach-action-caption { min-height: 78px; padding: 12px 11px; }
