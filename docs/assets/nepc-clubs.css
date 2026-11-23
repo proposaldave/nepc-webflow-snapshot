@@ -271,3 +271,12 @@ body[data-nepc-home] .nepc-clubs { width:100%; max-width:none; margin:0; }
   .lc-team-grid .lc-person > div { width: auto; }
   .nepc-clubs .lc-person-bio-copy { width: calc(100% + 74px); margin-left: -74px; }
 }
+
+/* Initial avatar for team members whose portrait has not been supplied. */
+.nepc-clubs .lc-person-initial { display:grid; place-items:center; flex:0 0 62px; width:62px; height:70px; border-radius:8px; background:var(--home-ice); color:var(--home-ink); font-size:28px; font-weight:750; }
+@media (max-width:767px) {
+  .nepc-clubs .lc-person-initial { flex:none; width:60px; height:66px; }
+}
+@media (max-width:479px) {
+  .nepc-clubs .lc-team-grid .lc-person-initial { flex:0 0 60px; }
+}
