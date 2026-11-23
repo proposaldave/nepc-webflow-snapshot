@@ -436,3 +436,12 @@
 @media (max-width: 700px) {
   .mp-calendar-access > summary { width: 100%; justify-content: space-between; font-size: 12px; }
 }
+
+/* Nov 23 2026: Silver no longer sold. Two cards (Blue, Burgundy), centered. */
+.nepc-membership .mp-tiers { grid-template-columns:repeat(2,minmax(0,1fr)); max-width:860px; }
+.mp-tier.mp-tier--burgundy { border-top-color:#8a1830; }
+.nepc-clubs .mp-tier.mp-tier--burgundy { --t-bg:#8a1830; --t-fg:#fff; --t-soft:#ffffffd9; --t-line:#ffffff47; --t-btn-fg:#8a1830; background-image:linear-gradient(160deg,#ffffff1f,#ffffff00 55%); }
+.nepc-clubs .mp-tier.mp-tier--burgundy .lc-button--blue { background:#fff; border-color:#fff; color:#8a1830; }
+.nepc-clubs .mp-tier.mp-tier--burgundy .lc-button--blue:hover { background:#ffffffe6; }
+.nepc-clubs .mp-tier.mp-tier--burgundy .lc-button--outline:hover { background:#ffffff26; }
+@media (max-width: 700px) { .nepc-membership .mp-tiers { grid-template-columns:1fr; } }
