@@ -1322,10 +1322,10 @@ body[data-nepc-home] .navbar14_link[aria-current="page"]{color:var(--home-lime);
 body[data-nepc-home] h1.nepc-keyword-heading { margin:0 0 12px; max-width:64ch; color:var(--home-ocean); font-family:Raleway,Arial,sans-serif; font-size:11px; font-weight:800; line-height:1.65; letter-spacing:.13em; text-transform:uppercase; }
 
 
-/* Long Point Pickleball button: pink, matches The Pink Charts. */
-.home-hero-actions .home-button.home-button-pink { background: #D61B72; border-color: #D61B72; color: #fff; white-space: nowrap; }
+/* Long Point Pickleball button: lime, matches the New to Pickleball? button. */
+.home-hero-actions .home-button.home-button-pink { background: var(--home-lime); border-color: var(--home-lime); color: var(--home-ink); white-space: nowrap; }
 .home-hero-actions .home-button.home-button-pink:hover,
-.home-hero-actions .home-button.home-button-pink:focus-visible { background: #B8155F; border-color: #B8155F; color: #fff; }
+.home-hero-actions .home-button.home-button-pink:focus-visible { background: #e2f87c; border-color: #c1dc33; color: var(--home-ink); }
 .home-hero-actions .home-button.home-button-pink:focus-visible { outline: 3px solid #0C4D85; outline-offset: 3px; }
 @media (max-width: 479px) { .home-hero-actions .home-button.home-button-pink { padding-left: 12px; padding-right: 12px; gap: 10px; } }
 
