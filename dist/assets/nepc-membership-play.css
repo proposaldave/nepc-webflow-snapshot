@@ -260,6 +260,13 @@
   --event-soft: #fff1ea;
   --event-ink: #8e3d25;
 }
+/* Men's Scramble retains its black identity within competitive play. */
+.nepc-find-play [data-event-tone="mens-scramble"],
+.nepc-find-play [data-event-tone="mens-scramble"] [data-event-tone="competitive"] {
+  --event-accent:#202124;
+  --event-soft:#f1f2f3;
+  --event-ink:#202124;
+}
 .nepc-find-play [data-event-tone="coaching"], .nepc-find-play [data-event-filter="coaching"] {
   --event-accent: #8156b3;
   --event-soft: #f4eefc;

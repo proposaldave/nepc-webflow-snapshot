@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import { publicEvent } from './public-event-preview.mjs';
-import { matchesActivity, matchesProgram, easternLocal, dateRange, movePeriod } from '../dist/assets/nepc-event-model.js';
+import { matchesActivity, matchesProgram, visualCategory, easternLocal, dateRange, movePeriod } from '../dist/assets/nepc-event-model.js';
 const event = { EventId:123, ReservationId:456, EventName:'Test public session', EventCategoryId:22572, IsPublicBookingAllowed:true, IsCanceled:false, StartDateTime:'2026-11-18T10:00:00', EndDateTime:'2026-11-18T12:00:00', PublicEventUrl:'https://app.courtreserve.com/online/publicbookings/7432?tab=explore&eventId=123&reservationId=456', SsoUrl:'must never be returned', RegisteredCount:12, Instructors:[{email:'never return'}] };
 const sanitized=publicEvent(event,'rye',new Set([22572]));
 assert.deepEqual(Object.keys(sanitized).sort(),['id','title','categoryId','start','end','featured','url'].sort());
@@ -9,6 +9,17 @@ assert(matchesActivity({title:'Social play',categoryId:22572},'rye','social'));
 assert(!matchesActivity({title:'Social play',categoryId:22572},'middleton','social'));
 assert(matchesActivity({title:'Friday Ladder',categoryId:22572},'rye','competitive'));
 assert(!matchesActivity({title:'Friday Ladder',categoryId:22572},'rye','social'));
+for (const [club, categoryId] of [['rye',22572],['middleton',53524]]) {
+  for (const title of ["3.5 & 4.0 Men's Scramble",'Men’s Scramble','Mens Scramble']) {
+    assert.equal(visualCategory({title,categoryId},club),'mens-scramble');
+    assert(matchesActivity({title,categoryId},club,'competitive'));
+    assert(!matchesActivity({title,categoryId},club,'social'));
+  }
+  assert.equal(visualCategory({title:"3.5 & 4.0 Women's Scramble",categoryId},club),'competitive');
+  assert.equal(visualCategory({title:'Monday Night Ladder',categoryId},club),'competitive');
+  assert.equal(visualCategory({title:'Open Up Play',categoryId},club),'social');
+}
+assert.equal(visualCategory({title:"Men's Scramble Clinic",categoryId:20790},'rye'),'coaching');
 assert(matchesActivity({title:'Beginner Skills Clinic',categoryId:20790},'rye','beginner'));
 assert(matchesActivity({title:'Beginner Skills Clinic',categoryId:20790},'rye','coaching'));
 assert(matchesActivity({title:'Coach & Play 101',categoryId:20790},'rye','beginner'));

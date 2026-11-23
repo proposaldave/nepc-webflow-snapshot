@@ -1,4 +1,4 @@
-import { labels, matchesActivity, visualCategory, beginnerPrograms, matchesProgram, easternLocal, addDays, dateRange, movePeriod, clock } from './nepc-event-model.js?v=20261121-2';
+import { labels, matchesActivity, visualCategory, beginnerPrograms, matchesProgram, easternLocal, addDays, dateRange, movePeriod, clock } from './nepc-event-model.js?v=20261123-1';
 const root = document.querySelector('.nepc-find-play');
 if (root) {
   const $ = selector => root.querySelector(selector);
