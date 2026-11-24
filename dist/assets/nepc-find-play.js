@@ -86,7 +86,7 @@ if (root) {
     const range=dateRange(state.date,periodView()),current=dateRange(today(),periodView());
     $('[data-period="previous"]').disabled=range.start<=current.start&&state.dayPage===0;
     const activeLabel=state.activity==='beginner'?beginnerPrograms[state.program]:labels[state.activity];
-    $('[data-agenda-status]').textContent=events.length ? `${state.view==='day'?'Next day with sessions':'Upcoming sessions'} · ${activeLabel}` : `No upcoming ${activeLabel.toLowerCase()} sessions are listed in this period. Try the next ${periodView()}, another program or contact the club.`;
+    $('[data-agenda-status]').textContent=events.length ? `${state.view==='day'?'Next day with sessions':'Upcoming sessions'} · ${activeLabel}` : `No upcoming ${state.activity==='all'?'':activeLabel.toLowerCase()+' '}sessions are listed in this period. Try the next ${periodView()}, another program or contact the club.`;
     if(state.view==='day'&&state.dayPage+1<state.dayTotal)$('[data-period="next"]').disabled=false;
     $('[data-feed-error]').hidden=true;
     $('[data-event-updated]').textContent=`Updated ${new Intl.DateTimeFormat('en-US',{hour:'numeric',minute:'2-digit',timeZone:'America/New_York'}).format(new Date(data.updatedAt))} ET. Times shown in Eastern Time. Confirm availability and registration details in CourtReserve.`;

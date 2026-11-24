@@ -3,7 +3,7 @@ const groups = {
   rye: { pink: [104177], social: [22572, 22571, 104177], competitive: [22570, 20794], coaching: [20790, 97722, 97723], beginner: [76035] },
   middleton: { pink: [104153], social: [53524, 53523, 53516, 104153], competitive: [53522, 53518], coaching: [53515, 97571, 97580], beginner: [76037] }
 };
-export const labels = { all: 'All play', pink: 'Pink Open Play', social: 'Open & Social Play', competitive: 'Leagues & Competitive Play', coaching: 'Clinics & Lessons', beginner: 'Beginner Programs', private: 'Private Court Booking' };
+export const labels = { all: 'All', pink: 'Pink Open Play', social: 'Open & Social Play', competitive: 'Leagues & Competitive Play', coaching: 'Clinics & Lessons', beginner: 'Beginner Programs', private: 'Private Court Booking' };
 export function matchesActivity(event, club, activity) {
   if (activity === 'all') return true;
   // Pink Open Play is matched by CourtReserve category ID only, never by title.
