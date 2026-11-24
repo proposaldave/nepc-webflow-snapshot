@@ -3,7 +3,7 @@ const groups = {
   rye: { social: [22572, 22571], competitive: [22570, 20794], coaching: [20790, 97722, 97723], beginner: [76035] },
   middleton: { social: [53524, 53523, 53516], competitive: [53522, 53518], coaching: [53515, 97571, 97580], beginner: [76037] }
 };
-export const labels = { all: 'All play', social: 'Open & Social Play', competitive: 'Leagues & Competitive Play', coaching: 'Clinics & Lessons', beginner: 'Beginner Programs', private: 'Private Court Booking' };
+export const labels = { all: 'All', social: 'Open & Social Play', competitive: 'Leagues & Competitive Play', coaching: 'Clinics & Lessons', beginner: 'Beginner Programs', private: 'Private Court Booking' };
 export function matchesActivity(event, club, activity) {
   if (activity === 'all') return true;
   const namedCompetition = !groups[club]?.coaching.includes(event.categoryId) && /\b(ladder|league|tournament|scramble)\b/i.test(event.title);
