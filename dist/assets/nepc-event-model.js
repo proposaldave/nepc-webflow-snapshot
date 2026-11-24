@@ -1,11 +1,13 @@
 // Public CourtReserve category IDs verified separately for each NEPC club.
 const groups = {
-  rye: { social: [22572, 22571], competitive: [22570, 20794], coaching: [20790, 97722, 97723], beginner: [76035] },
-  middleton: { social: [53524, 53523, 53516], competitive: [53522, 53518], coaching: [53515, 97571, 97580], beginner: [76037] }
+  rye: { pink: [104177], social: [22572, 22571, 104177], competitive: [22570, 20794], coaching: [20790, 97722, 97723], beginner: [76035] },
+  middleton: { pink: [104153], social: [53524, 53523, 53516, 104153], competitive: [53522, 53518], coaching: [53515, 97571, 97580], beginner: [76037] }
 };
-export const labels = { all: 'All play', social: 'Open & Social Play', competitive: 'Leagues & Competitive Play', coaching: 'Clinics & Lessons', beginner: 'Beginner Programs', private: 'Private Court Booking' };
+export const labels = { all: 'All play', pink: 'Pink Open Play', social: 'Open & Social Play', competitive: 'Leagues & Competitive Play', coaching: 'Clinics & Lessons', beginner: 'Beginner Programs', private: 'Private Court Booking' };
 export function matchesActivity(event, club, activity) {
   if (activity === 'all') return true;
+  // Pink Open Play is matched by CourtReserve category ID only, never by title.
+  if (activity === 'pink') return groups[club]?.pink.includes(event.categoryId) || false;
   const namedCompetition = !groups[club]?.coaching.includes(event.categoryId) && /\b(ladder|league|tournament|scramble)\b/i.test(event.title);
   if (activity === 'competitive' && namedCompetition) return true;
   if (activity === 'social' && namedCompetition) return false;
@@ -23,6 +25,7 @@ export function categoryLabel(event, club) {
   return ['beginner','coaching','competitive','social'].find(group => matchesActivity(event, club, group)) || 'other';
 }
 export function visualCategory(event, club) {
+  if (matchesActivity(event, club, 'pink')) return 'pink';
   // Only explicitly named coaching events receive the private-lesson treatment.
   if (matchesActivity(event, club, 'coaching')) return /\bprivate[\s-]+lessons?\b/i.test(event.title) ? 'lesson' : 'coaching';
   if (matchesActivity(event, club, 'competitive') && /\bmen(?:['’]?s)?\b.*\bscramble\b/i.test(event.title)) return 'mens-scramble';

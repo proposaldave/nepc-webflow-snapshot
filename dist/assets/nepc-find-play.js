@@ -1,4 +1,4 @@
-import { labels, matchesActivity, visualCategory, beginnerPrograms, matchesProgram, easternLocal, addDays, dateRange, movePeriod, clock } from './nepc-event-model.js?v=20261123-1';
+import { labels, matchesActivity, visualCategory, beginnerPrograms, matchesProgram, easternLocal, addDays, dateRange, movePeriod, clock } from './nepc-event-model.js?v=20261124-pink';
 const root = document.querySelector('.nepc-find-play');
 if (root) {
   const $ = selector => root.querySelector(selector);
@@ -53,8 +53,10 @@ if (root) {
     const tone=visualCategory(event,state.club);
     item.dataset.eventTone=tone;
     const content=make('div','mp-event-content'); content.append(make('h4','',event.title));
-    const categories=['social','competitive','coaching','beginner'].filter(group=>matchesActivity(event,state.club,group));
+    const categories=['pink','social','competitive','coaching','beginner'].filter(group=>matchesActivity(event,state.club,group));
     if(categories.includes(state.activity))categories.sort((a,b)=>Number(b===state.activity)-Number(a===state.activity));
+    // The Pink Open Play badge always leads on a Pink session.
+    categories.sort((a,b)=>Number(b==='pink')-Number(a==='pink'));
     const badges=make('div','mp-event-categories');
     (categories.length?categories:['other']).forEach(group=>{
       const privateLesson=group==='coaching'&&tone==='lesson';

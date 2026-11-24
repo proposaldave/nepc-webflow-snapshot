@@ -250,10 +250,16 @@
   --event-soft: #eef2f6;
   --event-ink: #42556a;
 }
+/* Tone colors match CourtReserve category colors (Nov 24 2026). */
+.nepc-find-play [data-event-tone="pink"], .nepc-find-play [data-event-filter="pink"] {
+  --event-accent: #d32d79;
+  --event-soft: #fdeaf3;
+  --event-ink: #9b1c56;
+}
 .nepc-find-play [data-event-tone="social"], .nepc-find-play [data-event-filter="social"] {
-  --event-accent: #3f7d50;
-  --event-soft: #edf6ed;
-  --event-ink: #275434;
+  --event-accent: #0e7fe5;
+  --event-soft: #e9f3fd;
+  --event-ink: #0b5cab;
 }
 .nepc-find-play [data-event-tone="competitive"], .nepc-find-play [data-event-filter="competitive"] {
   --event-accent: #c15c3e;
@@ -268,14 +274,14 @@
   --event-ink:#202124;
 }
 .nepc-find-play [data-event-tone="coaching"], .nepc-find-play [data-event-filter="coaching"] {
-  --event-accent: #8156b3;
-  --event-soft: #f4eefc;
-  --event-ink: #613c8c;
+  --event-accent: #533099;
+  --event-soft: #f1ecfa;
+  --event-ink: #432680;
 }
 .nepc-find-play [data-event-tone="beginner"], .nepc-find-play [data-event-filter="beginner"] {
-  --event-accent: #237a7a;
-  --event-soft: #e8f5f4;
-  --event-ink: #175658;
+  --event-accent: #f58220;
+  --event-soft: #fff2e6;
+  --event-ink: #9a4a06;
 }
 .nepc-find-play [data-event-tone="lesson"] {
   --event-accent: #d6a51d;

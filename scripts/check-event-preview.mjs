@@ -19,6 +19,19 @@ for (const [club, categoryId] of [['rye',22572],['middleton',53524]]) {
   assert.equal(visualCategory({title:'Monday Night Ladder',categoryId},club),'competitive');
   assert.equal(visualCategory({title:'Open Up Play',categoryId},club),'social');
 }
+// Pink Open Play: category ID only (Rye 104177, Middleton 104153).
+for (const [club, pinkId, other] of [['rye',104177,104153],['middleton',104153,104177]]) {
+  assert(matchesActivity({title:'Open Up Play',categoryId:pinkId},club,'pink'));
+  assert(!matchesActivity({title:'Open Up Play',categoryId:other},club,'pink'));
+  assert(matchesActivity({title:'Open Up Play',categoryId:pinkId},club,'social'));
+  assert(!matchesActivity({title:'Friday Ladder',categoryId:pinkId},club,'social'));
+  assert(matchesActivity({title:'Friday Ladder',categoryId:pinkId},club,'competitive'));
+  assert(matchesActivity({title:'Friday Ladder',categoryId:pinkId},club,'pink'));
+  assert.equal(visualCategory({title:'Friday Ladder',categoryId:pinkId},club),'pink');
+  assert.equal(visualCategory({title:'Open Up Play',categoryId:pinkId},club),'pink');
+}
+assert(!matchesActivity({title:'Monday Night Ladder: Pink Open Play',categoryId:53524},'middleton','pink'));
+assert.equal(visualCategory({title:'Monday Night Ladder',categoryId:53524},'middleton'),'competitive');
 assert.equal(visualCategory({title:"Men's Scramble Clinic",categoryId:20790},'rye'),'coaching');
 assert(matchesActivity({title:'Beginner Skills Clinic',categoryId:20790},'rye','beginner'));
 assert(matchesActivity({title:'Beginner Skills Clinic',categoryId:20790},'rye','coaching'));
