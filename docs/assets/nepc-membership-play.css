@@ -459,3 +459,16 @@
 .nepc-clubs .mp-tier .mp-club-price .mp-price { margin:4px 0 0; }
 .nepc-clubs .mp-tier .mp-club-price .mp-price strong { font-size:30px; }
 @media (max-width: 360px) { .nepc-clubs .mp-tier .mp-club-prices { grid-template-columns:1fr; } }
+
+/* Nov 24 2026 spacing pass: same layout in both cards, equal heights, buttons aligned. */
+.nepc-membership .mp-tier { align-self:stretch; padding:28px 28px 26px; }
+.nepc-clubs .mp-tier .mp-club-prices { gap:24px; margin-top:20px; }
+.nepc-clubs .mp-tier .mp-club-prices--one { grid-template-columns:1fr; }
+.nepc-clubs .mp-tier .mp-club-price { padding-top:14px; }
+.nepc-clubs .mp-tier .mp-club-price .mp-price { margin:6px 0 0; }
+.nepc-clubs .mp-tier .mp-club-price .mp-partner { margin-top:8px; }
+.nepc-membership .mp-tier ul { margin:24px 0 22px; }
+.nepc-membership .mp-tier li + li { margin-top:10px; }
+.nepc-membership .mp-tier-actions { margin-top:auto; padding-top:16px; }
+.nepc-membership .mp-tier-actions > p { margin-bottom:4px; }
+@media (max-width: 700px) { .nepc-membership .mp-tier { padding:24px 20px; } .nepc-clubs .mp-tier .mp-club-prices { gap:16px; } }
