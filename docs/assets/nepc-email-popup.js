@@ -258,10 +258,12 @@
 
   function arm() {
     if (forced) { setTimeout(show, 600); return; }
+    // Phones and computers: show after 7 seconds. Phones also show early on a 50% scroll;
+    // computers also show early when the mouse leaves the top of the window.
+    timer = setTimeout(show, 7000);
     if (isMobile) {
       window.addEventListener('scroll', onScroll, { passive: true });
     } else {
-      timer = setTimeout(show, 7000);
       document.addEventListener('mouseout', onMouseOut);
     }
   }
