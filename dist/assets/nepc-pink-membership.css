@@ -1,0 +1,159 @@
+/* Pink launch presentation, scoped to the membership page. */
+.nepc-membership .mp-tiers.mp-tiers--pink-launch { grid-template-columns:repeat(3,minmax(0,1fr)); max-width:1120px; }
+.nepc-membership .mp-tiers--pink-launch .mp-tier { min-height:352px; padding:20px; align-self:stretch; }
+.nepc-membership .mp-tiers--pink-launch .mp-tier ul { margin:18px 0; }
+.nepc-membership .mp-tiers--pink-launch .mp-tier li + li { margin-top:7px; }
+.nepc-membership .mp-tiers .mp-tier--pink {
+  --t-bg:#f6b7d7;
+  --t-fg:#5b183b;
+  --t-soft:#692445;
+  --t-line:#c2367e55;
+  --t-btn-fg:#fff;
+  position:relative;
+  overflow:hidden;
+  isolation:isolate;
+  border:1px solid #e18db8;
+  background:#f6b7d7;
+  background-image:linear-gradient(132deg,#fff9fd 0%,#fbd8eb 24%,#f3acd2 63%,#fce6f3 100%);
+  box-shadow:0 8px 26px #cf4c911f,inset 0 1px 0 #fff;
+}
+.mp-tier--pink::before {
+  content:"";
+  position:absolute;
+  inset:-2px;
+  z-index:0;
+  background:linear-gradient(110deg,transparent 35%,#ffffffa3 49%,transparent 65%);
+  transform:translateX(-140%);
+  animation:mp-pink-glint 6s ease-in-out 1;
+  pointer-events:none;
+}
+.mp-tier--pink > * { position:relative; z-index:1; }
+.mp-tier--pink:hover::before,.mp-tier--pink:focus-within::before { animation:mp-pink-glint-hover 1.8s ease-out 1; }
+.mp-pink-card-name { display:flex; align-items:center; gap:8px; }
+.mp-pink-new { display:inline-flex; align-items:center; gap:3px; padding:3px 6px; border:1px solid #e8a4c9; border-radius:5px; background:#fff9fd; color:#8d1c53; font-size:9px; font-weight:800; line-height:1.3; letter-spacing:.04em; text-transform:uppercase; }
+.mp-pink-new > span { font-size:12px; }
+.nepc-membership .mp-pink-card-actions > p { font-size:10px; }
+.nepc-membership .mp-tier--pink .mp-pink-explore { grid-column:1/-1; width:100%; justify-content:space-between; border:1px solid #9b1c56; background:#9b1c56; color:#fff; font-family:inherit; cursor:pointer; }
+.mp-pink-explore [data-pink-button-label] { font-size:12px; }
+.nepc-membership .mp-tier--pink .mp-pink-explore:hover { background:#7c1745; border-color:#7c1745; }
+.mp-pink-explore:focus-visible { outline:3px solid #5b183b; outline-offset:3px; }
+.mp-pink-details[hidden] { display:none !important; }
+.mp-pink-detail-nav { display:flex; align-items:center; justify-content:space-between; gap:20px; padding:12px 0 18px; }
+.nepc-membership .mp-pink-detail-nav p { color:#9b1c56; font-size:11px; font-weight:800; letter-spacing:.08em; text-transform:uppercase; }
+.mp-pink-detail-nav button { display:inline-flex; align-items:center; gap:12px; min-height:44px; padding:8px 0; border:0; background:transparent; color:var(--home-brand-blue); font:inherit; font-size:12px; font-weight:750; cursor:pointer; }
+.mp-pink-detail-nav button:hover { text-decoration:underline; text-underline-offset:4px; }
+.mp-pink-detail-nav button:focus-visible { outline:3px solid #9b1c56; outline-offset:4px; }
+@keyframes mp-pink-glint { 0%,25% { transform:translateX(-140%); } 55%,100% { transform:translateX(140%); } }
+@keyframes mp-pink-glint-hover { from { transform:translateX(-140%); } to { transform:translateX(140%); } }
+@media (prefers-reduced-motion:reduce) { .mp-tier--pink::before,.mp-tier--pink:hover::before,.mp-tier--pink:focus-within::before { animation:none; } }
+@media (min-width:992px) and (max-height:760px) {
+  .nepc-membership .mp-membership-hero { padding-block:16px; }
+  .nepc-membership .mp-membership-hero .mp-hero-title { font-size:40px; }
+  .nepc-membership .mp-membership-hero .mp-hero-title br { display:none; }
+  .nepc-membership .mp-membership-hero img { height:150px; object-position:48% 25%; }
+}
+@media (max-width:767px) {
+  .nepc-membership .mp-tiers.mp-tiers--pink-launch { grid-template-columns:1fr; }
+  .mp-pink-detail-nav { gap:10px; }
+  .nepc-membership .mp-pink-detail-nav p { font-size:9px; }
+  .mp-pink-detail-nav button { font-size:11px; }
+}
+
+.nepc-membership .mp-tiers .mp-tier--blue {
+  --t-bg:#104d85; --t-fg:#fff; --t-soft:#ffffffd9; --t-line:#ffffff47; --t-btn-fg:#104d85;
+  border:0; background:var(--t-bg); background-image:linear-gradient(160deg,#ffffff1f,#ffffff00 55%); color:var(--t-fg);
+}
+.nepc-membership .mp-tiers .mp-tier--blue .lc-button--blue { background:#fff; border-color:#fff; color:#104d85; }
+.nepc-membership .mp-tiers .mp-tier--blue .lc-button--blue:hover { background:#ffffffe6; }
+/* Keep the expanded story close to the three tier cards. */
+.nepc-membership .mp-tiers.mp-tiers--pink-launch { padding-bottom:12px; }
+.mp-tier-footer { max-width:1120px; padding:4px 0 32px; }
+.nepc-membership .mp-tier-footer .mp-join-note { margin-top:10px; font-size:11px; text-align:center; }
+.mp-pink-section { --pink:#bd226b; --pink-ink:#94184e; --pink-line:#efc7db; margin-bottom:12px; scroll-margin-top:12px; }
+.mp-pink-detail-nav { padding:0 0 8px; gap:12px; }
+.mp-pink-detail-nav button { min-height:36px; padding:5px 0; }
+.mp-pink-details-grid { display:grid; grid-template-columns:300px minmax(0,1fr) 300px; gap:24px; align-items:center; padding:20px; border:1px solid var(--pink-line); border-radius:16px; background:linear-gradient(120deg,#fff 30%,#fff7fc 100%); box-shadow:0 7px 22px #a71d5909; }
+.mp-pink-photo { position:relative; align-self:center; margin:0; overflow:hidden; border-radius:10px; background:#f5d8e9; }
+.nepc-membership .mp-pink-photo img { width:100%; aspect-ratio:16/10; height:auto; object-fit:cover; object-position:50% 35%; }
+.mp-pink-photo figcaption { position:absolute; inset:auto 0 0; padding:24px 12px 10px; background:linear-gradient(transparent,#512239cc); color:#fff; font-size:11px; font-weight:750; }
+.nepc-membership .mp-pink-kicker { margin-bottom:7px; color:var(--pink-ink); font-size:10px; font-weight:800; letter-spacing:.13em; text-transform:uppercase; }
+.nepc-membership #pink-details-title:focus { outline:none; }
+.nepc-membership #pink-details-title { margin-bottom:12px; color:#8f194d; font-size:31px; line-height:1.08; letter-spacing:-.04em; }
+.nepc-membership .mp-pink-details-copy > p { font-size:13px; line-height:1.6; }
+.nepc-membership .mp-pink-details-copy .mp-pink-kicker { font-size:10px; }
+.nepc-membership .mp-pink-monthly { display:flex; align-items:center; gap:10px; flex-wrap:wrap; margin-top:14px; color:var(--pink-ink); }
+.mp-pink-monthly strong { font-size:22px; letter-spacing:-.03em; white-space:nowrap; }
+.mp-pink-monthly strong span { font-size:11px; font-weight:600; letter-spacing:0; }
+.mp-pink-monthly > span { padding:3px 7px; border-radius:5px; background:#fbe0ef; color:#84234e; font-size:10px; font-weight:750; }
+.nepc-membership .mp-pink-details-copy .mp-pink-terms { margin-top:6px; font-size:11px; }
+.nepc-membership .mp-pink-details-copy .mp-pink-cap { margin-top:4px; font-size:10px; color:#78516a; }
+.mp-pink-offer { position:relative; padding:12px 14px; margin-bottom:12px; border:1px solid #eb9fc5; border-radius:10px; background:linear-gradient(125deg,#fce0f0,#f6b6d6); }
+.nepc-membership .mp-pink-offer-title { display:flex; align-items:center; justify-content:space-between; margin-bottom:5px; color:#8c164c; font-size:15px; font-weight:800; letter-spacing:-.02em; }
+.mp-pink-offer-title > span { font-size:20px; }
+.nepc-membership .mp-pink-offer p:not(.mp-pink-offer-title) { color:#67203f; font-size:11px; line-height:1.6; }
+.mp-pink-offer code { display:inline-block; margin-top:7px; padding:5px 10px; border:1px dashed #a42060; border-radius:5px; background:#fff8fc; color:#94184e; line-height:1.3; font-family:inherit; font-size:12px; font-weight:800; letter-spacing:.1em; box-shadow:0 2px 5px #a4206010; }
+.nepc-membership .mp-pink-offer .mp-pink-code-help { display:inline; margin-left:7px; font-size:9px; }
+.mp-pink-locations { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+.mp-pink-location { display:flex; flex-direction:column; min-width:0; }
+.nepc-membership .mp-pink-location h3 { margin-bottom:7px; font-size:13px; }
+.mp-pink-join { display:flex; align-items:center; justify-content:space-between; gap:8px; min-height:44px; padding:10px 12px; border:1px solid #bd226b; border-radius:7px; background:linear-gradient(135deg,#c52a74,#a91b5d); color:#fff; box-shadow:0 3px 9px #bd226b22; font-size:12px; font-weight:800; }
+.mp-pink-join:hover { background:#94184e; border-color:#94184e; color:#fff; }
+.mp-pink-calendar-link { display:inline-flex; align-items:center; justify-content:space-between; gap:6px; min-height:36px; margin-top:3px; color:var(--pink-ink); font-size:11px; font-weight:750; }
+.mp-pink-calendar-link:hover { text-decoration:underline; text-underline-offset:4px; }
+.mp-pink-section a:focus-visible { outline:3px solid var(--pink-ink); outline-offset:3px; border-radius:4px; }
+.mp-pink-existing { display:flex; align-items:center; justify-content:space-between; gap:16px; padding:12px 16px; margin-top:10px; border:1px solid #f0d4e3; border-radius:10px; background:#fff7fb; }
+.nepc-membership .mp-pink-existing h3 { font-size:13px; line-height:1.4; }
+.nepc-membership .mp-pink-existing p { margin-top:3px; font-size:11px; }
+.mp-pink-existing ul { display:flex; flex-wrap:wrap; gap:8px; list-style:none; padding:0; margin:0; }
+.mp-pink-existing li { display:flex; gap:6px; padding:5px 8px; border:1px solid #efd2e2; border-radius:6px; background:#fff; color:var(--home-ink); font-size:11px; white-space:nowrap; }
+/* A tighter comparison retains every benefit. */
+.nepc-membership #compare { max-width:1040px; padding-block:36px; }
+.nepc-membership #compare .lc-section-heading { margin-bottom:18px; }
+.nepc-membership .mp-comparison { font-size:12px; line-height:1.4; }
+.nepc-membership .mp-comparison th,.nepc-membership .mp-comparison td { padding:11px 14px; }
+.nepc-membership .mp-comparison thead th { font-size:13px; }
+.nepc-membership .mp-comparison tbody th { width:31%; }
+.nepc-membership .mp-comparison td { width:23%; }
+.nepc-membership .mp-comparison thead .mp-compare-pink { background:#9b1c56; }
+.nepc-membership .mp-comparison tbody .mp-compare-pink { background:#fff3f9; color:#72304f; }
+.mp-comparison .mp-compare-pink a { color:#9b1c56; text-decoration:underline; text-underline-offset:3px; }
+.mp-pink-compare-new { display:inline-block; margin-left:4px; padding:1px 5px; border-radius:4px; background:#ffffff26; font-size:9px; font-weight:800; line-height:1.5; text-transform:uppercase; }
+@media (max-width:1050px) {
+  .mp-pink-details-grid { grid-template-columns:200px minmax(0,1fr) 260px; gap:18px; padding:18px; }
+  .nepc-membership #pink-details-title { font-size:28px; }
+}
+@media (max-width:900px) {
+  .mp-pink-details-grid { grid-template-columns:200px 1fr; }
+  .mp-pink-action-panel { grid-column:1/-1; display:grid; grid-template-columns:1fr 1fr; align-items:start; gap:18px; }
+  .mp-pink-offer { margin-bottom:0; }
+  .mp-pink-existing { align-items:flex-start; flex-direction:column; gap:10px; }
+
+}
+@media (max-width:700px) {
+  .mp-pink-detail-nav { align-items:flex-start; }
+  .nepc-membership .mp-pink-detail-nav p { max-width:165px; font-size:9px; }
+  .mp-pink-detail-nav button { padding-top:0; white-space:nowrap; font-size:10px; }
+  .mp-pink-details-grid { grid-template-columns:1fr; gap:18px; padding:16px; }
+  .mp-pink-photo { order:1; }
+  .mp-pink-details-copy { order:0; }
+  .mp-pink-action-panel { order:2; display:block; }
+  .nepc-membership .mp-pink-photo img { height:160px; min-height:0; object-position:50% 32%; }
+  .nepc-membership #pink-details-title { font-size:28px; }
+  .nepc-membership #pink-details-title br { display:none; }
+  .mp-pink-offer { margin-bottom:14px; }
+  .nepc-membership .mp-pink-location h3 { font-size:13px; }
+  .mp-pink-existing { padding:14px; }
+  .mp-pink-existing ul { gap:5px; }
+  .mp-pink-existing li { font-size:10px; }
+  .nepc-membership .mp-comparison { min-width:620px; }
+}
+
+/* Keep current per-club Blue pricing inside the compact launch layout. */
+.nepc-membership .mp-tiers--pink-launch .mp-club-prices { grid-template-columns:1fr 1fr; gap:12px; margin-top:12px; }
+.nepc-membership .mp-tiers--pink-launch .mp-club-price { padding-top:8px; }
+.nepc-membership .mp-tiers--pink-launch .mp-club-name { font-size:10px; }
+.nepc-membership .mp-tiers--pink-launch .mp-club-price .mp-price { margin:4px 0 0; }
+.nepc-membership .mp-tiers--pink-launch .mp-club-price .mp-price strong { font-size:25px; }
+.nepc-membership .mp-tiers--pink-launch .mp-club-price .mp-partner { margin-top:6px; font-size:10px; }
+.mp-compare-club-price { display:block; margin:3px 0; font-size:11px; }
+.mp-compare-club-price strong { display:block; font-size:12px; font-weight:650; }

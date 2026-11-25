@@ -70,13 +70,13 @@ for (const [route, values] of Object.entries(copy)) {
       ]) expectedDestinations.add(destination);
     }
     assert.deepEqual([...new Set(protectedLinks(html))].sort(), [...expectedDestinations].sort(), `${route}: booking/shop destinations changed`);
-    const expectedPrices = text(before).match(/\$[\d,.]+/g);
-    if (route === '/membership/') {
-      // Repeat the existing Blue hourly fee in the accessible comparison table.
-      const blueHourlyFee = text(before).match(/Court Fees:\s*(\$[\d,.]+)/)?.[1];
-      assert(blueHourlyFee, 'Existing Blue hourly court fee is required');
-      expectedPrices.push(blueHourlyFee);
-    }
+    // Approved current annual prices plus the owner-provided Pink launch offer.
+    // Prices repeat in tier summaries, expanded Pink details and comparison.
+    const expectedPrices = route === '/membership/' ? [
+      '$149', '$79', '$800', '$640', '$600', '$480', '$8.00', '$3,500', '$3,300',
+      '$149', '$79', '$8', '$0', '$0',
+      '$149', '$800', '$600', '$3,500', '$640', '$480', '$3,300', '$8', '$0', '$8.00', '$79'
+    ] : text(before).match(/\$[\d,.]+/g);
     assert.deepEqual(text(html).match(/\$[\d,.]+/g), expectedPrices, `${route}: prices changed`);
     if (route.startsWith('/legal-pages/')) {
       assert.equal(text(html.match(/<main\b[\s\S]*?<\/main>/)[0]), text(before.match(/<main\b[\s\S]*?<\/main>/)[0]).replace("[insert email]", "Middleton@Nepclub.com "), `${route}: legal wording changed`);
