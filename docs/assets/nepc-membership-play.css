@@ -451,3 +451,11 @@
 .nepc-clubs .mp-tier.mp-tier--burgundy .lc-button--blue:hover { background:#ffffffe6; }
 .nepc-clubs .mp-tier.mp-tier--burgundy .lc-button--outline:hover { background:#ffffff26; }
 @media (max-width: 700px) { .nepc-membership .mp-tiers { grid-template-columns:1fr; } }
+
+/* Nov 24 2026: Blue priced per club (Middleton $800, Rye $600). */
+.nepc-clubs .mp-tier .mp-club-prices { display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-top:16px; }
+.nepc-clubs .mp-tier .mp-club-price { border-top:1px solid var(--t-line, #ffffff47); padding-top:10px; }
+.nepc-clubs .mp-tier .mp-club-name { margin:0; font-size:12px; font-weight:750; letter-spacing:.06em; text-transform:uppercase; color:var(--t-soft, #ffffffd9); }
+.nepc-clubs .mp-tier .mp-club-price .mp-price { margin:4px 0 0; }
+.nepc-clubs .mp-tier .mp-club-price .mp-price strong { font-size:30px; }
+@media (max-width: 360px) { .nepc-clubs .mp-tier .mp-club-prices { grid-template-columns:1fr; } }
