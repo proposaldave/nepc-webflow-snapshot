@@ -250,25 +250,38 @@
   --event-soft: #eef2f6;
   --event-ink: #42556a;
 }
+/* Tone colors match CourtReserve category colors (Nov 24 2026). */
+.nepc-find-play [data-event-tone="pink"], .nepc-find-play [data-event-filter="pink"] {
+  --event-accent: #d32d79;
+  --event-soft: #fdeaf3;
+  --event-ink: #9b1c56;
+}
 .nepc-find-play [data-event-tone="social"], .nepc-find-play [data-event-filter="social"] {
-  --event-accent: #3f7d50;
-  --event-soft: #edf6ed;
-  --event-ink: #275434;
+  --event-accent: #0e7fe5;
+  --event-soft: #e9f3fd;
+  --event-ink: #0b5cab;
 }
 .nepc-find-play [data-event-tone="competitive"], .nepc-find-play [data-event-filter="competitive"] {
   --event-accent: #c15c3e;
   --event-soft: #fff1ea;
   --event-ink: #8e3d25;
 }
+/* Men's Scramble retains its black identity within competitive play. */
+.nepc-find-play [data-event-tone="mens-scramble"],
+.nepc-find-play [data-event-tone="mens-scramble"] [data-event-tone="competitive"] {
+  --event-accent:#202124;
+  --event-soft:#f1f2f3;
+  --event-ink:#202124;
+}
 .nepc-find-play [data-event-tone="coaching"], .nepc-find-play [data-event-filter="coaching"] {
-  --event-accent: #8156b3;
-  --event-soft: #f4eefc;
-  --event-ink: #613c8c;
+  --event-accent: #533099;
+  --event-soft: #f1ecfa;
+  --event-ink: #432680;
 }
 .nepc-find-play [data-event-tone="beginner"], .nepc-find-play [data-event-filter="beginner"] {
-  --event-accent: #237a7a;
-  --event-soft: #e8f5f4;
-  --event-ink: #175658;
+  --event-accent: #f58220;
+  --event-soft: #fff2e6;
+  --event-ink: #9a4a06;
 }
 .nepc-find-play [data-event-tone="lesson"] {
   --event-accent: #d6a51d;
@@ -429,3 +442,33 @@
 @media (max-width: 700px) {
   .mp-calendar-access > summary { width: 100%; justify-content: space-between; font-size: 12px; }
 }
+
+/* Nov 23 2026: Silver no longer sold. Two cards (Blue, Burgundy), centered. */
+.nepc-membership .mp-tiers { grid-template-columns:repeat(2,minmax(0,1fr)); max-width:860px; }
+.mp-tier.mp-tier--burgundy { border-top-color:#8a1830; }
+.nepc-clubs .mp-tier.mp-tier--burgundy { --t-bg:#8a1830; --t-fg:#fff; --t-soft:#ffffffd9; --t-line:#ffffff47; --t-btn-fg:#8a1830; background-image:linear-gradient(160deg,#ffffff1f,#ffffff00 55%); }
+.nepc-clubs .mp-tier.mp-tier--burgundy .lc-button--blue { background:#fff; border-color:#fff; color:#8a1830; }
+.nepc-clubs .mp-tier.mp-tier--burgundy .lc-button--blue:hover { background:#ffffffe6; }
+.nepc-clubs .mp-tier.mp-tier--burgundy .lc-button--outline:hover { background:#ffffff26; }
+@media (max-width: 700px) { .nepc-membership .mp-tiers { grid-template-columns:1fr; } }
+
+/* Nov 24 2026: Blue priced per club (Middleton $800, Rye $600). */
+.nepc-clubs .mp-tier .mp-club-prices { display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-top:16px; }
+.nepc-clubs .mp-tier .mp-club-price { border-top:1px solid var(--t-line, #ffffff47); padding-top:10px; }
+.nepc-clubs .mp-tier .mp-club-name { margin:0; font-size:12px; font-weight:750; letter-spacing:.06em; text-transform:uppercase; color:var(--t-soft, #ffffffd9); }
+.nepc-clubs .mp-tier .mp-club-price .mp-price { margin:4px 0 0; }
+.nepc-clubs .mp-tier .mp-club-price .mp-price strong { font-size:30px; }
+@media (max-width: 360px) { .nepc-clubs .mp-tier .mp-club-prices { grid-template-columns:1fr; } }
+
+/* Nov 24 2026 spacing pass: same layout in both cards, equal heights, buttons aligned. */
+.nepc-membership .mp-tier { align-self:stretch; padding:28px 28px 26px; }
+.nepc-clubs .mp-tier .mp-club-prices { gap:24px; margin-top:20px; }
+.nepc-clubs .mp-tier .mp-club-prices--one { grid-template-columns:1fr; }
+.nepc-clubs .mp-tier .mp-club-price { padding-top:14px; }
+.nepc-clubs .mp-tier .mp-club-price .mp-price { margin:6px 0 0; }
+.nepc-clubs .mp-tier .mp-club-price .mp-partner { margin-top:8px; }
+.nepc-membership .mp-tier ul { margin:24px 0 22px; }
+.nepc-membership .mp-tier li + li { margin-top:10px; }
+.nepc-membership .mp-tier-actions { margin-top:auto; padding-top:16px; }
+.nepc-membership .mp-tier-actions > p { margin-bottom:4px; }
+@media (max-width: 700px) { .nepc-membership .mp-tier { padding:24px 20px; } .nepc-clubs .mp-tier .mp-club-prices { gap:16px; } }
