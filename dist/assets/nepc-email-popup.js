@@ -10,8 +10,6 @@
   var KEY_SUBSCRIBED = 'nepcEmailSubscribed';
   var KEY_LAST_SHOWN = 'nepcPopupLastShown';
   var THIRTY_DAYS = 30 * 24 * 60 * 60 * 1000;
-  // The Pink Friday line hides itself automatically after Wednesday, Nov 25, 2026 (Eastern time).
-  var PINK_TEASER = Date.now() < Date.parse('2026-11-26T05:00:00Z');
   var EXCLUDED = [/^\/join\/?$/, /^\/founder-story(\/|$)/, /^\/book-a-court(\/|$)/, /^\/choose-club(\/|$)/, /^\/gift-cards(\/|$)/, /checkout/i];
 
   function store(key, value) {
@@ -104,7 +102,6 @@
       '<button type="button" class="nepc-pop-close" aria-label="Close">&times;</button>' +
       '<img class="nepc-pop-logo" src="' + LOGO + '" alt="New England Pickleball Club" width="92" onerror="this.style.display=\'none\'">' +
       '<div class="nepc-pop-body">' +
-        (PINK_TEASER ? '<p class="nepc-pop-tag">Pink Friday news drops Wednesday, Nov 25</p>' : '') +
         '<h2 id="nepc-pop-title">Get NEPC news first.</h2>' +
         '<p id="nepc-pop-desc">Club news, events and new programs in Rye and Middleton.</p>' +
         '<form id="nepc-pop-form" method="post" action="' + ACTION + '" target="_blank" novalidate>' +
