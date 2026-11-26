@@ -154,7 +154,8 @@
 .nepc-membership .mp-tiers--pink-launch .mp-club-name { font-size:10px; }
 .nepc-membership .mp-tiers--pink-launch .mp-club-price .mp-price { margin:4px 0 0; }
 .nepc-membership .mp-tiers--pink-launch .mp-club-price .mp-price strong { font-size:25px; }
-.nepc-membership .mp-tiers--pink-launch .mp-club-price .mp-partner { margin-top:6px; font-size:10px; }
+.nepc-membership .mp-tiers--pink-launch .mp-club-price .mp-partner { margin-top:6px; font-size:13px; line-height:1.35; color:#fff; opacity:1; }
+.nepc-membership .mp-tiers--pink-launch .mp-club-price .mp-partner strong { color:#fff; font-weight:750; }
 .mp-compare-club-price { display:block; margin:3px 0; font-size:11px; }
 .mp-compare-club-price strong { display:block; font-size:12px; font-weight:650; }
 
