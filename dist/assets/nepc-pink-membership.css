@@ -163,4 +163,5 @@
 .nepc-membership .mp-comparison thead .mp-compare-burgundy { background:#8a1830; color:#fff; }
 
 /* Pink card tagline */
-.nepc-membership .mp-tier--pink .mp-pink-tagline { margin:10px 0 2px; font-size:15px; line-height:1.3; font-weight:750; color:#9b1c56; }
+.nepc-membership .mp-tier--pink .mp-pink-price-wrap { display:flex; flex-direction:column; align-items:flex-end; text-align:right; }
+.nepc-membership .mp-tier--pink .mp-pink-tagline { margin:2px 0 0; font-size:12px; line-height:1.3; font-weight:700; color:#9b1c56; white-space:nowrap; }
